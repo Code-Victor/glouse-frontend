@@ -17,6 +17,7 @@ specifiers:
   prettier: ^2.8.3
   react: 18.2.0
   react-dom: 18.2.0
+  stitches-mixins: ^1.0.0
   typescript: 4.9.5
 
 dependencies:
@@ -30,6 +31,7 @@ dependencies:
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  stitches-mixins: 1.0.0_@stitches+react@1.2.8
   typescript: 4.9.5
 
 devDependencies:
@@ -2801,6 +2803,20 @@ packages:
     dependencies:
       readable-stream: 3.6.0
     dev: true
+
+  /stitches-mixins/1.0.0_@stitches+react@1.2.8:
+    resolution: {integrity: sha512-h9sHAAZL3M+CrMeBm6C1u9ncvqtnV/+U0uNTYieYediGC1z9CiutbuFMsnzhXOTCQ0ygv1cscneR5na8sdmGvA==}
+    peerDependencies:
+      '@stitches/core': '>= 1.1.0'
+      '@stitches/react': '>= 1.1.0'
+    peerDependenciesMeta:
+      '@stitches/core':
+        optional: true
+      '@stitches/react':
+        optional: true
+    dependencies:
+      '@stitches/react': 1.2.8_react@18.2.0
+    dev: false
 
   /stop-iteration-iterator/1.0.0:
     resolution: {integrity: sha512-iCGQj+0l0HOdZ2AEeBADlsRC+vsnDsZsbdSiH1yNSjcfKM7fdpCMfqAL/dwF5BLiw/XhRft/Wax6zQbhq2BcjQ==}

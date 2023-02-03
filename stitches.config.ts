@@ -7,6 +7,7 @@ import {
 import { Prefixed } from "@stitches/react/types/util";
 import localFont from "@next/font/local";
 import { getFontFamily } from "@utils";
+import { mixins } from "stitches-mixins";
 
 export const jakartaSans = localFont({
   variable: "--JakartaSans",
@@ -49,7 +50,16 @@ export const {
   keyframes,
 } = createStitches({
   theme: {
-    colors: {},
+    colors: {
+      primary: "#0094E5",
+      secondary: "#0072B0",
+      offWhite: "#A8E0FF",
+      lightGrey: "#E9E9E9",
+      white: "#FFFFFF",
+      dark: "#1E1E1E",
+      darkGrey: "#1A202C",
+      primaryHover: "$secondary",
+    },
     fonts: {
       body: `${getFontFamily(
         satoshi
@@ -57,7 +67,6 @@ export const {
       heading: `${getFontFamily(
         jakartaSans
       )}, ui-sans-serif,system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-      mono: "SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace",
     },
     fontSizes: {
       1: ".75rem",
@@ -176,6 +185,7 @@ export const {
     light: "(prefers-color-scheme: light)",
   },
   utils: {
+    include: mixins(),
     p: (value: PropertyValue<"padding">) => ({
       padding: value,
     }),
@@ -282,8 +292,18 @@ export const {
         marginBlockEnd: value,
       },
     }),
-    bg: (value: PropertyValue<"backgroundColor">) => ({
-      backgroundColor: value,
+    spaceY: (value: PropertyValue<"marginTop">) => ({
+      "& >*+*": {
+        marginTop: value,
+      },
+    }),
+    spaceX: (value: PropertyValue<"marginRight">) => ({
+      "& >*+*": {
+        marginRight: value,
+      },
+    }),
+    bg: (value: PropertyValue<"background">) => ({
+      background: value,
     }),
     br: (value: PropertyValue<"borderRadius">) => ({
       borderRadius: value,
