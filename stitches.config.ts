@@ -6,7 +6,7 @@ import {
 } from "@stitches/react";
 import { Prefixed } from "@stitches/react/types/util";
 import localFont from "@next/font/local";
-import { getFontFamily } from "@utils";
+import { getFontFamily } from "@/utils";
 import { mixins } from "stitches-mixins";
 
 export const jakartaSans = localFont({
@@ -61,12 +61,9 @@ export const {
       primaryHover: "$secondary",
     },
     fonts: {
-      body: `${getFontFamily(
-        satoshi
-      )}, ui-sans-serif,system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-      heading: `${getFontFamily(
-        jakartaSans
-      )}, ui-sans-serif,system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+      body: "$Satoshi, ui-sans-serif,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      heading:
+        "$JakartaSans, ui-sans-serif,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     },
     fontSizes: {
       1: ".75rem",
@@ -79,7 +76,7 @@ export const {
       8: "2.25rem",
       9: "3rem",
       10: "3.75rem",
-      11: "4.5rem",
+      11: "52px",
       12: "6rem",
     },
     fontWeights: {
@@ -175,10 +172,11 @@ export const {
     shadows: {},
   },
   media: {
-    bp1: "(min-width: 520px)",
-    bp2: "(min-width: 900px)",
-    bp3: "(min-width: 1200px)",
-    bp4: "(min-width: 1800px)",
+    sm: "(min-width: 640px)",
+    md: "(min-width: 768px)",
+    lg: "(min-width: 1024px)",
+    xl: "(min-width: 1280px)",
+    "2xl": "(min-width: 1536px)",
     reducedMotion: "(prefers-reduced-motion)",
     hover: "(any-hover: hover)",
     dark: "(prefers-color-scheme: dark)",
@@ -352,6 +350,10 @@ const globalStyles = globalCss({
   "*, *::before, *::after": {
     boxSizing: "inherit",
   },
+  ":root": {
+    "--fonts-Satoshi": getFontFamily(satoshi),
+    "--fonts-JakartaSans": getFontFamily(jakartaSans),
+  },
   "html, body": {
     padding: 0,
     margin: 0,
@@ -376,7 +378,7 @@ type TokenByScaleName<ScaleName extends keyof Theme> = Prefixed<
   keyof Theme[ScaleName]
 >;
 
-type ScaleVariant<ScaleName extends keyof Theme> = Record<
+export type ScaleVariant<ScaleName extends keyof Theme> = Record<
   keyof Theme[ScaleName],
   CSS
 >;
