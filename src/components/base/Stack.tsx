@@ -14,7 +14,7 @@ const Stack = styled("div", {
       },
     },
     gap: createScaleVariant("space", (value) => ({
-      $$space: value,
+      $$space: "$space" + value,
     })),
     negative: {
       true: {},
@@ -38,6 +38,7 @@ const Stack = styled("div", {
   ],
   defaultVariants: {
     direction: "column",
+    gap: "3",
   },
 });
 

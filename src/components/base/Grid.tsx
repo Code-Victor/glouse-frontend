@@ -1,7 +1,8 @@
 import { flexGapVariants, gridGapVariants } from "@/utils/variants";
 import { styled } from "stitches.config";
+import Box from "./Box";
 
-const Grid = styled("div", flexGapVariants, gridGapVariants, {
+const Grid = styled(Box, flexGapVariants, gridGapVariants, {
   include: "box",
   display: "grid",
 
@@ -75,4 +76,5 @@ const Grid = styled("div", flexGapVariants, gridGapVariants, {
   },
 });
 
+Grid.displayName = "Grid";
 export default Grid;

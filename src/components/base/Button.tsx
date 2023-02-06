@@ -9,6 +9,14 @@ const Button = styled("button", {
   outlineColor: "transparent",
   transition: "all 0.2s ease-in-out",
   fontFamily: "$body",
+  cursor: "pointer",
+  "&:active": {
+    transform: "scale(0.95)",
+    transformOrigin: "center center",
+  },
+  "&:focus": {
+    outline: "1px solid black",
+  },
   variants: {
     variant: {
       primary: {
@@ -30,7 +38,7 @@ const Button = styled("button", {
       md: {
         fontSize: "$3",
         py: "$2",
-        px: "$3",
+        px: "$4",
         fontWeight: "$7",
       },
       lg: {
@@ -65,4 +73,5 @@ const Button = styled("button", {
     variant: "primary",
   },
 });
+Button.displayName = "Button";
 export default Button;

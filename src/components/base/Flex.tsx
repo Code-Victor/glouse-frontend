@@ -1,7 +1,8 @@
 import { flexGapVariants } from "@/utils/variants";
 import { styled } from "stitches.config";
+import Box from "./Box";
 
-const Flex = styled("div", flexGapVariants, {
+const Flex = styled(Box, flexGapVariants, {
   include: "box",
   display: "flex",
 
@@ -74,4 +75,5 @@ const Flex = styled("div", flexGapVariants, {
   },
 });
 
+Flex.displayName = "Flex";
 export default Flex;
