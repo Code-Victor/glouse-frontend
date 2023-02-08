@@ -36,7 +36,7 @@ const Box = styled(
             maxWidth: 1280,
           },
           "@2xl": {
-            maxWidth: 1536,
+            maxWidth: 1460,
           },
         },
       },

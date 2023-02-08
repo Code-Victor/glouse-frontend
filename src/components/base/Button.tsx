@@ -31,17 +31,11 @@ const Button = styled("button", {
     size: {
       sm: {
         fontSize: "$2",
-        px: "$1",
-        py: "$2",
+        px: "$5",
+        py: "$3",
         fontWeight: "$5",
       },
       md: {
-        fontSize: "$3",
-        py: "$2",
-        px: "$4",
-        fontWeight: "$7",
-      },
-      lg: {
         fontSize: "$3",
         py: "$4",
         px: "$6",

@@ -72,6 +72,9 @@ const Grid = styled(Box, flexGapVariants, gridGapVariants, {
       5: {
         gridTemplateColumns: "repeat(5, 1fr)",
       },
+      6: {
+        gridTemplateColumns: "repeat(5, 1fr)",
+      },
     },
   },
 });
