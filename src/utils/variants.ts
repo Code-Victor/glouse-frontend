@@ -56,9 +56,12 @@ const marginVariants = css({
     mb: createScaleVariant("space", (value) => ({
       mb: value,
     })),
-    mx: createScaleVariant("space", (value) => ({
-      mx: value,
-    })),
+    mx: {
+      auto: { mx: "auto" },
+      ...createScaleVariant("space", (value) => ({
+        mx: value,
+      })),
+    },
     my: createScaleVariant("space", (value) => ({
       my: value,
     })),
@@ -92,6 +95,18 @@ const fontVariants = css({
     })),
   },
 });
+const radiiVariants = css({
+  variants: {
+    br: {
+      none: {
+        br: 0,
+      },
+      ...createScaleVariant("radii", (value) => ({
+        br: value,
+      })),
+    },
+  },
+});
 
 const flexGapVariants = css({
   variants: {
@@ -115,6 +130,7 @@ export {
   sizeVariants,
   paddingVariants,
   marginVariants,
+  radiiVariants,
   colorVariants,
   fontVariants,
   flexGapVariants,
