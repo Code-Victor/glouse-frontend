@@ -6,7 +6,6 @@ import {
 } from "@stitches/react";
 import { Prefixed } from "@stitches/react/types/util";
 import localFont from "@next/font/local";
-import { getFontFamily } from "@/utils";
 import { mixins } from "stitches-mixins";
 
 export const jakartaSans = localFont({
@@ -21,6 +20,11 @@ export const jakartaSans = localFont({
       path: "src/fonts/jakarta-sans/PlusJakartaDisplay-BoldItalic.otf",
       weight: "700",
       style: "italic",
+    },
+    {
+      path: "src/fonts/jakarta-sans/PlusJakartaDisplay-Medium.otf",
+      weight: "500",
+      style: "normal",
     },
   ],
 });
@@ -72,7 +76,7 @@ export const {
       4: "1.125rem",
       5: "1.25rem",
       6: "1.5rem",
-      7: "1.875rem",
+      7: "1.75rem",
       8: "2.25rem",
       9: "3rem",
       10: "3.75rem",
@@ -110,6 +114,7 @@ export const {
       3: "8px",
       4: "12px",
       5: "20px",
+      6: "30px",
       round: "50%",
       pill: "9999px",
     },
@@ -176,7 +181,7 @@ export const {
     md: "(min-width: 768px)",
     lg: "(min-width: 1024px)",
     xl: "(min-width: 1280px)",
-    "2xl": "(min-width: 1536px)",
+    "2xl": "(min-width: 1460px)",
     reducedMotion: "(prefers-reduced-motion)",
     hover: "(any-hover: hover)",
     dark: "(prefers-color-scheme: dark)",
@@ -324,7 +329,9 @@ export const {
     w: (value: PropertyValue<"width">) => ({ width: value }),
     h: (value: PropertyValue<"height">) => ({ height: value }),
     maxW: (value: PropertyValue<"maxWidth">) => ({ maxWidth: value }),
+    minW: (value: PropertyValue<"minWidth">) => ({ minWidth: value }),
     maxH: (value: PropertyValue<"maxHeight">) => ({ maxHeight: value }),
+    minH: (value: PropertyValue<"minHeight">) => ({ minHeight: value }),
 
     size: (value: PropertyValue<"width">) => ({
       width: value,
@@ -351,8 +358,8 @@ const globalStyles = globalCss({
     boxSizing: "inherit",
   },
   ":root": {
-    "--fonts-Satoshi": getFontFamily(satoshi),
-    "--fonts-JakartaSans": getFontFamily(jakartaSans),
+    "--fonts-Satoshi": satoshi.style.fontFamily,
+    "--fonts-JakartaSans": jakartaSans.style.fontFamily,
   },
   "html, body": {
     padding: 0,
@@ -360,7 +367,6 @@ const globalStyles = globalCss({
     fontFamily: "$body",
   },
 });
-
 globalStyles();
 
 export type CSS = StitchesCSS<typeof config>;
