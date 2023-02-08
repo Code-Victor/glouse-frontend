@@ -1,9 +1,17 @@
 import React from "react";
 import Head from "next/head";
+import {
+  Navbar,
+  Hero,
+  Section,
+  Speed,
+  Footer,
+  Customized,
+  CTA,
+} from "@/components/inc";
 import { Box, Text } from "@/components/base";
-import Button from "@/components/base/Button";
-import { styled } from "@stitches/react";
-import PriceCard from "@/components/inc/PriceCard";
+import quality from "@public/images/quality.png";
+import relax from "@public/images/relax.png";
 
 export default function Home() {
   return (
@@ -14,15 +22,58 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box pd="4">
-        <h1 style={{ fontFamily: "var(--fonts-heading)" }}>Hello world</h1>
-      </Box>
-      <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, veniam.
-      </Text>
-      <Button size="lg">Request pickup</Button>
-      <Button outline>Hello</Button>
-      <PriceCard>jey</PriceCard>
+      <Navbar />
+      <Hero />
+      <Speed />
+      <Section
+        shape="round"
+        bg="primary"
+        position="left"
+        alt="quality"
+        image={quality}
+      >
+        <Text
+          as="h2"
+          color="white"
+          fontSize={{ "@initial": "7", "@sm": "8", "@md": "9" }}
+          fontFamily="heading"
+          fontWeight="7"
+          ta={{ "@initial": "center", "@lg": "left" }}
+        >
+          <Text color="dark">Retain the quality</Text> of your favorite outfits
+        </Text>
+        <Text as="p" color="white" ta={{ "@initial": "center", "@lg": "left" }}>
+          Quality laundry and dry cleaning, delivered with precision and care.
+          Our processes are guaranteed to bring new life to your clothes.
+        </Text>
+      </Section>
+      <Section
+        shape="round"
+        bg="white"
+        position="right"
+        alt="quality"
+        image={relax}
+      >
+        <Text
+          as="h2"
+          color="primary"
+          fontSize={{ "@initial": "7", "@sm": "8", "@md": "9" }}
+          fontFamily="heading"
+          fontWeight="7"
+          ta={{ "@initial": "center", "@lg": "left" }}
+        >
+          <Text color="dark">Get your laundry done</Text> without leaving your
+          couch
+        </Text>
+        <Text as="p" color="dark" ta={{ "@initial": "center", "@lg": "left" }}>
+          Request pickup on your phone and we’ll be there in a jiffy! Request
+          pickup on your phone and we’ll be there in a jiffy!Request pickup on
+          your phone and we’ll be there in a jiffy!
+        </Text>
+      </Section>
+      <Customized />
+      <CTA />
+      <Footer />
     </>
   );
 }
