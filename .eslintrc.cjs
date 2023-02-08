@@ -18,7 +18,10 @@ module.exports = {
   plugins: ["react", "@typescript-eslint"],
   rules: {
     indent: ["error", 2],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": [
+      "error",
+      process.platform === "win32" ? "windows" : "unix",
+    ],
     quotes: ["error", "double"],
     semi: ["error", "always"],
   },
