@@ -66,9 +66,9 @@ export default function Home() {
           couch
         </Text>
         <Text as="p" color="dark" ta={{ "@initial": "center", "@lg": "left" }}>
-          Request pickup on your phone and we’ll be there in a jiffy! Request
-          pickup on your phone and we’ll be there in a jiffy!Request pickup on
-          your phone and we’ll be there in a jiffy!
+          Get your laundry handled delicately and hygienically with top class
+          care and efficient service delivery for all kinds of fabrics such as
+          curtains, cooperate wears, native attires, tough textiles, duvets etc.
         </Text>
       </Section>
       <Customized />

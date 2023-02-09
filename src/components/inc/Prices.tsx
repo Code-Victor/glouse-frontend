@@ -61,8 +61,7 @@ function Prices() {
               <PriceCard>
                 <Quotes />
                 <Text as="p" fontWeight="5" fontFamily={"heading"}>
-                  Our price list is best you could ever you can ever, better
-                  than our competitors
+                  Get the best quality laundry done without breaking the bank
                 </Text>
               </PriceCard>
               {categories.map((category, i) => {
