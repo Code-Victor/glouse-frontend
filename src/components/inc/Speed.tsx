@@ -4,24 +4,7 @@ import { Box, Button, Grid, Stack, Text, Flex } from "../base";
 import { WaterMark } from "./WaterMark";
 import clothes from "@public/images/clothes.png";
 import { styled, css } from "stitches.config";
-
-const steps = [
-  {
-    title: "Schedule a pick-up time",
-    paragraph:
-      "You don't have to rush down to drop your clothes, let us pick it up! Choose any of the available pick-up times once you make a pickup request on WhatsApp,  and your dirty clothes will hit the road for a good wash in no time.",
-  },
-  {
-    title: "Wash and Iron",
-    paragraph:
-      "Your dirty clothes will get washed delicately and ironed neatly based on your preferences with our available laundry options such as: wash and iron, wash only, iron only etc. Make your order based on your needs for all kinds of laundry at a budget friendly rate.",
-  },
-  {
-    title: "Delivery as fast as light",
-    paragraph:
-      "Choose a suitable location for delivery and let us do the laundry magic of delivering your clean clothes within 24 hours!",
-  },
-];
+import { steps } from "@/constants";
 
 function Speed() {
   return (
@@ -36,12 +19,18 @@ function Speed() {
         gap={{ "@initial": 8, "@lg": 4 }}
         pt={8}
         container
-        px="3"
+        px="5"
         mx="auto"
         ai="center"
         className={speedGrid()}
       >
-        <Image src={clothes} alt="speed" />
+        <Image
+          src={clothes}
+          alt="speed"
+          style={{
+            justifySelf: "center",
+          }}
+        />
         <Stack css={{ maxW: 740 }} gap="5">
           <Text
             as="h2"
@@ -75,7 +64,7 @@ function Speed() {
           </Button>
         </Flex>
       </Grid>
-      <WaterMark position="right" bg="white" />
+      <WaterMark css={{ opacity: 0.3 }} position="right" bg="white" />
     </Box>
   );
 }

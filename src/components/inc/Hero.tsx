@@ -19,7 +19,7 @@ const Hero = () => {
         gap={{ "@initial": 5, lg: 2 }}
         pt={8}
         container
-        px="3"
+        px="5"
         mx="auto"
         ai="center"
         css={{

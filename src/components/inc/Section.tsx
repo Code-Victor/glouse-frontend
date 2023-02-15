@@ -16,13 +16,23 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
   const left = position === "left";
   return (
     <Box bg={bg} css={{ position: "relative" }} mt={4}>
-      <WaterMark position={position} bg={bg} />
+      <WaterMark
+        css={
+          bg === "white"
+            ? {
+              opacity: 0.3,
+            }
+            : {}
+        }
+        position={position}
+        bg={bg}
+      />
       <Grid
         columns={{ "@initial": 1, "@lg": 4, "@xl": 5 }}
         ai="center"
         gap="2"
         mx="auto"
-        px="3"
+        px="5"
         container
         py="12"
         css={{
@@ -61,7 +71,12 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
             "@md": { minWidth: 500 },
           }}
         >
-          <DisplayImage color="white" size={"lg"} src={image} alt={alt} />
+          <DisplayImage
+            color={bg == "primary" ? "white" : "primary"}
+            size={"lg"}
+            src={image}
+            alt={alt}
+          />
         </Box>
       </Grid>
     </Box>

@@ -30,13 +30,13 @@ const Box = styled(
             maxWidth: 768,
           },
           "@lg": {
-            maxWidth: 1024,
+            maxWidth: 960,
           },
           "@xl": {
-            maxWidth: 1280,
+            maxWidth: 1024,
           },
           "@2xl": {
-            maxWidth: 1460,
+            maxWidth: 1280,
           },
         },
       },

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { styled } from "stitches.config";
 function Navbar() {
   return (
-    <Flex jc="between" mx="auto" py="4" px="3" container>
+    <Flex jc="between" ai="center" mx="auto" pd="5" container>
       <GlouseLogo
         css={{
           width: 80,
@@ -24,6 +24,9 @@ function Navbar() {
         gap="5"
         css={{
           display: "none",
+          a: {
+            color: "$dark",
+          },
           "@md": {
             display: "flex",
           },
@@ -60,6 +63,9 @@ export function GetStartedButton() {
       css={{
         pl: 6,
         py: "$2",
+        "&:hover": {
+          boxShadow: "0 0 0 1px white",
+        },
       }}
     >
       <Flex ai="center" gap="1">

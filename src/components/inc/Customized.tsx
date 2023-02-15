@@ -13,7 +13,7 @@ function Customized() {
         columns={{ "@initial": 1, "@lg": 5 }}
         gap={{ "@initial": 8, "@lg": 5 }}
         container
-        px="3"
+        px="5"
         py="8"
         mx="auto"
         css={{
@@ -111,7 +111,7 @@ function Card({
 }) {
   return (
     <Flex
-      gap="12"
+      gap={{ "@initial": 4, "@lg": 12 }}
       fd="column"
       ai={{ "@initial": "center", "@lg": "start" }}
       css={{
@@ -150,7 +150,7 @@ function Card({
           {title}
         </Text>
         <Text
-          fontSize="4"
+          fontSize={{ "@initial": 3, "@md": 4 }}
           color="dark"
           as="p"
           ta={{

@@ -12,7 +12,7 @@ function Footer() {
       py="8"
       container
       mx="auto"
-      px="3"
+      px="5"
     >
       <Box
         css={{

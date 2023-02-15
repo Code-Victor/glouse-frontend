@@ -4,14 +4,17 @@ import { Box, Button, Flex, Text } from "../base";
 import { Quotes } from "../icons";
 import { categories } from "@/constants";
 import { motion, useAnimation, useInView } from "framer-motion";
+import useMeasure from "react-use-measure";
 
 const CAROUSEL_NO = 4;
 function Prices() {
   const primaryControls = useAnimation();
   const [hovered, setHovered] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref);
+  const [refFirst, boundsFirst] = useMeasure();
+  const [refLast, boundsLast] = useMeasure();
 
+  const isInView = useInView(ref);
   React.useEffect(() => {
     if (!hovered && isInView) {
       primaryControls.start({
@@ -21,6 +24,7 @@ function Prices() {
       primaryControls.stop();
     }
   });
+  console.log(boundsFirst, boundsLast);
   return (
     <Box css={{ overflow: "hidden" }}>
       <Box
@@ -31,10 +35,22 @@ function Prices() {
         onMouseLeave={() => setHovered(false)}
         ref={ref}
       >
-        <Flex>
+        <Flex
+          as={motion.div}
+          drag="x"
+          style={{ touchAction: "none" }}
+          dragConstraints={{ left: -100, right: 100 }}
+        >
           {Array.from({ length: CAROUSEL_NO }).map((_, i) => (
             <Flex
               key={i}
+              ref={
+                i == 0 || i == CAROUSEL_NO - 1
+                  ? i == 0
+                    ? refFirst
+                    : refLast
+                  : null
+              }
               as={motion.div}
               initial={{ x: 0 }}
               animate={primaryControls}

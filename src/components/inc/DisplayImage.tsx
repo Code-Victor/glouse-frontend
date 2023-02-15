@@ -24,15 +24,18 @@ const DisplayImage = styled(BareDisplayImage, {
     objectFit: "cover",
   },
   "&::after": {
-    $$offset: "14px",
+    $$offset: "7px",
     content: "''",
     position: "absolute",
-    bottom: "-$$offset",
+    top: "$$offset",
     left: "$$offset",
     width: "$$size",
     aspectRatio: "1/1",
     bg: "$$color",
     zIndex: -1,
+    "@md": {
+      $$offset: "14px",
+    },
   },
   variants: {
     size: {
