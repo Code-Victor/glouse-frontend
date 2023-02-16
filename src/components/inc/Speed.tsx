@@ -17,7 +17,7 @@ function Speed() {
       <Grid
         columns={{ "@initial": 1, "@lg": 4, "@xl": 5 }}
         gap={{ "@initial": 8, "@lg": 4 }}
-        pt={8}
+        py={{ "@initial": 8, "@md": 12 }}
         container
         px="5"
         mx="auto"

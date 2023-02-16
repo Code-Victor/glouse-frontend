@@ -34,7 +34,7 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
         mx="auto"
         px="5"
         container
-        py="12"
+        py="20"
         css={{
           "@lg": {
             "&>*:nth-child(1)": {

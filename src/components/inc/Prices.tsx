@@ -83,7 +83,12 @@ function Prices() {
               {categories.map((category, i) => {
                 return (
                   <PriceCard key={i}>
-                    <Text as="h3" fontSize="2" fontWeight="9" ta="center">
+                    <Text
+                      fontSize="2"
+                      fontWeight="9"
+                      ta="center"
+                      css={{ display: "block" }}
+                    >
                       {category.title}
                     </Text>
                     <Flex gap="1" fd="column">

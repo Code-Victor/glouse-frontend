@@ -14,7 +14,7 @@ function Customized() {
         gap={{ "@initial": 8, "@lg": 5 }}
         container
         px="5"
-        py="8"
+        py="12"
         mx="auto"
         css={{
           "@lg": {

@@ -42,9 +42,9 @@ const Hero = () => {
           <Text
             ta={{ "@initial": "center", "@lg": "left" }}
             as="h1"
-            fontSize={{ "@initial": "7", "@sm": "8", "@lg": "11" }}
             fontFamily="heading"
             fontWeight="7"
+            fontSize={{ "@initial": "7", "@lg": "8", "@2xl": "11" }}
           >
             The <Text color="primary">ultimate convenience;</Text> Spend{" "}
             <Text color="primary" css={{ fontStyle: "italic" }}>
@@ -56,7 +56,7 @@ const Hero = () => {
           <Text
             as="p"
             ta={{ "@initial": "center", "@lg": "left" }}
-            fontSize={{ "@initial": "4", "@lg": "5" }}
+            fontSize={3}
           >
             Your weekends should be for you, and your family, not for dirty
             clothes. Rest, have fun, we will clean your dirty laundry.
@@ -78,7 +78,9 @@ const Hero = () => {
           css={{
             justifySelf: "center",
             minWidth: 300,
-            "@md": { minWidth: 500 },
+            maxWidth: 500,
+            ml: "auto",
+            "@md": { minWidth: 500, maxWidth: 600 },
           }}
         >
           <DisplayImage

@@ -9,10 +9,10 @@ function CTA() {
         fd="column"
         ai="center"
         gap="7"
-        py="16"
+        py={{ "@initial": 9, "@lg": 16 }}
         px="5"
-        my="12"
-        br={{ "@initial": "none", "@lg": "6" }}
+        my={{ "@initial": 0, "@sm": 9, "@lg": 12 }}
+        br={{ "@initial": "none", "@sm": "6" }}
         css={{
           bg: "$secondary",
           position: "relative",
@@ -22,7 +22,7 @@ function CTA() {
             color: "$white",
           },
           isolation: "isolate",
-          "@lg": {
+          "@sm": {
             boxShadow: "0px 4px 74px rgba(35, 31, 32, 0.3)",
           },
         }}

@@ -9,7 +9,7 @@ function Footer() {
     <Grid
       gap="3"
       columns={{ "@initial": 1, "@md": 6 }}
-      py="8"
+      py="16"
       container
       mx="auto"
       px="5"
@@ -94,6 +94,7 @@ function Footer() {
       <Box
         css={{
           gridColumn: "1/-1",
+          mt: "$12",
         }}
       >
         {/* copy right */}
