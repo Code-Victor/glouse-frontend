@@ -30,11 +30,11 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
       <Grid
         columns={{ "@initial": 1, "@lg": 4, "@xl": 5 }}
         ai="center"
-        gap="2"
+        gap={{ "@initial": 6, "@lg": 2 }}
         mx="auto"
         px="5"
         container
-        py="20"
+        py={{ "@initial": 12, "@lg": 20 }}
         css={{
           "@lg": {
             "&>*:nth-child(1)": {

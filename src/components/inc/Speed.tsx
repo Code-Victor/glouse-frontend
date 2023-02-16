@@ -38,11 +38,17 @@ function Speed() {
             fontFamily="heading"
             fontWeight={{ "@initial": "7" }}
             color="dark"
+            ta={{ "@initial": "center", "@lg": "left" }}
           >
             Your entire laundry cycle{" "}
             <Text color="primary">completed in 24 hours!</Text>
           </Text>
-          <Text fontSize={{ "@initial": "4" }} color="dark" as="p">
+          <Text
+            ta={{ "@initial": "center", "@lg": "left" }}
+            fontSize={{ "@initial": "4" }}
+            color="dark"
+            as="p"
+          >
             We know you’re busy, so we’ve made it easy for you to get your
             laundry done in a jiffy. We offer same-day pickup and delivery, so
             you can spend more time on the things that matter.
