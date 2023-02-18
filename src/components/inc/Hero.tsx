@@ -3,6 +3,8 @@ import { Grid, Stack, Flex, Text, Box, Button } from "../base";
 import DisplayImage from "./DisplayImage";
 import convenience from "@public/images/convenience.png";
 import Prices from "./Prices";
+import { motion } from "framer-motion";
+import { variants, transitions } from "@/constants";
 
 const Hero = () => {
   return (
@@ -39,7 +41,16 @@ const Hero = () => {
           },
         }}
       >
-        <Stack gap="6" css={{ "@lg": { maxW: 660 } }}>
+        <Stack
+          as={motion.div}
+          variants={variants}
+          whileInView={["visible", "regular"]}
+          initial={["hidden", "left"]}
+          custom={100}
+          transition={{ delay: 0.5, ...transitions.main }}
+          gap="6"
+          css={{ display: "block", "@lg": { maxW: 660 } }}
+        >
           <Text
             ta={{ "@initial": "center", "@lg": "left" }}
             as="h1"
@@ -76,6 +87,12 @@ const Hero = () => {
           </Flex>
         </Stack>
         <Box
+          as={motion.div}
+          variants={variants}
+          whileInView={["visible", "regular"]}
+          initial={["hidden", "right"]}
+          custom={100}
+          transition={{ delay: 1, ...transitions.main }}
           css={{
             justifySelf: "center",
             minWidth: 300,

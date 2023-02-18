@@ -7,6 +7,7 @@ import {
   TwitterIcon,
   TitTokIcon,
 } from "@/components/icons";
+import type { Variants } from "framer-motion";
 
 export const cardInfo = [
   {
@@ -170,3 +171,38 @@ export const steps = [
       "Choose a suitable location for delivery and let us do the laundry magic of delivering your clean clothes within 24 hours!",
   },
 ];
+export const transitions = {
+  main: {
+    duration: 1,
+    ease: "easeInOut",
+  },
+};
+
+export const variants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+  regular: {
+    x: 0,
+    y: 0,
+  },
+  left: (x: string | number) => {
+    return {
+      x: -x,
+    };
+  },
+  right: (x: string | number) => {
+    return {
+      x: x,
+    };
+  },
+  top: {
+    y: -100,
+  },
+  bottom: {
+    y: 100,
+  },
+};

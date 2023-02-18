@@ -2,7 +2,7 @@ import * as React from "react";
 import { styled } from "stitches.config";
 import { Box, Button, Flex, Text } from "../base";
 import { Quotes } from "../icons";
-import { categories } from "@/constants";
+import { categories, variants, transitions } from "@/constants";
 import { motion, useAnimation, useInView } from "framer-motion";
 import useMeasure from "react-use-measure";
 
@@ -14,7 +14,9 @@ function Prices() {
   const [refFirst, boundsFirst] = useMeasure();
   const [refLast, boundsLast] = useMeasure();
 
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, {
+    amount: 0.8,
+  });
   React.useEffect(() => {
     if (!hovered && isInView) {
       primaryControls.start({
@@ -23,17 +25,24 @@ function Prices() {
     } else {
       primaryControls.stop();
     }
-  });
+  }, [isInView, hovered, primaryControls]);
   console.log(boundsFirst, boundsLast);
   return (
-    <Box css={{ overflow: "hidden" }}>
+    <Box
+      as={motion.div}
+      variants={variants}
+      animate={isInView ? ["visible", "regular"] : false}
+      initial={["hidden", "bottom"]}
+      transition={transitions.main}
+      css={{ overflow: "hidden" }}
+      ref={ref}
+    >
       <Box
         css={{
           display: "table",
         }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        ref={ref}
       >
         <Flex
           as={motion.div}
@@ -58,6 +67,7 @@ function Prices() {
                 duration: 15 * (CAROUSEL_NO - 1),
                 ease: "linear",
                 repeat: Infinity,
+                delay: 1,
               }}
               gap="5"
               py="4"
