@@ -9,6 +9,7 @@ const Hero = () => {
     <Flex
       css={{
         minH: "85vh",
+        mt: "$20",
       }}
       fd="column"
       jc="between"
