@@ -41,6 +41,6 @@ jobs:
       - name: installing lighthouse
         run: pnpm install -g @lhci/cli@0.8.x
       - name: build app
-        run: pnpm run export
+        run: pnpm run build && pnpm run export
       - name: running lighthouse cli
         run: lhci autorun
