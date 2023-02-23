@@ -38,9 +38,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-  lighthouseci:
-    runs-on: ubuntu-latest
-    steps:
-      - run: pnpm install -g @lhci/cli@0.8.x
-      - run: pnpm run build
-      - run: lhci autorun
+      - name: installing lighthouse
+        run: pnpm install -g @lhci/cli@0.8.x
+      - name: build app
+        run: pnpm run build
+      - name: running lighthouse cli
+        run: lhci autorun
