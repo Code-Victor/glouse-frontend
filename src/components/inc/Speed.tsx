@@ -5,6 +5,7 @@ import { WaterMark } from "./WaterMark";
 import clothes from "@public/images/clothes.png";
 import { styled, css } from "stitches.config";
 import { steps } from "@/constants";
+import { motion } from "framer-motion";
 
 function Speed() {
   return (
@@ -31,9 +32,25 @@ function Speed() {
             justifySelf: "center",
           }}
         />
-        <Stack css={{ maxW: 740 }} gap="5">
+        <Stack css={{ maxW: 740 }} gap="8">
           <Text
-            as="h2"
+            // as="h2"
+            as={motion.h2}
+            initial={{
+              opacity: 0,
+              y: "var(---initial-y)",
+              x: "var(---initial-x)",
+            }}
+            whileInView={{ opacity: 1, y: 0, x: 0 }}
+            transition={{ duration: 1 }}
+            css={{
+              "$$initial-y": "300px",
+              "$$initial-x": "0",
+              "@lg": {
+                "$$initial-y": "0",
+                "$$initial-x": "300px",
+              },
+            }}
             fontSize={{ "@initial": "7", "@md": "9" }}
             fontFamily="heading"
             fontWeight={{ "@initial": "7" }}
@@ -43,7 +60,7 @@ function Speed() {
             Your entire laundry cycle{" "}
             <Text color="primary">completed in 24 hours!</Text>
           </Text>
-          <Text
+          {/* <Text
             ta={{ "@initial": "center", "@lg": "left" }}
             fontSize={{ "@initial": "4" }}
             color="dark"
@@ -52,7 +69,7 @@ function Speed() {
             We know you’re busy, so we’ve made it easy for you to get your
             laundry done in a jiffy. We offer same-day pickup and delivery, so
             you can spend more time on the things that matter.
-          </Text>
+          </Text> */}
           <Box>
             {steps.map((step, index) => {
               const props = {
@@ -115,7 +132,6 @@ const speedGrid = css({
 });
 
 const Line = styled("div", {
-  flex: 1,
   width: 0,
   borderLeft: "2px solid $colors$primary",
   transform: "translateX(50%)",
@@ -140,16 +156,44 @@ function Step({
       }}
     >
       <Flex fd="column" ai="center" gap="1">
-        <Text fontSize="6" fontWeight="9">
+        <Text
+          fontSize="6"
+          fontWeight="9"
+          as={motion.span}
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
           0{index + 1}
         </Text>
-        {!last && <Line />}
+        {!last && (
+          <Line
+            as={motion.div}
+            initial={{ flex: 0 }}
+            whileInView={{ flex: 1 }}
+            transition={{ duration: 1, delay: 0.8 + index * 1 }}
+          />
+        )}
       </Flex>
       <Stack gap="2">
-        <Text as="h3" fontWeight="7" fontSize="5" color="dark">
+        <Text
+          fontWeight="7"
+          fontSize="5"
+          color="dark"
+          as={motion.h3}
+          initial={{ x: "50%", opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.8 * index - 0.2 }}
+        >
           {title}
         </Text>
-        <Text as="p" css={{ mb: last ? 0 : "$5" }}>
+        <Text
+          as={motion.p}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 + index * 1 }}
+          css={{ mb: last ? 0 : "$10" }}
+        >
           {paragraph}
         </Text>
       </Stack>
