@@ -56,6 +56,12 @@ const Flex = styled(Box, flexGapVariants, {
       },
     },
     wrap: {
+      true: {
+        flexWrap: "wrap",
+      },
+      false: {
+        flexWrap: "nowrap",
+      },
       noWrap: {
         flexWrap: "nowrap",
       },

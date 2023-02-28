@@ -27,8 +27,22 @@ const Button = styled("button", {
         },
         br: "$pill",
       },
+      white: {
+        bg: "$white",
+        color: "$dark",
+        "&:hover": {
+          bg: "gainsboro",
+        },
+        br: "$pill",
+      },
     },
     size: {
+      xs: {
+        fontSize: "$2",
+        px: "$4",
+        py: "$2",
+        fontWeight: "$5",
+      },
       sm: {
         fontSize: "$2",
         px: "$5",
