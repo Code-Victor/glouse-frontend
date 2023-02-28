@@ -10,6 +10,8 @@ function Navbar() {
   const previousScrollY = React.useRef(0);
   const [scrolledUp, setScrolledUp] = React.useState(false);
   const [isTop, setIsTop] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest === 0) setIsTop(true);
     else setIsTop(false);
@@ -23,7 +25,9 @@ function Navbar() {
   });
   return (
     <Flex
+      as="nav"
       ai="center"
+      fd="column"
       css={{
         position: "fixed",
         top: 0,
@@ -31,23 +35,53 @@ function Navbar() {
         right: 0,
         bg: "$white",
         zIndex: 10,
-        h: "$20",
         boxShadow:
           scrolledUp || isTop ? "none" : "0px 3px 16px rgba(0, 0, 0, 0.1);",
         transition: "all 0.2s ease",
         transform: scrolledUp ? "translateY(-100%)" : "translateY(0)",
+        overflow: "hidden",
       }}
     >
-      <Flex jc="between" ai="center" mx="auto" px="5" container>
+      <Flex
+        jc="between"
+        ai="center"
+        mx="auto"
+        px="5"
+        container
+        css={{
+          height: "$20",
+        }}
+      >
         <GlouseLogo
           css={{
             width: 80,
+            transition: "all 0.6s ease-in-out",
+            "& path": {
+              fill: isOpen ? "$white" : "$primary",
+            },
             "@md": {
               width: 140,
             },
           }}
         />
-        <NavButton>
+        <NavButton
+          css={{
+            position: "relative",
+          }}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <Box
+            css={{
+              position: "absolute",
+              inset: 0,
+              bg: "$primary",
+              br: "$round",
+              zIndex: -1,
+              scale: isOpen ? 20 : 1,
+              opacity: isOpen ? 1 : 0,
+              transition: "scale 0.5s ease-in-out , opacity 0.6s ease-in-out",
+            }}
+          ></Box>
           <Hamburger />
           <Text css={{ include: "screenReaderOnly" }}>Open menu</Text>
         </NavButton>
@@ -68,7 +102,7 @@ function Navbar() {
           <Text as={Link} href="/">
             Home
           </Text>
-          <Text as={Link} href="#">
+          <Text as={Link} href="/pricing">
             Pricing
           </Text>
           <Text as={Link} href="#">
@@ -77,14 +111,48 @@ function Navbar() {
           <GetStartedButton />
         </Flex>
       </Flex>
+      <Flex
+        gap="4"
+        fd="column"
+        css={{
+          display: "flex",
+          px: "$4",
+          py: isOpen ? "$2" : 0,
+          width: "100%",
+          color: "$white",
+          height: isOpen ? "auto" : 0,
+          transition: "all 0.5s ease-in-out",
+          "& a": {
+            color: "$white",
+          },
+          "@md": {
+            display: "none",
+          },
+        }}
+      >
+        <Text as={Link} href="/">
+          Home
+        </Text>
+        <Text as={Link} href="/pricing">
+          Pricing
+        </Text>
+        <Text as={Link} href="#">
+          Contact Us
+        </Text>
+      </Flex>
     </Flex>
   );
 }
 
 const NavButton = styled("button", {
   all: "unset",
-  display: "flex",
-  ai: "center",
+  display: "grid",
+  placeItems: "center",
+  size: "$10",
+  br: "$round",
+  bg: "$white",
+  cursor: "pointer",
+
   "@md": {
     display: "none",
   },
