@@ -95,10 +95,9 @@ const Hero = () => {
           transition={{ delay: 1, ...transitions.main }}
           css={{
             justifySelf: "center",
-            minWidth: 300,
+            minWidth: 350,
             maxWidth: 500,
-            ml: "auto",
-            "@md": { minWidth: 500, maxWidth: 600 },
+            "@md": { minWidth: 450, maxWidth: 600 },
           }}
         >
           <DisplayImage
