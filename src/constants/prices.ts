@@ -412,6 +412,7 @@ export const priceTable = [
 ] as const;
 
 export type UniqueClothesV2 = (typeof priceTable)[number]["type"];
+export type UniqueServices = (typeof priceTable)[number]["service"];
 export const uniqueClothesV2: Set<UniqueClothesV2> = new Set([
   ...priceTable.map((item) => item.type),
 ]);

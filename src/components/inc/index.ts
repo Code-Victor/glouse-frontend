@@ -6,3 +6,4 @@ export { default as Speed } from "./Speed";
 export { default as Customized } from "./Customized";
 export { default as CTA } from "./CTA";
 export { default as Footer } from "./Footer";
+export { default as PricingTable } from "./PricingTable";

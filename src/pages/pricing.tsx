@@ -1,16 +1,84 @@
 import React from "react";
 import { Box, Text, Flex, Button } from "@/components/base";
+import { PricingTable } from "@/components/inc";
 import { styled } from "stitches.config";
 import {
   uniqueClothesV2,
   UniqueClothesV2,
   priceTable,
+  UniqueServices,
 } from "@/constants/prices";
-import Select from "@/components/inc/Select";
+
+export interface TableRow {
+  clothe: UniqueClothesV2;
+  selectedService: UniqueServices;
+  availableServices: UniqueServices[];
+  quantity: number;
+}
+
+export type ACTIONTYPE =
+  | { type: "increment" | "decrement"; clothe: UniqueClothesV2 }
+  | { type: "service"; clothe: UniqueClothesV2; service: UniqueServices }
+  | { type: "update"; clothe: UniqueClothesV2; data: TableRow[] };
+
+function reducer(state: TableRow[], action: ACTIONTYPE): TableRow[] {
+  const currentClothe = state.find((p) => p.clothe === action.clothe);
+
+  if (currentClothe) {
+    switch (action.type) {
+    case "update":
+      return action.data;
+      break;
+    case "increment":
+      return state.map((p) => {
+        if (p.clothe === action.clothe) {
+          return {
+            ...p,
+            quantity: p.quantity + 1,
+          };
+        }
+        return p;
+      });
+      break;
+    case "decrement":
+      return state.map((p) => {
+        if (p.clothe === action.clothe) {
+          return {
+            ...p,
+            quantity: p.quantity - 1,
+          };
+        }
+        return p;
+      });
+      break;
+    case "service":
+      return state.map((p) => {
+        if (p.clothe === action.clothe) {
+          return {
+            ...p,
+            selectedService: action.service,
+          };
+        }
+        return p;
+      });
+      break;
+    default:
+      throw new Error();
+    }
+  } else {
+    if (action.type === "update") {
+      return action.data;
+    }
+    return state;
+  }
+}
+
+const initialTable: TableRow[] = [];
 
 const Pricing = () => {
-  const [clothes, setClothes] = React.useState<UniqueClothesV2[]>([]);
+  const [tableRow, dispatch] = React.useReducer(reducer, initialTable);
   console.log("priceTable", priceTable);
+
   return (
     <>
       <Box
@@ -60,7 +128,8 @@ const Pricing = () => {
           }}
         >
           {Array.from(uniqueClothesV2).map((clothe, index) => {
-            const present = clothes.includes(clothe);
+            const present = tableRow.find((p) => p.clothe === clothe);
+
             return (
               <Button
                 css={{
@@ -69,100 +138,40 @@ const Pricing = () => {
                 key={index}
                 onClick={() => {
                   present
-                    ? setClothes(clothes.filter((c) => c !== clothe))
-                    : setClothes([...clothes, clothe]);
+                    ? dispatch({
+                      clothe,
+                      type: "update",
+                      data: tableRow.filter((r) => r.clothe !== clothe),
+                    })
+                    : dispatch({
+                      type: "update",
+                      clothe,
+                      data: [
+                        ...tableRow,
+                        {
+                          clothe,
+                          quantity: 1,
+                          availableServices: priceTable
+                            .filter((p) => p.type === clothe)
+                            .map((p) => p.service),
+                          selectedService: priceTable
+                            .filter((p) => p.type === clothe)
+                            .map((p) => p.service)[0],
+                        },
+                      ],
+                    });
                 }}
                 size="xs"
-                variant={clothes.includes(clothe) ? "primary" : "white"}
+                variant={present ? "primary" : "white"}
               >
                 {clothe}
               </Button>
             );
           })}
         </Flex>
-        <PricingTable clothes={clothes} />
+        <PricingTable clothes={tableRow} dispatch={dispatch} />
       </Box>
     </>
-  );
-};
-
-const PricingTable = ({ clothes }: { clothes: UniqueClothesV2[] }) => {
-  //   clothes.map
-
-  return (
-    <Box
-      as="table"
-      css={{
-        $$borderColor: "gainsboro",
-        mt: "$6",
-        maxW: 860,
-        mx: "auto",
-        width: "100%",
-        border: "1px solid $$borderColor",
-        borderSpacing: 0,
-        "& td, th": {
-          border: "1px solid $$borderColor",
-        },
-        "& tr": {
-          width: "100%",
-        },
-        "& th": {
-          bg: "$primary",
-          py: "$4",
-          color: "$white",
-        },
-        "& td": {
-          py: "$4",
-          px: "$4",
-        },
-      }}
-    >
-      <tbody>
-        <tr>
-          <th>
-            <Text>Clothes and Price</Text>
-          </th>
-          <th>
-            <Text>Mode</Text>
-          </th>
-          <th>
-            <Text>Quantity</Text>
-          </th>
-        </tr>
-        {clothes.map((clothe, index) => {
-          const allcategories = priceTable.filter((p) => p.type === clothe);
-          const availableMode = allcategories.map((p, i) => ({
-            id: `${i}`,
-            name: p.service,
-          }));
-          return (
-            <tr key={index}>
-              <td>
-                <Flex jc="between">
-                  <Text>{clothe}</Text>
-
-                  <Text fontWeight={7}>
-                    {priceTable.find((p) => p.type === clothe)?.price}
-                  </Text>
-                </Flex>
-              </td>
-              <Box
-                as="td"
-                css={{
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <Select data={availableMode} />
-              </Box>
-              <td>
-                <Text>hi</Text>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </Box>
   );
 };
 
