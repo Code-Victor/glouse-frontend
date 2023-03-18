@@ -5,94 +5,77 @@ import { Quotes } from "../icons";
 import { categories, variants, transitions } from "@/constants";
 import { motion, useAnimation, useInView } from "framer-motion";
 import useMeasure from "react-use-measure";
+import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+
+const OPTIONS: EmblaOptionsType = {
+  dragFree: true,
+  loop: true,
+  containScroll: "keepSnaps",
+};
 
 const CAROUSEL_NO = 4;
 function Prices() {
-  const primaryControls = useAnimation();
   const [hovered, setHovered] = React.useState(false);
-  const ref = React.useRef<HTMLDivElement>(null);
-  const [refFirst, boundsFirst] = useMeasure();
-  const [refLast, boundsLast] = useMeasure();
+  const [emblaRef] = useEmblaCarousel(OPTIONS, [
+    Autoplay({ stopOnMouseEnter: true, delay: 2000 }),
+  ]);
 
-  const isInView = useInView(ref, {
-    amount: 0.8,
-  });
-  React.useEffect(() => {
-    if (!hovered && isInView) {
-      primaryControls.start({
-        x: `-${(CAROUSEL_NO - 1) * 100}%`,
-      });
-    } else {
-      primaryControls.stop();
-    }
-  }, [isInView, hovered, primaryControls]);
-  console.log(boundsFirst, boundsLast);
   return (
     <Box
       as={motion.div}
       variants={variants}
-      animate={isInView ? ["visible", "regular"] : false}
+      animate={["visible", "regular"]}
       initial={["hidden", "bottom"]}
       transition={transitions.main}
-      css={{ overflow: "hidden" }}
-      ref={ref}
     >
       <Box
+        className="embla"
         css={{
-          display: "table",
+          $$slideSpacing: "1rem",
+          $$slideSize: "270px",
+          $$slideHeight: "146px",
         }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
       >
-        <Flex
-          as={motion.div}
-          drag="x"
-          style={{ touchAction: "none" }}
-          dragConstraints={{ left: -100, right: 100 }}
+        <Box
+          ref={emblaRef}
+          css={{ overflow: "hidden" }}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className="embla__viewport"
+          px="4"
         >
-          {Array.from({ length: CAROUSEL_NO }).map((_, i) => (
-            <Flex
-              key={i}
-              ref={
-                i == 0 || i == CAROUSEL_NO - 1
-                  ? i == 0
-                    ? refFirst
-                    : refLast
-                  : null
-              }
-              as={motion.div}
-              initial={{ x: 0 }}
-              animate={primaryControls}
-              transition={{
-                duration: 15 * (CAROUSEL_NO - 1),
-                ease: "linear",
-                repeat: Infinity,
-                delay: 1,
-              }}
-              gap="5"
-              py="4"
-              px="2"
-              css={{
-                "&::-webkit-scrollbar": {
-                  display: "none",
-                },
-                "& > *:nth-of-type(2n)": {
-                  br: "$6 0",
-                },
-                "& > *:nth-of-type(2n+1)": {
-                  br: "0 $6",
-                },
-              }}
-            >
-              <PriceCard>
+          <Flex
+            className="embla__container"
+            py="2"
+            css={{
+              "& > *": {
+                paddingLeft: "$$slideSpacing",
+                height: "100%",
+                flex: "1 1 $$slideSize",
+                minW: 250,
+              },
+              [`&  ${PriceCard}:nth-of-type(2n)`]: {
+                br: "$6 0",
+              },
+              [`&  ${PriceCard}:nth-of-type(2n+1)`]: {
+                br: "0 $6",
+              },
+              marginLeft: "calc($$slideSpacing * -1)",
+            }}
+          >
+            <Box>
+              <PriceCard className="embla__slide">
                 <Quotes />
                 <Text as="p" fontWeight="5" fontFamily={"heading"}>
                   Get the best quality laundry done without breaking the bank
                 </Text>
               </PriceCard>
-              {categories.map((category, i) => {
-                return (
-                  <PriceCard key={i}>
+            </Box>
+            {categories.map((category, i) => {
+              return (
+                <Box key={i} className="embla__slide">
+                  <PriceCard>
                     <Text
                       fontSize="2"
                       fontWeight="9"
@@ -114,11 +97,11 @@ function Prices() {
                       ))}
                     </Flex>
                   </PriceCard>
-                );
-              })}
-            </Flex>
-          ))}
-        </Flex>
+                </Box>
+              );
+            })}
+          </Flex>
+        </Box>
       </Box>
       <Flex jc="center" css={{ width: "100%" }}>
         <Button
@@ -139,7 +122,6 @@ const PriceCard = styled("div", {
   $$borderColor: "$colors$primary",
   px: "$4",
   py: "$5",
-  maxW: 270,
-  minW: 250,
   boxShadow: "0 0 0 2px $$borderColor",
+  height: "$$slideHeight",
 });
