@@ -5,15 +5,21 @@ import * as React from "react";
 
 export default function Select({
   data,
+  value,
+  onChange,
 }: {
   data: { id: string; name: string }[];
+  value: string;
+  onChange: (value: string) => void;
 }) {
-  const [selected, setSelected] = React.useState(data[0].name);
+  // const [selected, setSelected] = React.useState();
 
   return (
     <RadixSelectRoot
-      value={selected}
-      onValueChange={(value) => setSelected(value)}
+      // value={selected}
+      // onValueChange={(value) => setSelected(value)}
+      value={value}
+      onValueChange={onChange}
     >
       <RadixSelect.Trigger
         className={css({
