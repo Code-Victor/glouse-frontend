@@ -60,7 +60,7 @@ const DisplayImage = styled(BareDisplayImage, {
         $$size: "min(450px,80%)",
       },
       lg: {
-        $$size: "min(100%,500px)",
+        $$size: "min(100%,450px)",
       },
     },
     color: {
