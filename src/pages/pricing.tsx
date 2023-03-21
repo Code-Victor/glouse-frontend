@@ -81,10 +81,13 @@ const Pricing = () => {
 
   return (
     <>
-      <Box
+      <Flex
+        fd="column"
+        jc="center"
         css={{
           mt: "$20",
-          py: 110,
+          height: 230,
+          px: "$4",
           backgroundColor: "rgba(0, 148, 229, 0.88)",
           backgroundImage: "url('/images/hanger.png')",
           backgroundBlendMode: "soft-light",
@@ -93,26 +96,39 @@ const Pricing = () => {
           backgroundRepeat: "no-repeat",
           color: "$white",
           spaceY: "$4",
-        }}
-      >
-        <Text as="h1" ta="center">
-          Checkout the best price you can ever get
-        </Text>
-        <Text as="p" ta="center">
-          Take a look at our pricing options for the one that best suits your
-          needs.
-        </Text>
-      </Box>
-      <Box
-        container
-        mx="auto"
-        css={{
-          py: "$20",
+          "@md": {
+            height: 460,
+          },
         }}
       >
         <Text
           as="h1"
           ta="center"
+          fontSize={{ "@initial": 7, "@md": 10 }}
+          fontWeight={{ "@initial": "6", "@md": "7" }}
+        >
+          Checkout the best price you can ever get
+        </Text>
+        <Text as="p" ta="center" fontSize="6">
+          Take a look at our pricing options for the one that best suits your
+          needs.
+        </Text>
+      </Flex>
+      <Box
+        container
+        mx="auto"
+        css={{
+          py: "$10",
+          px: "$4",
+          "@md": {
+            py: "$20",
+          },
+        }}
+      >
+        <Text
+          as="h1"
+          ta="center"
+          fontSize={{ "@initial": 6, "@md": 8 }}
           css={{
             mb: "$8",
           }}
