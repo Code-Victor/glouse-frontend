@@ -105,6 +105,7 @@ const Hero = () => {
             alt="ultimate convenience"
             priority
             quality={100}
+            position={"right"}
             css={{}}
           />
         </Box>

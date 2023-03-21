@@ -6,8 +6,10 @@ import { motion } from "framer-motion";
 
 function BareDisplayImage({
   className,
+  position,
   ...props
-}: ImageProps & { className?: string }) {
+}: ImageProps & { className?: string; position: "left" | "right" }) {
+  const right = position === "right";
   return (
     <Box className={className}>
       <Box
@@ -18,7 +20,7 @@ function BareDisplayImage({
         }}
         whileInView={{
           top: "var(---offset)",
-          left: "var(---offset)",
+          left: right ? "var(---offset)" : "calc(-1 * var(---offset))",
           transition: {
             delay: 2,
             duration: 0.5,

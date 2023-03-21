@@ -6,14 +6,14 @@ import { DisplayImage } from "@/components/inc";
 
 interface SectionProps {
   children: React.ReactNode;
-  position: "left" | "right";
+  position: "reverse" | "normal"; //reverse is the text is before the image.
   bg: "primary" | "white";
   image: StaticImageData;
   alt: string;
   shape: "round" | "square";
 }
 function Section({ bg, position, children, image, alt }: SectionProps) {
-  const left = position === "left";
+  const reverse = position === "reverse";
   return (
     <Box bg={bg} css={{ position: "relative" }} mt={4}>
       <WaterMark
@@ -24,13 +24,13 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
             }
             : {}
         }
-        position={position}
+        position={reverse ? "left" : "right"}
         bg={bg}
       />
       <Grid
         columns={{ "@initial": 1, "@lg": 4, "@xl": 5 }}
         ai="center"
-        gap={{ "@initial": 6, "@lg": 2 }}
+        gap={{ "@initial": 6 }}
         mx="auto"
         px="5"
         container
@@ -39,11 +39,11 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
           "@lg": {
             "&>*:nth-child(1)": {
               gridColumn: "span 2",
-              order: left ? 1 : 2,
+              order: reverse ? 1 : 2,
             },
             "&>*:nth-child(2)": {
               gridColumn: "span 2",
-              order: !left ? 1 : 2,
+              order: !reverse ? 1 : 2,
             },
           },
           "@xl": {
@@ -76,6 +76,7 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
             size={"lg"}
             src={image}
             alt={alt}
+            position={reverse ? "right" : "left"}
           />
         </Box>
       </Grid>

@@ -27,7 +27,7 @@ export default function Home() {
       <Section
         shape="round"
         bg="primary"
-        position="left"
+        position="reverse"
         alt="quality"
         image={quality}
       >
@@ -49,7 +49,7 @@ export default function Home() {
       <Section
         shape="round"
         bg="white"
-        position="right"
+        position="normal"
         alt="quality"
         image={relax}
       >
