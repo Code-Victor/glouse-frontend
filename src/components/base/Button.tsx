@@ -2,7 +2,6 @@ import { styled } from "stitches.config";
 
 const Button = styled("button", {
   // default styles
-  boxSizing: "border-box",
   margin: 0,
   padding: 0,
   all: "unset",
@@ -17,7 +16,25 @@ const Button = styled("button", {
   "&:focus": {
     outline: "1px solid black",
   },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "not-allowed",
+    "&:active": {
+      transform: "none",
+    },
+  },
   variants: {
+    radius: {
+      none: {
+        borderRadius: 0,
+      },
+      square: {
+        br: "$2",
+      },
+      pill: {
+        br: "$pill",
+      },
+    },
     variant: {
       primary: {
         bg: "$primary",
@@ -25,7 +42,6 @@ const Button = styled("button", {
         "&:hover": {
           bg: "$primaryHover",
         },
-        br: "$pill",
       },
       white: {
         bg: "$white",
@@ -33,7 +49,6 @@ const Button = styled("button", {
         "&:hover": {
           bg: "gainsboro",
         },
-        br: "$pill",
       },
     },
     size: {
@@ -61,6 +76,14 @@ const Button = styled("button", {
         boxShadow: "inset 0 0 0 1px $colors$primary",
       },
     },
+    fullWidth: {
+      true: {
+        // display: "block",
+        width: "100%",
+        boxSizing: "border-box",
+        textAlign: "center",
+      },
+    },
   },
   compoundVariants: [
     {
@@ -79,6 +102,7 @@ const Button = styled("button", {
   defaultVariants: {
     size: "md",
     variant: "primary",
+    radius: "pill",
   },
 });
 Button.displayName = "Button";
