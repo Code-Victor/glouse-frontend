@@ -77,7 +77,7 @@ function Navbar() {
               bg: "$primary",
               br: "$round",
               zIndex: -1,
-              scale: isOpen ? 20 : 1,
+              scale: isOpen ? 50 : 1,
               opacity: isOpen ? 1 : 0,
               transition: "scale 0.5s ease-in-out , opacity 0.6s ease-in-out",
             }}
@@ -85,7 +85,7 @@ function Navbar() {
           <Hamburger />
           <Text css={{ include: "screenReaderOnly" }}>Open menu</Text>
         </NavButton>
-
+        {/* Destop Nav */}
         <Flex
           ai="center"
           gap="5"
@@ -129,6 +129,9 @@ function Navbar() {
             display: "none",
           },
         }}
+        px="5"
+        container
+        mx="auto"
       >
         <Text as={Link} href="/">
           Home
