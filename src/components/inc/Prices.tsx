@@ -22,7 +22,7 @@ function Prices() {
   ]);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
-  const inView = useInView(containerRef, { amount: 1 });
+  const inView = useInView(containerRef, { amount: 0.8 });
   React.useEffect(() => {
     if (embla) {
       if (hovered || !inView) {
@@ -32,7 +32,6 @@ function Prices() {
       }
     }
   }, [hovered, embla, inView]);
-  console.log("inview", inView);
   return (
     <Box
       as={motion.div}
@@ -121,7 +120,7 @@ function Prices() {
           </Flex>
         </Box>
       </Box>
-      <Flex jc="center" css={{ width: "100%" }}>
+      <Flex jc="center" css={{ width: "100%", mt: "$6" }}>
         <Button
           variant="primary"
           outline
