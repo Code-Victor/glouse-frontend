@@ -5,7 +5,7 @@ import { WaterMark } from "./WaterMark";
 import clothes from "@public/images/clothes.png";
 import { styled, css } from "stitches.config";
 import { steps } from "@/constants";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 function Speed() {
   return (
@@ -44,14 +44,15 @@ function Speed() {
             whileInView={{ opacity: 1, y: 0, x: 0 }}
             transition={{ duration: 1 }}
             css={{
-              "$$initial-y": "300px",
+              "$$initial-y": "100px",
               "$$initial-x": "0",
               "@lg": {
                 "$$initial-y": "0",
                 "$$initial-x": "300px",
               },
+              overflow: "hidden",
             }}
-            fontSize={{ "@initial": "7", "@md": "9" }}
+            fontSize={{ "@initial": "7", "@md": "8", "@lg": "9" }}
             fontFamily="heading"
             fontWeight={{ "@initial": "7" }}
             color="dark"
@@ -60,16 +61,6 @@ function Speed() {
             Your entire laundry cycle{" "}
             <Text color="primary">completed in 24 hours!</Text>
           </Text>
-          {/* <Text
-            ta={{ "@initial": "center", "@lg": "left" }}
-            fontSize={{ "@initial": "4" }}
-            color="dark"
-            as="p"
-          >
-            We know you’re busy, so we’ve made it easy for you to get your
-            laundry done in a jiffy. We offer same-day pickup and delivery, so
-            you can spend more time on the things that matter.
-          </Text> */}
           <Box>
             {steps.map((step, index) => {
               const props = {
@@ -148,8 +139,11 @@ function Step({
   paragraph: string;
   last: boolean;
 }) {
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+  const inView = useInView(scrollRef, { amount: 0.8 });
   return (
     <Grid
+      ref={scrollRef}
       css={{
         gridTemplateColumns: "60px 1fr",
         fontFamily: "$body",
@@ -161,7 +155,7 @@ function Step({
           fontWeight="9"
           as={motion.span}
           initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
+          animate={inView && { scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           0{index + 1}
@@ -170,8 +164,8 @@ function Step({
           <Line
             as={motion.div}
             initial={{ flex: 0 }}
-            whileInView={{ flex: 1 }}
-            transition={{ duration: 1, delay: 0.8 + index * 1 }}
+            animate={inView && { flex: 1 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
           />
         )}
       </Flex>
@@ -182,16 +176,16 @@ function Step({
           color="dark"
           as={motion.h3}
           initial={{ x: "50%", opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.8 * index - 0.2 }}
+          animate={inView && { x: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
           {title}
         </Text>
         <Text
           as={motion.p}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 + index * 1 }}
+          initial={{ opacity: 0, x: "30%" }}
+          animate={inView && { opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 1 }}
           css={{ mb: last ? 0 : "$10" }}
         >
           {paragraph}
