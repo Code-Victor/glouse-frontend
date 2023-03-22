@@ -6,6 +6,7 @@ import { categories, variants, transitions } from "@/constants";
 import { motion, useInView } from "framer-motion";
 import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 const OPTIONS: EmblaOptionsType = {
   dragFree: true,
@@ -17,6 +18,7 @@ function Prices() {
   const [hovered, setHovered] = React.useState(false);
   const [emblaRef, embla] = useEmblaCarousel(OPTIONS, [
     Autoplay({ delay: 2000 }),
+    WheelGesturesPlugin(),
   ]);
   const containerRef = React.useRef<HTMLDivElement>(null);
 

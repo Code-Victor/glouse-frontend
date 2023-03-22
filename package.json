@@ -19,6 +19,7 @@
     "@types/react-dom": "18.0.10",
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",
+    "embla-carousel-wheel-gestures": "^3.0.0",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "framer-motion": "^9.0.2",

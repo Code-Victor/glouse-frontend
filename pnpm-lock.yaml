@@ -13,6 +13,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.50.0
   embla-carousel-autoplay: ^7.1.0
   embla-carousel-react: ^7.1.0
+  embla-carousel-wheel-gestures: ^3.0.0
   eslint: 8.33.0
   eslint-config-next: 13.1.6
   framer-motion: ^9.0.2
@@ -34,6 +35,7 @@ dependencies:
   '@types/react-dom': 18.0.10
   embla-carousel-autoplay: 7.1.0
   embla-carousel-react: 7.1.0_react@18.2.0
+  embla-carousel-wheel-gestures: 3.0.0
   eslint: 8.33.0
   eslint-config-next: 13.1.6_4vsywjlpuriuw3tl5oq6zy5a64
   framer-motion: 9.0.2_biqbaboplfbrettd7655fr4n2y
@@ -1514,6 +1516,15 @@ packages:
     dependencies:
       embla-carousel: 7.1.0
       react: 18.2.0
+    dev: false
+
+  /embla-carousel-wheel-gestures/3.0.0:
+    resolution: {integrity: sha512-OxMyRkDxiSHJy1DCInYjpq93q8Xz311ajCEUp/pvWH/odDc+KODLAtVI06U5NiPNIUJWj+IlZvLSVZUtpdTBEQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      embla-carousel: ^7.0.0
+    dependencies:
+      wheel-gestures: 2.2.5
     dev: false
 
   /embla-carousel/7.1.0:
@@ -3670,6 +3681,11 @@ packages:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
     dev: true
+
+  /wheel-gestures/2.2.5:
+    resolution: {integrity: sha512-01BlXRjBVt5Gy0VH2rRqMeccHruTGq2Gd1fx0UqCPN8KDeDCmlTXsRGc/hXJk6W+wnO9CNJp2xfntMNRArBxKQ==}
+    engines: {node: '>=10'}
+    dev: false
 
   /which-boxed-primitive/1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}
