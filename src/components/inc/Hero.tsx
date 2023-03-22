@@ -43,13 +43,25 @@ const Hero = () => {
       >
         <Stack
           as={motion.div}
-          variants={variants}
-          whileInView={["visible", "regular"]}
-          initial={["hidden", "left"]}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            x: 0,
+          }}
+          initial={{
+            opacity: 0,
+            y: "var(---initial-y)",
+            x: "var(---initial-x)",
+          }}
           custom={100}
           transition={{ delay: 0.5, ...transitions.main }}
           gap="6"
-          css={{ display: "block", "@lg": { maxW: 660 } }}
+          css={{
+            "$$initial-y": "100px",
+            "$$initial-x": "0",
+            display: "block",
+            "@lg": { maxW: 660, "$$initial-y": "0", "$$initial-x": "-200px" },
+          }}
         >
           <Text
             ta={{ "@initial": "center", "@lg": "left" }}
@@ -89,15 +101,26 @@ const Hero = () => {
         <Box
           as={motion.div}
           variants={variants}
-          whileInView={["visible", "regular"]}
-          initial={["hidden", "right"]}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            y: 0,
+          }}
+          initial={{
+            opacity: 0,
+            x: "var(---initial-x)",
+            y: "var(---initial-y)",
+          }}
           custom={100}
           transition={{ delay: 1, ...transitions.main }}
           css={{
             justifySelf: "center",
             minWidth: 350,
             maxWidth: 500,
+            "$$initial-y": "100px",
+            "$$initial-x": "0",
             "@md": { minWidth: 450, maxWidth: 600 },
+            "@lg": { maxW: 660, "$$initial-y": "0", "$$initial-x": "200px" },
           }}
         >
           <DisplayImage

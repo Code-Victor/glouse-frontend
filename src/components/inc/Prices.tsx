@@ -3,8 +3,7 @@ import { styled } from "stitches.config";
 import { Box, Button, Flex, Text } from "../base";
 import { Quotes } from "../icons";
 import { categories, variants, transitions } from "@/constants";
-import { motion, useAnimation, useInView } from "framer-motion";
-import useMeasure from "react-use-measure";
+import { motion, useInView } from "framer-motion";
 import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -14,20 +13,37 @@ const OPTIONS: EmblaOptionsType = {
   containScroll: "keepSnaps",
 };
 
-const CAROUSEL_NO = 4;
 function Prices() {
   const [hovered, setHovered] = React.useState(false);
-  const [emblaRef] = useEmblaCarousel(OPTIONS, [
-    Autoplay({ stopOnMouseEnter: true, delay: 2000 }),
+  const [emblaRef, embla] = useEmblaCarousel(OPTIONS, [
+    Autoplay({ delay: 2000 }),
   ]);
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
+  const inView = useInView(containerRef, { amount: 1 });
+  React.useEffect(() => {
+    if (embla) {
+      if (hovered || !inView) {
+        embla.plugins().autoplay?.stop();
+      } else {
+        embla.plugins().autoplay?.play();
+      }
+    }
+  }, [hovered, embla, inView]);
+  console.log("inview", inView);
   return (
     <Box
       as={motion.div}
       variants={variants}
-      animate={["visible", "regular"]}
+      animate={inView && ["visible", "regular"]}
       initial={["hidden", "bottom"]}
       transition={transitions.main}
+      id="prices"
+      css={{
+        maxWidth: "100%",
+        overflowX: "hidden",
+      }}
+      ref={containerRef}
     >
       <Box
         className="embla"
