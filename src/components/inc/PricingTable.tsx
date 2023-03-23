@@ -26,12 +26,12 @@ const PricingTable = ({
 }) => {
   //generate an order string from the clothes variable
   function generateOrderString() {
-    let orderStringList = clothes.map((clothe) => {
+    let orderStringList = clothes.map((clothe, index) => {
       const { clothe: type, selectedService, quantity } = clothe;
       const price = priceTable.find(
         (p) => p.type === type && p.service === selectedService
       )?.price;
-      return `${type}(${selectedService})--${quantity} ${
+      return `${index + 1}. ${type}(${selectedService})--${quantity} ${
         quantity > 1 ? "units" : "unit"
       }--₦${price ? price * quantity : "no price"}`;
     });
