@@ -9,6 +9,8 @@ import {
 } from "@/components/icons";
 import type { Variants } from "framer-motion";
 
+export const whatsappNumber = "+2347045032280";
+
 export const cardInfo = [
   {
     icon: <WashingMachine />,

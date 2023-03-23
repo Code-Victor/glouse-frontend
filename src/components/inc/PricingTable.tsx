@@ -8,6 +8,7 @@ import {
 import { Box, Text, Flex, Button } from "@/components/base";
 import { ACTIONTYPE, TableRow } from "@/pages/pricing";
 import { styled } from "stitches.config";
+import { sendMessage } from "@/utils";
 
 interface PriceItem {
   clothe: UniqueClothesV2;
@@ -23,6 +24,40 @@ const PricingTable = ({
   clothes: TableRow[];
   dispatch: React.Dispatch<ACTIONTYPE>;
 }) => {
+  //generate an order string from the clothes variable
+  function generateOrderString() {
+    let orderStringList = clothes.map((clothe) => {
+      const { clothe: type, selectedService, quantity } = clothe;
+      const price = priceTable.find(
+        (p) => p.type === type && p.service === selectedService
+      )?.price;
+      return `${type}(${selectedService})--${quantity} ${
+        quantity > 1 ? "units" : "unit"
+      }--₦${price ? price * quantity : "no price"}`;
+    });
+    orderStringList = [
+      "*Your Order*",
+      ...orderStringList,
+      `*Total Price*: ₦${totalPrice}`,
+    ];
+    const orderString = orderStringList.join("\n");
+    // .join("\n");
+    console.log(orderString);
+    return orderString;
+  }
+  const totalPrice = clothes?.reduce(
+    (acc, { clothe, quantity, selectedService }) => {
+      const price = priceTable.find((p) => {
+        const match = p.type === clothe && p.service === selectedService;
+        return match;
+      })?.price;
+      if (price) {
+        return acc + price * quantity;
+      }
+      return acc;
+    },
+    0
+  );
   return (
     <Box
       css={{
@@ -137,18 +172,7 @@ const PricingTable = ({
         >
           <Text fontSize="5">Total</Text>
           <Text fontSize="7" fontWeight={7}>
-            NGN{" "}
-            {clothes?.reduce((acc, { clothe, quantity, selectedService }) => {
-              const price = priceTable.find((p) => {
-                const match =
-                  p.type === clothe && p.service === selectedService;
-                return match;
-              })?.price;
-              if (price) {
-                return acc + price * quantity;
-              }
-              return acc;
-            }, 0)}
+            NGN {totalPrice}
           </Text>
         </Flex>
       </Flex>
@@ -286,30 +310,19 @@ const PricingTable = ({
             <td colSpan={3}>
               <Flex jc="between" ai="center">
                 <Text fontWeight={7}>Total</Text>
-                <Text fontWeight={7}>
-                  ₦{" "}
-                  {clothes?.reduce(
-                    (acc, { clothe, quantity, selectedService }) => {
-                      const price = priceTable.find((p) => {
-                        const match =
-                          p.type === clothe && p.service === selectedService;
-                        return match;
-                      })?.price;
-                      if (price) {
-                        return acc + price * quantity;
-                      }
-                      return acc;
-                    },
-                    0
-                  )}
-                </Text>
+                <Text fontWeight={7}>₦ {totalPrice}</Text>
               </Flex>
             </td>
           </tr>
         </tbody>
       </Box>
 
-      <Button disabled={clothes.length === 0} fullWidth radius="square">
+      <Button
+        disabled={clothes.length === 0}
+        onClick={() => sendMessage(generateOrderString())}
+        fullWidth
+        radius="square"
+      >
         Order Now
       </Button>
     </Box>

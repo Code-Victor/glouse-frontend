@@ -1,3 +1,4 @@
+import { whatsappNumber } from "@/constants";
 import { NextFontWithVariable } from "@next/font";
 
 export function getFontFamily(font: NextFontWithVariable) {
@@ -6,4 +7,9 @@ export function getFontFamily(font: NextFontWithVariable) {
     fontFamily = fontFamily.replace("'", "");
   }
   return fontFamily;
+}
+export function sendMessage(message: string) {
+  window.open(
+    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
+  );
 }
