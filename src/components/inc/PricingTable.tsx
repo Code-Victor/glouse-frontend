@@ -40,9 +40,7 @@ const PricingTable = ({
       ...orderStringList,
       `*Total Price*: ₦${totalPrice}`,
     ];
-    const orderString = orderStringList.join("\n");
-    // .join("\n");
-    console.log(orderString);
+    const orderString = orderStringList.join("\n\n");
     return orderString;
   }
   const totalPrice = clothes?.reduce(
