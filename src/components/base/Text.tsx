@@ -1,7 +1,7 @@
-import { colorVariants, fontVariants } from "@/utils/variants";
-import { styled } from "stitches.config";
+import { colorVariants } from "@/utils/variants";
+import { createScaleVariant, styled } from "stitches.config";
 
-const Text = styled("span", fontVariants, colorVariants, {
+const Text = styled("span", colorVariants, {
   // default styles
   margin: 0,
   padding: 0,
@@ -18,6 +18,18 @@ const Text = styled("span", fontVariants, colorVariants, {
         textAlign: "right",
       },
     },
+    fontSize: createScaleVariant("fontSizes", (value) => ({
+      fontSize: value,
+    })),
+    fontWeight: createScaleVariant("fontWeights", (value) => ({
+      fontWeight: value,
+    })),
+    fontFamily: createScaleVariant("fonts", (value) => ({
+      fontFamily: value,
+    })),
+    lineHeight: createScaleVariant("lineHeights", (value) => ({
+      lineHeight: value,
+    })),
   },
 });
 

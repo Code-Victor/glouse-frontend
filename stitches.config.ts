@@ -81,7 +81,7 @@ export const {
       9: "3rem",
       10: "3.75rem",
       11: "52px",
-      12: "6rem",
+      12: "64px",
     },
     fontWeights: {
       1: 100,

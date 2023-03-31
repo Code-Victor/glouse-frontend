@@ -121,7 +121,7 @@ function Card({
         maxW: 290,
         flex: "1 0 240px",
         "@md": {
-          flex: "1 0 280px",
+          flex: "1 0 260px",
         },
       }}
     >

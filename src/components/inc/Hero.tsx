@@ -60,7 +60,7 @@ const Hero = () => {
             "$$initial-y": "100px",
             "$$initial-x": "0",
             display: "block",
-            "@lg": { maxW: 660, "$$initial-y": "0", "$$initial-x": "-200px" },
+            "@lg": { maxW: 650, "$$initial-y": "0", "$$initial-x": "-200px" },
           }}
         >
           <Text
@@ -68,22 +68,18 @@ const Hero = () => {
             as="h1"
             fontFamily="heading"
             fontWeight="7"
-            fontSize={{ "@initial": "7", "@lg": "8", "@2xl": "11" }}
+            fontSize={{ "@initial": "7", "@md": "8", "@lg": "9", "@xl": 12 }}
+            // fontSize={{ "@initial": "7", "@lg": 9, "@xl": "12" }}
           >
-            The <Text color="primary">ultimate convenience;</Text> Spend{" "}
-            <Text color="primary" css={{ fontStyle: "italic" }}>
-              zero
-            </Text>{" "}
-            time on laundry,
-            <Text color="primary"> more on life!</Text>
+            <Text color="primary">Do laundry</Text> The stress free way
           </Text>
           <Text
             as="p"
             ta={{ "@initial": "center", "@lg": "left" }}
             fontSize={3}
           >
-            Your weekends should be for you, and your family, not for dirty
-            clothes. Rest, have fun, we will clean your dirty laundry.
+            Focus on the things that truly matter while we sort out all your
+            laundry needs in less than 24 hours.
           </Text>
           <Flex gap="2" jc={{ "@initial": "center", "@lg": "start" }}>
             <Button variant="primary" size={{ "@initial": "sm", "@lg": "md" }}>

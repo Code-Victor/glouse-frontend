@@ -18,7 +18,7 @@ function CTA() {
           position: "relative",
           overflow: "hidden",
           "& h1,p": {
-            maxWidth: 840,
+            maxWidth: 780,
             color: "$white",
           },
           isolation: "isolate",
@@ -34,7 +34,7 @@ function CTA() {
           fontFamily="heading"
           fontWeight={{ "@initial": "7" }}
         >
-          Get a fresh laundry experience and save time
+          Save Money, Save Time
         </Text>
         <Text as="p" ta="center">
           From scheduling pickups and deliveries to tracking your order in
@@ -51,7 +51,10 @@ function CTA() {
             zIndex: -1,
             w: 150,
             "@md": {
-              w: "unset",
+              w: "30%",
+            },
+            "@lg": {
+              w: "35%",
             },
           }}
           src="/images/abstract-1.png"
@@ -66,7 +69,10 @@ function CTA() {
             zIndex: -1,
             w: 100,
             "@md": {
-              w: "unset",
+              w: "10%",
+            },
+            "@lg": {
+              w: "15%",
             },
           }}
           src="/images/abstract-2.png"

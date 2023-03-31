@@ -79,22 +79,6 @@ const colorVariants = css({
   },
 });
 
-const fontVariants = css({
-  variants: {
-    fontSize: createScaleVariant("fontSizes", (value) => ({
-      fontSize: value,
-    })),
-    fontWeight: createScaleVariant("fontWeights", (value) => ({
-      fontWeight: value,
-    })),
-    fontFamily: createScaleVariant("fonts", (value) => ({
-      fontFamily: value,
-    })),
-    lineHeight: createScaleVariant("lineHeights", (value) => ({
-      lineHeight: value,
-    })),
-  },
-});
 const radiiVariants = css({
   variants: {
     br: {
@@ -132,7 +116,6 @@ export {
   marginVariants,
   radiiVariants,
   colorVariants,
-  fontVariants,
   flexGapVariants,
   gridGapVariants,
 };

@@ -158,19 +158,19 @@ export const footerLinks = [
 ];
 export const steps = [
   {
-    title: "Schedule a pick-up time",
+    title: "Request Pick-Up",
     paragraph:
-      "You don't have to rush down to drop your clothes, let us pick it up! Choose any of the available pick-up times once you make a pickup request on WhatsApp,  and your dirty clothes will hit the road for a good wash in no time.",
+      "Select a pick-up time that is most convenient for you and we'll come by to collect your dirty clothes according to your schedule.",
   },
   {
     title: "Wash and Iron",
     paragraph:
-      "Your dirty clothes will get washed delicately and ironed neatly based on your preferences with our available laundry options such as: wash and iron, wash only, iron only etc. Make your order based on your needs for all kinds of laundry at a budget friendly rate.",
+      "We do the laundry magic with top-quality materials that retain the quality and beauty of your clothes.",
   },
   {
-    title: "Delivery as fast as light",
+    title: "Lightning-fast delivery",
     paragraph:
-      "Choose a suitable location for delivery and let us do the laundry magic of delivering your clean clothes within 24 hours!",
+      "Your clothes will be delivered to you in excellent condition within 24 hours!",
   },
 ];
 export const transitions = {

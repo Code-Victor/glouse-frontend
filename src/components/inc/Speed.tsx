@@ -58,8 +58,12 @@ function Speed() {
             color="dark"
             ta={{ "@initial": "center", "@lg": "left" }}
           >
-            Your entire laundry cycle{" "}
-            <Text color="primary">completed in 24 hours!</Text>
+            Request Pick-up{" "}
+            <Box
+              as="br"
+              css={{ display: "none", "@lg": { display: "block" } }}
+            />
+            <Text color="primary">How it works</Text>
           </Text>
           <Box>
             {steps.map((step, index) => {
@@ -109,7 +113,7 @@ const speedGrid = css({
       order: 2,
     },
     "&>*:nth-child(3)": {
-      gridColumn: "span 2",
+      gridColumn: "span 4",
     },
   },
   "@xl": {
@@ -186,7 +190,7 @@ function Step({
           initial={{ opacity: 0, x: "30%" }}
           animate={inView && { opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 1 }}
-          css={{ mb: last ? 0 : "$10" }}
+          css={{ mb: last ? 0 : "$14" }}
         >
           {paragraph}
         </Text>
