@@ -14,6 +14,7 @@ function Speed() {
         position: "relative",
       }}
       mt="7"
+      id="how-it-works"
     >
       <Grid
         columns={{ "@initial": 1, "@lg": 4, "@xl": 5 }}

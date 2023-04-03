@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Box, Stack, Text, Flex, Button } from "@/components/base";
 import { cardInfo } from "@/constants";
+import Link from "next/link";
 import { CSS } from "stitches.config";
 function Customized() {
   return (
@@ -39,11 +40,18 @@ function Customized() {
             Customize Your Laundry experience Options
           </Text>
           <Flex gap="2" jc={{ "@initial": "center", "@lg": "start" }}>
-            <Button variant="primary" size={{ "@initial": "sm", "@lg": "md" }}>
+            <Button
+              as={Link}
+              href="/pricing"
+              variant="primary"
+              size={{ "@initial": "sm", "@lg": "md" }}
+            >
               Request pickup
             </Button>
             <Button
               variant="primary"
+              as={Link}
+              href="/pricing"
               outline
               size={{ "@initial": "sm", "@lg": "md" }}
             >
