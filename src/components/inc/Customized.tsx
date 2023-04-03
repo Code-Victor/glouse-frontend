@@ -27,25 +27,16 @@ function Customized() {
           },
         }}
       >
-        <Stack gap="5">
+        <Stack gap={{ "@initial": 5, "@lg": 8 }}>
           <Text
             as="h2"
-            fontSize={{ "@initial": "7", "@md": "9" }}
+            fontSize={{ "@initial": "7", "@md": "8", "@lg": "9" }}
             fontFamily="heading"
             fontWeight={{ "@initial": "7" }}
             ta={{ "@initial": "center", "@lg": "left" }}
             color="dark"
           >
-            Customizable laundry and dry cleaning options
-          </Text>
-          <Text
-            fontSize={{ "@initial": "4" }}
-            ta={{ "@initial": "center", "@lg": "left" }}
-            color="dark"
-            as="p"
-          >
-            Your clothes don’t need ironing? No worries; we wash, and fold them
-            neatly.
+            Customize Your Laundry experience Options
           </Text>
           <Flex gap="2" jc={{ "@initial": "center", "@lg": "start" }}>
             <Button variant="primary" size={{ "@initial": "sm", "@lg": "md" }}>
@@ -134,7 +125,7 @@ function Card({
         css={{ color: "white", width: "fit-content" }}
       >
         {icon}
-        <Text css={{ include: "screenReaderOnly" }}>Washing Icon</Text>
+        <Text css={{ include: "screenReaderOnly" }}>{title}</Text>
       </Flex>
       <Stack gap="5">
         <Text
