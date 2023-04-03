@@ -105,18 +105,22 @@ export const socials = [
   {
     icon: <InstagramIcon />,
     name: "Instagram",
+    link: "https://www.instagram.com/glouse.ng/",
   },
   {
     icon: <FacebookIcon />,
     name: "Facebook",
+    link: "",
   },
   {
     icon: <TwitterIcon />,
     name: "Twitter",
+    link: "https://twitter.com/glouseng",
   },
   {
     icon: <TitTokIcon />,
     name: "TitTok",
+    link: "",
   },
 ];
 
