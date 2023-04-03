@@ -1,17 +1,13 @@
 import * as React from "react";
 import Select from "@/components/inc/Select";
-import {
-  UniqueClothesV2,
-  priceTable,
-  UniqueServices,
-} from "@/constants/prices";
+import { UniqueClothes, priceTable, UniqueServices } from "@/constants/prices";
 import { Box, Text, Flex, Button } from "@/components/base";
 import { ACTIONTYPE, TableRow } from "@/pages/pricing";
 import { styled } from "stitches.config";
 import { sendMessage } from "@/utils";
 
 interface PriceItem {
-  clothe: UniqueClothesV2;
+  clothe: UniqueClothes;
   selectedService?: UniqueServices;
   availableServices: UniqueServices[];
   quantity: number;

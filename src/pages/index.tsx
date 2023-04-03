@@ -61,13 +61,12 @@ export default function Home() {
           fontWeight="7"
           ta={{ "@initial": "center", "@lg": "left" }}
         >
-          <Text color="dark">Get your laundry done</Text> without leaving your
-          couch
+          <Text color="dark">Your entire laundry cycle</Text> completed in 24
+          hours!
         </Text>
         <Text as="p" color="dark" ta={{ "@initial": "center", "@lg": "left" }}>
-          Get your laundry handled delicately and hygienically with top class
-          care and efficient service delivery for all kinds of fabrics such as
-          curtains, cooperate wears, native attires, tough textiles, duvets etc.
+          From pickups to drop-offs, we sort out all your laundry needs in just
+          24 hours
         </Text>
       </Section>
       <Customized />

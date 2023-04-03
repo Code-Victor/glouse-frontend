@@ -35,7 +35,7 @@ function Footer() {
           <Flex gap="3" ai="center">
             {socials.map((social, index) => {
               return (
-                <Box key={index}>
+                <Box as="a" href={social.link} target="_blank" key={index}>
                   {social.icon}
                   <Text css={{ include: "screenReaderOnly" }}>
                     follow for more info on {social.name}

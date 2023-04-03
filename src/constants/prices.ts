@@ -1,114 +1,5 @@
-const prices = {
-  "Wash and Iron": {
-    english: {
-      tops: {
-        shirt: 250,
-        "Jacket/Blazer": 500,
-        gown: 400,
-        blouse: 300,
-        "Jean/Denim": 300,
-        "Track suit": 500,
-        "3-piece suit": 1_000,
-      },
-      bottoms: {
-        "Shorts/short skirt": 50,
-        pants: 100,
-        jeans: 100,
-        chinos: 100,
-        joggers: 100,
-        jumpsuit: 100,
-        skirts: 70,
-      },
-    },
-    native: {
-      buba: 100,
-      "Buba&Sokoto": 100,
-      "Skirt & Blouse": 100,
-      "Blouse & wrapper": 100,
-      gowns: 500,
-    },
-    others: {
-      towels: 500,
-      bedsheets: 500,
-      duvet: 800,
-      handtowel: 100,
-    },
-  },
-  "Wash and Fold": {
-    english: {
-      tops: {
-        shirt: 70,
-        tshirt: 70,
-        blouse: 70,
-        gown: 100,
-        "Track suit": 100,
-      },
-      bottoms: {
-        chinos: 300,
-        "pant trousers": 300,
-        palazzo: 300,
-        skirts: 250,
-        jumpsuit: 400,
-        jeans: 300,
-      },
-    },
-    native: {
-      agbada: 1000,
-      buba: 300,
-      gowns: 500,
-      "Buba&Sokoto": 500,
-      "Skirt & Blouse": 500,
-      "Blouse & wrapper": 500,
-    },
-    others: {
-      towels: 700,
-      bedsheets: 800,
-      duvet: 1500,
-      handtowel: 200,
-    },
-  },
-  "Iron Only": {
-    english: {
-      "all tops": 150,
-      "all bottoms": 200,
-      suits: 500,
-      "Jackets& Gowns": 300,
-    },
-    native: {
-      gown: 300,
-      "Buba&Sokoto": 300,
-      buba: 200,
-    },
-  },
-} as const;
-export default prices;
-
-export type UniqueClothes =
-  | keyof (typeof prices)["Wash and Iron"]["english"]["tops"]
-  | keyof (typeof prices)["Wash and Iron"]["english"]["bottoms"]
-  | keyof (typeof prices)["Wash and Iron"]["native"]
-  | keyof (typeof prices)["Wash and Iron"]["others"]
-  | keyof (typeof prices)["Wash and Fold"]["english"]["tops"]
-  | keyof (typeof prices)["Wash and Fold"]["english"]["bottoms"]
-  | keyof (typeof prices)["Wash and Fold"]["native"]
-  | keyof (typeof prices)["Wash and Fold"]["others"]
-  | keyof (typeof prices)["Iron Only"]["english"]
-  | keyof (typeof prices)["Iron Only"]["native"];
-
-// export const uniqueClothes = new Set([
-//   ...Object.keys(prices["Wash and Iron"]["english"]["tops"]),
-//   ...Object.keys(prices["Wash and Iron"]["english"]["bottoms"]),
-//   ...Object.keys(prices["Wash and Iron"]["native"]),
-//   ...Object.keys(prices["Wash and Iron"]["others"]),
-//   ...Object.keys(prices["Wash and Fold"]["english"]["tops"]),
-//   ...Object.keys(prices["Wash and Fold"]["english"]["bottoms"]),
-//   ...Object.keys(prices["Wash and Fold"]["native"]),
-//   ...Object.keys(prices["Wash and Fold"]["others"]),
-//   ...Object.keys(prices["Iron Only"]["english"]),
-//   ...Object.keys(prices["Iron Only"]["native"]),
-// ]) as Set<UniqueClothes>;
-
 export const priceTable = [
+  // Wash and Iron -- english -- top
   {
     service: "Wash and Iron",
     category: "english",
@@ -118,7 +9,7 @@ export const priceTable = [
   {
     service: "Wash and Iron",
     category: "english",
-    type: "Jacket/Blazer",
+    type: "jacket/Blazer",
     price: 500,
   },
   {
@@ -136,13 +27,13 @@ export const priceTable = [
   {
     service: "Wash and Iron",
     category: "english",
-    type: "Jean/Denim",
+    type: "jean",
     price: 300,
   },
   {
     service: "Wash and Iron",
     category: "english",
-    type: "Track suit",
+    type: "tracksuit",
     price: 500,
   },
   {
@@ -151,102 +42,101 @@ export const priceTable = [
     type: "3-piece suit",
     price: 1000,
   },
-  {
-    service: "Wash and Iron",
-    category: "english",
-    type: "Shorts/short skirt",
-    price: 50,
-  },
-  {
-    service: "Wash and Iron",
-    category: "english",
-    type: "pants",
-    price: 100,
-  },
-  {
-    service: "Wash and Iron",
-    category: "english",
-    type: "jeans",
-    price: 100,
-  },
+  // Wash and Iron -- english -- bottom
   {
     service: "Wash and Iron",
     category: "english",
     type: "chinos",
-    price: 100,
+    price: 300,
   },
   {
     service: "Wash and Iron",
     category: "english",
-    type: "joggers",
-    price: 100,
+    type: "pant trousers",
+    price: 300,
+  },
+  {
+    service: "Wash and Iron",
+    category: "english",
+    type: "palazzo",
+    price: 300,
+  },
+  {
+    service: "Wash and Iron",
+    category: "english",
+    type: "skirt",
+    price: 250,
   },
   {
     service: "Wash and Iron",
     category: "english",
     type: "jumpsuit",
-    price: 100,
+    price: 400,
   },
   {
     service: "Wash and Iron",
     category: "english",
-    type: "skirts",
-    price: 70,
+    type: "jean",
+    price: 300,
+  },
+
+  // Wash and Iron -- native
+  {
+    service: "Wash and Iron",
+    category: "native",
+    type: "agbada",
+    price: 1000,
   },
   {
     service: "Wash and Iron",
     category: "native",
     type: "buba",
-    price: 100,
+    price: 300,
   },
   {
     service: "Wash and Iron",
     category: "native",
-    type: "Buba&Sokoto",
-    price: 100,
-  },
-  {
-    service: "Wash and Iron",
-    category: "native",
-    type: "Skirt & Blouse",
-    price: 100,
-  },
-  {
-    service: "Wash and Iron",
-    category: "native",
-    type: "Blouse & wrapper",
-    price: 100,
-  },
-  {
-    service: "Wash and Iron",
-    category: "native",
-    type: "gowns",
+    type: "gown",
     price: 500,
   },
+  {
+    service: "Wash and Iron",
+    category: "native",
+    type: "buba & sokoto",
+    price: 500,
+  },
+  {
+    service: "Wash and Iron",
+    category: "native",
+    type: "skirt & blouse",
+    price: 500,
+  },
+  {
+    service: "Wash and Iron",
+    category: "native",
+    type: "blouse & wrapper",
+    price: 500,
+  },
+  // Wash and Iron -- others
   {
     service: "Wash and Iron",
     category: "others",
     type: "towels",
-    price: 500,
+    price: 700,
   },
   {
     service: "Wash and Iron",
     category: "others",
     type: "bedsheets",
-    price: 500,
-  },
-  {
-    service: "Wash and Iron",
-    category: "others",
-    type: "duvet",
     price: 800,
   },
   {
     service: "Wash and Iron",
     category: "others",
     type: "handtowel",
-    price: 100,
+    price: 200,
   },
+  // Wash and Fold -- english -- top
   {
     service: "Wash and Fold",
     category: "english",
@@ -256,7 +146,7 @@ export const priceTable = [
   {
     service: "Wash and Fold",
     category: "english",
-    type: "tshirt",
+    type: "t-shirt",
     price: 70,
   },
   {
@@ -274,110 +164,138 @@ export const priceTable = [
   {
     service: "Wash and Fold",
     category: "english",
-    type: "chinos",
-    price: 300,
+    type: "tracksuit",
+    price: 100,
+  },
+  // Wash and Fold -- english -- bottom
+  {
+    service: "Wash and Fold",
+    category: "english",
+    type: "short & short skirt",
+    price: 50,
   },
   {
     service: "Wash and Fold",
     category: "english",
     type: "pant trousers",
-    price: 300,
+    price: 100,
   },
   {
     service: "Wash and Fold",
     category: "english",
-    type: "palazzo",
-    price: 300,
+    type: "jean",
+    price: 100,
   },
   {
     service: "Wash and Fold",
     category: "english",
-    type: "skirts",
-    price: 250,
+    type: "chinos",
+    price: 100,
+  },
+  {
+    service: "Wash and Fold",
+    category: "english",
+    type: "joggers",
+    price: 100,
   },
   {
     service: "Wash and Fold",
     category: "english",
     type: "jumpsuit",
-    price: 400,
+    price: 100,
   },
   {
     service: "Wash and Fold",
     category: "english",
-    type: "jeans",
-    price: 300,
+    type: "skirt",
+    price: 70,
   },
-  {
-    service: "Wash and Fold",
-    category: "native",
-    type: "agbada",
-    price: 1000,
-  },
+  // Wash and Fold -- native
   {
     service: "Wash and Fold",
     category: "native",
     type: "buba",
-    price: 300,
+    price: 100,
   },
   {
     service: "Wash and Fold",
     category: "native",
-    type: "gowns",
-    price: 500,
+    type: "buba & sokoto",
+    price: 100,
   },
   {
     service: "Wash and Fold",
     category: "native",
-    type: "Buba&Sokoto",
-    price: 500,
+    type: "skirt & blouse",
+    price: 100,
   },
   {
     service: "Wash and Fold",
     category: "native",
-    type: "Skirt & Blouse",
-    price: 500,
+    type: "blouse & wrapper",
+    price: 100,
   },
   {
     service: "Wash and Fold",
     category: "native",
-    type: "Blouse & wrapper",
+    type: "gown",
     price: 500,
   },
+  // Wash and Fold -- others
   {
     service: "Wash and Fold",
     category: "others",
     type: "towels",
-    price: 700,
+    price: 500,
   },
   {
     service: "Wash and Fold",
     category: "others",
     type: "bedsheets",
-    price: 800,
+    price: 500,
   },
   {
     service: "Wash and Fold",
     category: "others",
     type: "duvet",
-    price: 1500,
+    price: 1200,
   },
   {
     service: "Wash and Fold",
     category: "others",
     type: "handtowel",
-    price: 200,
+    price: 100,
   },
+  // Iron Only -- english -- tops
   {
     service: "Iron Only",
     category: "english",
-    type: "all tops",
+    type: "shirt",
     price: 150,
   },
   {
     service: "Iron Only",
     category: "english",
-    type: "all bottoms",
-    price: 200,
+    type: "t-shirt",
+    price: 150,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "blouse",
+    price: 150,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "gown",
+    price: 150,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "tracksuit",
+    price: 150,
   },
   {
     service: "Iron Only",
@@ -388,9 +306,60 @@ export const priceTable = [
   {
     service: "Iron Only",
     category: "english",
-    type: "Jackets& Gowns",
+    type: "jacket",
     price: 300,
   },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "gown",
+    price: 300,
+  },
+
+  // Iron Only -- english -- bottom
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "short & short skirt",
+    price: 200,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "pant trousers",
+    price: 200,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "jean",
+    price: 200,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "chinos",
+    price: 200,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "joggers",
+    price: 200,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "jumpsuit",
+    price: 200,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "skirt",
+    price: 200,
+  },
+  // Iron Only -- native
   {
     service: "Iron Only",
     category: "native",
@@ -400,7 +369,7 @@ export const priceTable = [
   {
     service: "Iron Only",
     category: "native",
-    type: "Buba&Sokoto",
+    type: "buba & sokoto",
     price: 300,
   },
   {
@@ -411,10 +380,8 @@ export const priceTable = [
   },
 ] as const;
 
-export type UniqueClothesV2 = (typeof priceTable)[number]["type"];
+export type UniqueClothes = (typeof priceTable)[number]["type"];
 export type UniqueServices = (typeof priceTable)[number]["service"];
-export const uniqueClothesV2: Set<UniqueClothesV2> = new Set([
+export const uniqueClothes: Set<UniqueClothes> = new Set([
   ...priceTable.map((item) => item.type),
 ]);
-// compare Unique and UniqueClothes  types
-type test = Exclude<UniqueClothesV2, UniqueClothes>;

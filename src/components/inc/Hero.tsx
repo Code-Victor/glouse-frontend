@@ -5,6 +5,7 @@ import convenience from "@public/images/convenience.png";
 import Prices from "./Prices";
 import { motion } from "framer-motion";
 import { variants, transitions } from "@/constants";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -69,9 +70,8 @@ const Hero = () => {
             fontFamily="heading"
             fontWeight="7"
             fontSize={{ "@initial": "7", "@md": "8", "@lg": "9", "@xl": 12 }}
-            // fontSize={{ "@initial": "7", "@lg": 9, "@xl": "12" }}
           >
-            <Text color="primary">Do laundry</Text> The stress free way
+            <Text color="primary">Do laundry</Text> the stress free way
           </Text>
           <Text
             as="p"
@@ -82,15 +82,22 @@ const Hero = () => {
             laundry needs in less than 24 hours.
           </Text>
           <Flex gap="2" jc={{ "@initial": "center", "@lg": "start" }}>
-            <Button variant="primary" size={{ "@initial": "sm", "@lg": "md" }}>
+            <Button
+              variant="primary"
+              size={{ "@initial": "sm", "@lg": "md" }}
+              as={Link}
+              href="/pricing"
+            >
               Request pickup
             </Button>
             <Button
               variant="primary"
               outline
               size={{ "@initial": "sm", "@lg": "md" }}
+              as="a"
+              href="#how-it-works"
             >
-              View All Prices
+              How it works
             </Button>
           </Flex>
         </Stack>

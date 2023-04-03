@@ -1,25 +1,25 @@
 import React from "react";
+import Image from "next/image";
 import { Box, Text, Flex, Button } from "@/components/base";
 import { PricingTable } from "@/components/inc";
-import { styled } from "stitches.config";
 import {
-  uniqueClothesV2,
-  UniqueClothesV2,
+  uniqueClothes,
+  UniqueClothes,
   priceTable,
   UniqueServices,
 } from "@/constants/prices";
 
 export interface TableRow {
-  clothe: UniqueClothesV2;
+  clothe: UniqueClothes;
   selectedService: UniqueServices;
   availableServices: UniqueServices[];
   quantity: number;
 }
 
 export type ACTIONTYPE =
-  | { type: "increment" | "decrement"; clothe: UniqueClothesV2 }
-  | { type: "service"; clothe: UniqueClothesV2; service: UniqueServices }
-  | { type: "update"; clothe: UniqueClothesV2; data: TableRow[] };
+  | { type: "increment" | "decrement"; clothe: UniqueClothes }
+  | { type: "service"; clothe: UniqueClothes; service: UniqueServices }
+  | { type: "update"; clothe: UniqueClothes; data: TableRow[] };
 
 function reducer(state: TableRow[], action: ACTIONTYPE): TableRow[] {
   const currentClothe = state.find((p) => p.clothe === action.clothe);
@@ -77,7 +77,6 @@ const initialTable: TableRow[] = [];
 
 const Pricing = () => {
   const [tableRow, dispatch] = React.useReducer(reducer, initialTable);
-  console.log("priceTable", priceTable);
 
   return (
     <>
@@ -85,22 +84,31 @@ const Pricing = () => {
         fd="column"
         jc="center"
         css={{
+          position: "relative",
           mt: "$20",
           height: 230,
           px: "$4",
-          backgroundColor: "rgba(0, 148, 229, 0.88)",
-          backgroundImage: "url('/images/hanger.png')",
-          backgroundBlendMode: "soft-light",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
           color: "$white",
           spaceY: "$4",
+          "& img": {
+            objectFit: "cover",
+            zIndex: -2,
+            m: 0,
+          },
           "@md": {
             height: 460,
           },
         }}
       >
+        <Box
+          css={{
+            backgroundColor: "rgba(0, 148, 229, 0.7)",
+            position: "absolute",
+            inset: 0,
+            zIndex: -1,
+          }}
+        />
+        <Image src="/images/hanger.png" alt="dry cleaned clothes" fill />
         <Text
           as="h1"
           ta="center"
@@ -143,7 +151,7 @@ const Pricing = () => {
             rowGap: "$2",
           }}
         >
-          {Array.from(uniqueClothesV2).map((clothe, index) => {
+          {Array.from(uniqueClothes).map((clothe, index) => {
             const present = tableRow.find((p) => p.clothe === clothe);
 
             return (

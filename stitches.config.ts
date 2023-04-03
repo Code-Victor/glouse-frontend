@@ -366,6 +366,9 @@ const globalStyles = globalCss({
     margin: 0,
     fontFamily: "$body",
   },
+  html: {
+    scrollBehavior: "smooth !important",
+  },
 });
 globalStyles();
 

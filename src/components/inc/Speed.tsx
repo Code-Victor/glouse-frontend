@@ -14,6 +14,7 @@ function Speed() {
         position: "relative",
       }}
       mt="7"
+      id="how-it-works"
     >
       <Grid
         columns={{ "@initial": 1, "@lg": 4, "@xl": 5 }}
@@ -55,15 +56,10 @@ function Speed() {
             fontSize={{ "@initial": "7", "@md": "8", "@lg": "9" }}
             fontFamily="heading"
             fontWeight={{ "@initial": "7" }}
-            color="dark"
+            color="primary"
             ta={{ "@initial": "center", "@lg": "left" }}
           >
-            Request Pick-up{" "}
-            <Box
-              as="br"
-              css={{ display: "none", "@lg": { display: "block" } }}
-            />
-            <Text color="primary">How it works</Text>
+            How it works
           </Text>
           <Box>
             {steps.map((step, index) => {
