@@ -50,6 +50,10 @@ function Navbar() {
         container
         css={{
           height: "$20",
+          "@supports not (scale: 50)": {
+            bg: isOpen ? "$primary" : "white",
+          },
+          transition: "all 0.5s ease-in-out",
         }}
       >
         <GlouseLogo
@@ -79,9 +83,6 @@ function Navbar() {
               zIndex: -1,
               "@supports (scale: 50)": {
                 scale: isOpen ? 50 : 1,
-              },
-              "@supports not (scale: 50)": {
-                size: isOpen ? "100vw" : "0",
               },
               opacity: isOpen ? 1 : 0,
               transition: "all 0.5s ease-in-out , opacity 0.6s ease-in-out",
@@ -121,6 +122,9 @@ function Navbar() {
         fd="column"
         css={{
           display: "flex",
+          "@supports not (scale: 50)": {
+            bg: isOpen ? "$primary" : "white",
+          },
           px: "$4",
           py: isOpen ? "$2" : 0,
           width: "100%",
