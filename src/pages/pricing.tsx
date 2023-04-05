@@ -2,21 +2,16 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { Box, Text, Flex } from "@/components/base";
-import { seo } from "@/utils";
-
+import { NextSeo } from "next-seo";
 import PriceCaculator from "@/components/inc/PriceCaculator";
 
 const Pricing = () => {
   return (
     <Box>
-      <Head>
-        {seo(
-          "Glouse: pricing plans",
-          "Get the best quality laundry done without breaking the bank.",
-          "https://useglouse.com",
-          "https://useglouse.com/images/seo.png"
-        )}
-      </Head>
+      <NextSeo
+        title="pricing plan"
+        description="Get the best quality laundry done without breaking the bank."
+      />
       <Flex
         fd="column"
         jc="center"
