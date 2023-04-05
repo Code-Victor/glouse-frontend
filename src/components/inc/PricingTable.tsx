@@ -2,7 +2,7 @@ import * as React from "react";
 import Select from "@/components/inc/Select";
 import { UniqueClothes, priceTable, UniqueServices } from "@/constants/prices";
 import { Box, Text, Flex, Button } from "@/components/base";
-import { ACTIONTYPE, TableRow } from "@/pages/pricing";
+import { ACTIONTYPE, TableRow } from "./PriceCaculator";
 import { styled } from "stitches.config";
 import { sendMessage } from "@/utils";
 

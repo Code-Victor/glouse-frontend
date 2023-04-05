@@ -96,6 +96,12 @@ export const priceTable = [
   {
     service: "Wash and Iron",
     category: "native",
+    type: "sokoto",
+    price: 300,
+  },
+  {
+    service: "Wash and Iron",
+    category: "native",
     type: "gown",
     price: 500,
   },
@@ -122,13 +128,19 @@ export const priceTable = [
     service: "Wash and Iron",
     category: "others",
     type: "towels",
-    price: 700,
+    price: 400,
   },
   {
     service: "Wash and Iron",
     category: "others",
     type: "bedsheets",
-    price: 800,
+    price: 600,
+  },
+  {
+    service: "Wash and Iron",
+    category: "others",
+    type: "duvet",
+    price: 1000,
   },
   {
     service: "Wash and Iron",
@@ -159,19 +171,19 @@ export const priceTable = [
     service: "Wash and Fold",
     category: "english",
     type: "gown",
-    price: 100,
+    price: 150,
   },
   {
     service: "Wash and Fold",
     category: "english",
     type: "tracksuit",
-    price: 100,
+    price: 150,
   },
   // Wash and Fold -- english -- bottom
   {
     service: "Wash and Fold",
     category: "english",
-    type: "short & short skirt",
+    type: "shorts / short skirt",
     price: 50,
   },
   {
@@ -239,32 +251,7 @@ export const priceTable = [
     service: "Wash and Fold",
     category: "native",
     type: "gown",
-    price: 500,
-  },
-  // Wash and Fold -- others
-  {
-    service: "Wash and Fold",
-    category: "others",
-    type: "towels",
-    price: 500,
-  },
-  {
-    service: "Wash and Fold",
-    category: "others",
-    type: "bedsheets",
-    price: 500,
-  },
-  {
-    service: "Wash and Fold",
-    category: "others",
-    type: "duvet",
-    price: 1200,
-  },
-  {
-    service: "Wash and Fold",
-    category: "others",
-    type: "handtowel",
-    price: 100,
+    price: 150,
   },
   // Iron Only -- english -- tops
   {
@@ -320,7 +307,7 @@ export const priceTable = [
   {
     service: "Iron Only",
     category: "english",
-    type: "short & short skirt",
+    type: "shorts / short skirt",
     price: 200,
   },
   {
