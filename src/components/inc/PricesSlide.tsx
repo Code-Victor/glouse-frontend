@@ -1,12 +1,14 @@
 import * as React from "react";
+import Link from "next/link";
+import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+import Autoplay from "embla-carousel-autoplay";
 import { styled } from "stitches.config";
 import { Box, Button, Flex, Text } from "../base";
 import { Quotes } from "../icons";
 import { categories, variants, transitions } from "@/constants";
 import { motion, useInView } from "framer-motion";
-import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+import { capitalize } from "@/utils";
 
 const OPTIONS: EmblaOptionsType = {
   dragFree: true,
@@ -14,7 +16,7 @@ const OPTIONS: EmblaOptionsType = {
   containScroll: "keepSnaps",
 };
 
-function Prices() {
+function PricesSlide() {
   const [hovered, setHovered] = React.useState(false);
   const [emblaRef, embla] = useEmblaCarousel(OPTIONS, [
     Autoplay({ delay: 2000 }),
@@ -51,7 +53,7 @@ function Prices() {
         css={{
           $$slideSpacing: "1rem",
           $$slideSize: "270px",
-          $$slideHeight: "146px",
+          $$slideHeight: "160px",
         }}
       >
         <Box
@@ -84,7 +86,7 @@ function Prices() {
             <Box>
               <PriceCard className="embla__slide">
                 <Quotes />
-                <Text as="p" fontWeight="5" fontFamily={"heading"}>
+                <Text as="p" fontWeight="5" fontSize="5" fontFamily={"heading"}>
                   Get the best quality laundry done without breaking the bank
                 </Text>
               </PriceCard>
@@ -105,10 +107,10 @@ function Prices() {
                       {category.prices.map((price, i) => (
                         <Flex key={i} jc="between">
                           <Text as="p" fontSize="2">
-                            {price.title}
+                            {capitalize(price.type)}
                           </Text>
                           <Text as="p" fontSize="2" fontWeight="7">
-                            {price.price}
+                            ₦{price.price}
                           </Text>
                         </Flex>
                       ))}
@@ -124,6 +126,8 @@ function Prices() {
         <Button
           variant="primary"
           outline
+          as={Link}
+          href="/pricing"
           size={{ "@initial": "sm", "@lg": "md" }}
         >
           View All Prices
@@ -133,7 +137,7 @@ function Prices() {
   );
 }
 
-export default Prices;
+export default PricesSlide;
 
 const PriceCard = styled("div", {
   $$borderColor: "$colors$primary",

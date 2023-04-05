@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Stack, Flex, Text, Box, Button } from "../base";
 import DisplayImage from "./DisplayImage";
 import convenience from "@public/images/convenience.png";
-import Prices from "./Prices";
+import PricesSlide from "./PricesSlide";
 import { motion } from "framer-motion";
 import { variants, transitions } from "@/constants";
 import Link from "next/link";
@@ -136,7 +136,7 @@ const Hero = () => {
           />
         </Box>
       </Grid>
-      <Prices />
+      <PricesSlide />
     </Flex>
   );
 };
