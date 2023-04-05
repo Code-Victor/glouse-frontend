@@ -12,16 +12,18 @@ import {
 import { Box, Text } from "@/components/base";
 import quality from "@public/images/quality.png";
 import relax from "@public/images/relax.png";
+import { seo } from "@/utils";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Glouse: do laundry the stress free way</title>
-        <meta
-          name="description"
-          content="Focus on the things that truly matter while we sort out all your laundry needs in less than 24 hours."
-        />
+        {seo(
+          "Glouse: do laundry the stress free way",
+          "Focus on the things that truly matter while we sort out all your laundry needs in less than 24 hours.",
+          "https://useglouse.com",
+          "https://useglouse.com/images/seo.png"
+        )}
       </Head>
       <Hero />
       <Speed />

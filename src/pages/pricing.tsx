@@ -1,18 +1,21 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import { Box, Text, Flex, Button } from "@/components/base";
+import { Box, Text, Flex } from "@/components/base";
+import { seo } from "@/utils";
+
 import PriceCaculator from "@/components/inc/PriceCaculator";
 
 const Pricing = () => {
   return (
     <Box>
       <Head>
-        <title>Glouse: pricing plans </title>
-        <meta
-          name="description"
-          content="Get the best quality laundry done without breaking the ban"
-        />
+        {seo(
+          "Glouse: pricing plans",
+          "Get the best quality laundry done without breaking the bank.",
+          "https://useglouse.com",
+          "https://useglouse.com/images/seo.png"
+        )}
       </Head>
       <Flex
         fd="column"
