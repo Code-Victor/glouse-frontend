@@ -32,13 +32,15 @@ export const cardInfo = [
   },
 ];
 
-interface Price {
-  title: string;
-  price: string;
+interface Item {
+  service: string;
+  category: string;
+  type: string;
+  price: number;
 }
 interface Category {
   title: string;
-  prices: Price[];
+  prices: Item[];
 }
 // export const prices: Category[]=
 //  generate 7 categories with 4 prices each at a go
@@ -46,57 +48,172 @@ interface Category {
 //  in the Prices component
 export const categories: Category[] = [
   {
-    title: "English Tops",
+    title: "English ",
     prices: [
-      { title: "Shirt", price: "₦1,000" },
-      { title: "Jacket/Blazae", price: "₦1,500" },
-      { title: "Gown", price: "₦2,000" },
-      { title: "Blouse", price: "₦2,500" },
+      {
+        service: "Wash and Iron",
+        category: "english",
+        type: "shirt",
+        price: 250,
+      },
+      {
+        service: "Wash and Iron",
+        category: "english",
+        type: "jacket/Blazer",
+        price: 500,
+      },
+      {
+        service: "Wash and Iron",
+        category: "english",
+        type: "gown",
+        price: 400,
+      },
+      {
+        service: "Wash and Iron",
+        category: "english",
+        type: "skirt",
+        price: 250,
+      },
+      {
+        service: "Wash and Iron",
+        category: "english",
+        type: "jean",
+        price: 300,
+      },
     ],
   },
   {
-    title: "English Bottoms",
+    title: "Native ",
     prices: [
-      { title: "Shirt", price: "₦1,000" },
-      { title: "Jacket/Blazae", price: "₦1,500" },
-      { title: "Gown", price: "₦2,000" },
-      { title: "Blouse", price: "₦2,500" },
-    ],
-  },
-  {
-    title: "Native",
-    prices: [
-      { title: "Shirt", price: "₦1,000" },
-      { title: "Jacket/Blazae", price: "₦1,500" },
-      { title: "Gown", price: "₦2,000" },
-      { title: "Blouse", price: "₦2,500" },
+      {
+        service: "Wash and Iron",
+        category: "native",
+        type: "agbada",
+        price: 1000,
+      },
+      {
+        service: "Wash and Iron",
+        category: "native",
+        type: "buba",
+        price: 300,
+      },
+      {
+        service: "Wash and Iron",
+        category: "native",
+        type: "gown",
+        price: 500,
+      },
+      {
+        service: "Wash and Iron",
+        category: "native",
+        type: "buba & sokoto",
+        price: 500,
+      },
+      {
+        service: "Wash and Iron",
+        category: "native",
+        type: "skirt & blouse",
+        price: 500,
+      },
     ],
   },
   {
     title: "Others",
     prices: [
-      { title: "Shirt", price: "₦1,000" },
-      { title: "Jacket/Blazae", price: "₦1,500" },
-      { title: "Gown", price: "₦2,000" },
-      { title: "Blouse", price: "₦2,500" },
+      {
+        service: "Wash and Iron",
+        category: "others",
+        type: "towels",
+        price: 400,
+      },
+      {
+        service: "Wash and Iron",
+        category: "others",
+        type: "bedsheets",
+        price: 600,
+      },
+      {
+        service: "Wash and Iron",
+        category: "others",
+        type: "duvet",
+        price: 1000,
+      },
+      {
+        service: "Wash and Iron",
+        category: "others",
+        type: "handtowel",
+        price: 200,
+      },
     ],
   },
   {
-    title: "English Tops(W&Fold)",
+    title: "English(Wash & Fold)",
     prices: [
-      { title: "Shirt", price: "₦1,000" },
-      { title: "Jacket/Blazae", price: "₦1,500" },
-      { title: "Gown", price: "₦2,000" },
-      { title: "Blouse", price: "₦2,500" },
+      {
+        service: "Wash and Fold",
+        category: "english",
+        type: "shirt",
+        price: 70,
+      },
+      {
+        service: "Wash and Fold",
+        category: "english",
+        type: "blouse",
+        price: 70,
+      },
+      {
+        service: "Wash and Fold",
+        category: "english",
+        type: "gown",
+        price: 150,
+      },
+      {
+        service: "Wash and Fold",
+        category: "english",
+        type: "shorts / short skirt",
+        price: 50,
+      },
+      {
+        service: "Wash and Fold",
+        category: "english",
+        type: "pant trousers",
+        price: 100,
+      },
     ],
   },
   {
-    title: "English Bottoms(W&Fold)",
+    title: "English(Iron Only)",
     prices: [
-      { title: "Shirt", price: "₦1,000" },
-      { title: "Jacket/Blazae", price: "₦1,500" },
-      { title: "Gown", price: "₦2,000" },
-      { title: "Blouse", price: "₦2,500" },
+      {
+        service: "Iron Only",
+        category: "english",
+        type: "shirt",
+        price: 150,
+      },
+      {
+        service: "Iron Only",
+        category: "english",
+        type: "blouse",
+        price: 150,
+      },
+      {
+        service: "Iron Only",
+        category: "english",
+        type: "gown",
+        price: 150,
+      },
+      {
+        service: "Iron Only",
+        category: "english",
+        type: "shorts / short skirt",
+        price: 200,
+      },
+      {
+        service: "Iron Only",
+        category: "english",
+        type: "pant trousers",
+        price: 200,
+      },
     ],
   },
 ];
