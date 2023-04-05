@@ -13,3 +13,6 @@ export function sendMessage(message: string) {
     `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
   );
 }
+export function capitalize(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
