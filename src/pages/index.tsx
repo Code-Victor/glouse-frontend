@@ -17,10 +17,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Glouse</title>
-        <meta name="description" content="The ultimate convinience" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Glouse: do laundry the stress free way</title>
+        <meta
+          name="description"
+          content="Focus on the things that truly matter while we sort out all your laundry needs in less than 24 hours."
+        />
       </Head>
       <Hero />
       <Speed />
