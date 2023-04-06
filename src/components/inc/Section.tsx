@@ -3,6 +3,8 @@ import React from "react";
 import { Box, Grid, Stack } from "../base";
 import { StaticImageData } from "next/image";
 import { DisplayImage } from "@/components/inc";
+import { motion } from "framer-motion";
+import { transitions } from "@/constants";
 
 interface SectionProps {
   children: React.ReactNode;
@@ -15,7 +17,7 @@ interface SectionProps {
 function Section({ bg, position, children, image, alt }: SectionProps) {
   const reverse = position === "reverse";
   return (
-    <Box bg={bg} css={{ position: "relative" }} mt={4}>
+    <Box bg={bg} css={{ position: "relative", overflow: "hidden" }} mt={4}>
       <WaterMark
         css={
           bg === "white"
@@ -57,15 +59,52 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
         <Stack
           gap="3"
           css={{
+            "$$initial-y": "100px",
+            "$$initial-x": "0",
             "& h2, p": {
               maxW: 640,
             },
+            "@lg": {
+              "$$initial-y": "0",
+              "$$initial-x": reverse ? "-200px" : "200px",
+            },
           }}
+          transition={transitions.main}
+          as={motion.div}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            x: 0,
+          }}
+          initial={{
+            opacity: 0,
+            y: "var(---initial-y)",
+            x: "var(---initial-x)",
+          }}
+          custom={100}
         >
           {children}
         </Stack>
         <Box
+          as={motion.div}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            y: 0,
+          }}
+          initial={{
+            opacity: 0,
+            x: "var(---initial-x)",
+            y: "var(---initial-y)",
+          }}
+          transition={{ delay: 1, ...transitions.main }}
           css={{
+            "$$initial-y": "100px",
+            "$$initial-x": "0",
+            "@lg": {
+              "$$initial-y": "0",
+              "$$initial-x": reverse ? "200px" : "-200px",
+            },
             justifySelf: "center",
             minWidth: 300,
             "@md": { minWidth: 500 },

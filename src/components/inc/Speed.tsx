@@ -26,13 +26,31 @@ function Speed() {
         ai="center"
         className={speedGrid()}
       >
-        <Image
-          src={clothes}
-          alt="speed"
-          style={{
-            justifySelf: "center",
-          }}
-        />
+        <div>
+          <motion.div
+            initial={{
+              clipPath: "polygon(0px 0px, 0% 0px, 0% 100%, 0px 100%)",
+              opacity: 0,
+            }}
+            whileInView={{
+              clipPath: "polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%)",
+              opacity: 1,
+            }}
+            transition={{ duration: 1 }}
+            style={{
+              justifySelf: "center",
+              maxWidth: "100%",
+            }}
+          >
+            <Image
+              src={clothes}
+              alt="speed"
+              style={{
+                width: "100%",
+              }}
+            />
+          </motion.div>
+        </div>
         <Stack css={{ maxW: 740 }} gap="8">
           <Text
             // as="h2"
