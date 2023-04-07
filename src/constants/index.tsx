@@ -48,7 +48,7 @@ interface Category {
 //  in the Prices component
 export const categories: Category[] = [
   {
-    title: "English ",
+    title: "English(Wash & Iron)",
     prices: [
       {
         service: "Wash and Iron",
@@ -83,7 +83,7 @@ export const categories: Category[] = [
     ],
   },
   {
-    title: "Native ",
+    title: "Native(Wash & Iron)",
     prices: [
       {
         service: "Wash and Iron",
@@ -247,6 +247,29 @@ export const categories: Category[] = [
         service: "Iron Only",
         category: "english",
         type: "pant trousers",
+        price: 200,
+      },
+    ],
+  },
+  {
+    title: "Native(Iron Only)",
+    prices: [
+      {
+        service: "Iron Only",
+        category: "native",
+        type: "gown",
+        price: 300,
+      },
+      {
+        service: "Iron Only",
+        category: "native",
+        type: "buba & sokoto",
+        price: 300,
+      },
+      {
+        service: "Iron Only",
+        category: "native",
+        type: "buba",
         price: 200,
       },
     ],
