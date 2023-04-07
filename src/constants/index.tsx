@@ -292,11 +292,6 @@ export const socials = [
     name: "Twitter",
     link: "https://twitter.com/useglouse",
   },
-  {
-    icon: <TitTokIcon />,
-    name: "TitTok",
-    link: "",
-  },
 ];
 
 export const footerLinks = [
