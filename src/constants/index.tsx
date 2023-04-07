@@ -9,7 +9,7 @@ import {
 } from "@/components/icons";
 import type { Variants } from "framer-motion";
 
-export const whatsappNumber = "+2347045032280";
+export const whatsappNumber = "+2348146219253";
 
 export const cardInfo = [
   {
@@ -28,7 +28,7 @@ export const cardInfo = [
     icon: <Iron />,
     title: "Iron Only",
     description:
-      " Your clothes don’t need ironing? No worries; we wash, and fold them neatly.",
+      "Your clothes don’t need ironing? No worries; we wash, and fold them neatly.",
   },
 ];
 
@@ -178,6 +178,41 @@ export const categories: Category[] = [
         category: "english",
         type: "pant trousers",
         price: 100,
+      },
+    ],
+  },
+  {
+    title: "Native(Wash & Fold)",
+    prices: [
+      {
+        service: "Wash and Fold",
+        category: "native",
+        type: "buba",
+        price: 100,
+      },
+      {
+        service: "Wash and Fold",
+        category: "native",
+        type: "buba & sokoto",
+        price: 100,
+      },
+      {
+        service: "Wash and Fold",
+        category: "native",
+        type: "skirt & blouse",
+        price: 100,
+      },
+      {
+        service: "Wash and Fold",
+        category: "native",
+        type: "blouse & wrapper",
+        price: 100,
+      },
+      {
+        service: "Wash and Fold",
+        category: "native",
+        type: "gown",
+        price: 150,
       },
     ],
   },
