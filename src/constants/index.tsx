@@ -285,7 +285,7 @@ export const socials = [
   {
     icon: <FacebookIcon />,
     name: "Facebook",
-    link: "",
+    link: "https://www.facebook.com/useglouse",
   },
   {
     icon: <TwitterIcon />,
