@@ -79,17 +79,6 @@ function Footer() {
             </Flex>
           );
         })}
-        <Flex fd="column" gap="3" css={{ minW: 150 }}>
-          <Text as="h3" fontSize="5" fontWeight="7" color="primary">
-            Contact Us
-          </Text>
-          <Flex gap="2" ai="center">
-            <Text>+234 810 123 456 7</Text>
-          </Flex>
-          <Flex gap="2" ai="center">
-            <Text>support@glouse.com</Text>
-          </Flex>
-        </Flex>
       </Flex>
       <Box
         css={{

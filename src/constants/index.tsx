@@ -257,7 +257,7 @@ export const socials = [
   {
     icon: <InstagramIcon />,
     name: "Instagram",
-    link: "https://www.instagram.com/glouse.ng/",
+    link: "https://instagram.com/useglouse",
   },
   {
     icon: <FacebookIcon />,
@@ -267,7 +267,7 @@ export const socials = [
   {
     icon: <TwitterIcon />,
     name: "Twitter",
-    link: "https://twitter.com/glouseng",
+    link: "https://twitter.com/useglouse",
   },
   {
     icon: <TitTokIcon />,
@@ -308,6 +308,20 @@ export const footerLinks = [
       {
         title: "Convenience",
         link: "#",
+      },
+    ],
+  },
+  {
+    title: "Contact Us",
+    links: [
+      {
+        title: "+" + whatsappNumber.replace("+", "").replace(/(.{3})/g, "$1 "),
+        //give a space to the whatsapp number after ever 3 chars
+        link: "https://wa.me/" + whatsappNumber,
+      },
+      {
+        title: "glouse.ng@gmail.com",
+        link: "mailto:glouse.ng@gmail.com",
       },
     ],
   },

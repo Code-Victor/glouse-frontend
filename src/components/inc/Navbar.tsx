@@ -85,18 +85,20 @@ function Navbar() {
           transition: "all 0.5s ease-in-out",
         }}
       >
-        <GlouseLogo
-          css={{
-            width: 80,
-            transition: "all 0.6s ease-in-out",
-            "& path": {
-              fill: isOpen ? "$white" : "$primary",
-            },
-            "@md": {
-              width: 140,
-            },
-          }}
-        />
+        <Link href="/">
+          <GlouseLogo
+            css={{
+              width: 80,
+              transition: "all 0.6s ease-in-out",
+              "& path": {
+                fill: isOpen ? "$white" : "$primary",
+              },
+              "@md": {
+                width: 140,
+              },
+            }}
+          />
+        </Link>
         <NavButton
           css={{
             position: "relative",
