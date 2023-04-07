@@ -8,8 +8,11 @@ import { steps } from "@/constants";
 import { motion, useInView } from "framer-motion";
 
 function Speed() {
-  const boxRef = React.useRef<HTMLDivElement>(null);
-  const inView = useInView(boxRef, { amount: 0.5 });
+  const StackRef = React.useRef<HTMLDivElement>(null);
+  const ImgRef = React.useRef<HTMLDivElement>(null);
+  const stackInView = useInView(StackRef, { amount: 0.5 });
+  const imgInView = useInView(ImgRef, { amount: 0.5 });
+
   return (
     <Box
       css={{
@@ -27,16 +30,15 @@ function Speed() {
         mx="auto"
         ai="center"
         className={speedGrid()}
-        ref={boxRef}
       >
-        <div>
+        <div ref={ImgRef}>
           <motion.div
             initial={{
               clipPath: "polygon(0px 0px, 0% 0px, 0% 100%, 0px 100%)",
               opacity: 0,
             }}
             animate={
-              inView
+              imgInView
                 ? {
                   clipPath: "polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%)",
                   opacity: 1,
@@ -58,7 +60,7 @@ function Speed() {
             />
           </motion.div>
         </div>
-        <Stack css={{ maxW: 740 }} gap="8">
+        <Stack ref={StackRef} css={{ maxW: 740 }} gap="8">
           <Text
             // as="h2"
             as={motion.h2}
@@ -67,7 +69,7 @@ function Speed() {
               y: "var(---initial-y)",
               x: "var(---initial-x)",
             }}
-            whileInView={{ opacity: 1, y: 0, x: 0 }}
+            animate={stackInView ? { opacity: 1, y: 0, x: 0 } : {}}
             transition={{ duration: 1 }}
             css={{
               "$$initial-y": "100px",
@@ -93,7 +95,7 @@ function Speed() {
                 index,
                 last: index == steps.length - 1,
               };
-              return <Step {...props} inView={inView} key={step.title} />;
+              return <Step {...props} inView={stackInView} key={step.title} />;
             })}
           </Box>
         </Stack>
