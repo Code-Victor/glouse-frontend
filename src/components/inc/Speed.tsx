@@ -31,7 +31,13 @@ function Speed() {
         ai="center"
         className={speedGrid()}
       >
-        <div ref={ImgRef}>
+        <Box
+          ref={ImgRef}
+          css={{
+            justifySelf: "center",
+            width: "fit-conten",
+          }}
+        >
           <motion.div
             initial={{
               clipPath: "polygon(0px 0px, 0% 0px, 0% 100%, 0px 100%)",
@@ -46,20 +52,21 @@ function Speed() {
                 : {}
             }
             transition={{ duration: 1 }}
-            style={{
-              justifySelf: "center",
-              maxWidth: "100%",
-            }}
           >
             <Image
               src={clothes}
               alt="speed"
-              style={{
+              className={css({
                 width: "100%",
-              }}
+                maxHeight: 450,
+                objectFit: "cover",
+                "@md": {
+                  maxHeight: "unset",
+                },
+              })()}
             />
           </motion.div>
-        </div>
+        </Box>
         <Stack ref={StackRef} css={{ maxW: 740 }} gap="8">
           <Text
             // as="h2"

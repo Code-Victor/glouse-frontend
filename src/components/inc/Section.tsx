@@ -116,8 +116,9 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
               "$$initial-y": "0",
               "$$initial-x": reverse ? "200px" : "-200px",
             },
+            // minWidth: 300,
             justifySelf: "center",
-            minWidth: 300,
+            "@xs": { minWidth: 320 },
             "@md": { minWidth: 500 },
           }}
         >
