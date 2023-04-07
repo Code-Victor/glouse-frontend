@@ -296,12 +296,6 @@ export const priceTable = [
     type: "jacket",
     price: 300,
   },
-  {
-    service: "Iron Only",
-    category: "english",
-    type: "gown",
-    price: 300,
-  },
 
   // Iron Only -- english -- bottom
   {
