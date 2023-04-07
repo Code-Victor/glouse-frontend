@@ -32,7 +32,7 @@ function Footer() {
           >
             The ultimate convenience; Spend zero time on laundry, more on life!
           </Text>
-          <Flex gap="3" ai="center">
+          <Flex gap="5" ai="center">
             {socials.map((social, index) => {
               return (
                 <Box as="a" href={social.link} target="_blank" key={index}>
