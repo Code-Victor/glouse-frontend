@@ -27,7 +27,7 @@ export const priceTable = [
   {
     service: "Wash and Iron",
     category: "english",
-    type: "jean",
+    type: "jean jacket",
     price: 300,
   },
   {
@@ -76,7 +76,7 @@ export const priceTable = [
   {
     service: "Wash and Iron",
     category: "english",
-    type: "jean",
+    type: "jean trousers",
     price: 300,
   },
 
@@ -195,7 +195,7 @@ export const priceTable = [
   {
     service: "Wash and Fold",
     category: "english",
-    type: "jean",
+    type: "jean trousers",
     price: 100,
   },
   {
@@ -313,7 +313,7 @@ export const priceTable = [
   {
     service: "Iron Only",
     category: "english",
-    type: "jean",
+    type: "jean jacket",
     price: 200,
   },
   {
