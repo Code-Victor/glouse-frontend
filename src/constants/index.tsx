@@ -5,11 +5,11 @@ import {
   FacebookIcon,
   InstagramIcon,
   TwitterIcon,
-  TitTokIcon,
 } from "@/components/icons";
 import type { Variants } from "framer-motion";
 
 export const whatsappNumber = "+2348146219253";
+export const deliveryFee = 250;
 
 export const cardInfo = [
   {
@@ -46,6 +46,127 @@ interface Category {
 //  generate 7 categories with 4 prices each at a go
 //  and then map over them to display them
 //  in the Prices component
+
+export const socials = [
+  {
+    icon: <InstagramIcon />,
+    name: "Instagram",
+    link: "https://instagram.com/useglouse",
+  },
+  {
+    icon: <FacebookIcon />,
+    name: "Facebook",
+    link: "https://www.facebook.com/useglouse",
+  },
+  {
+    icon: <TwitterIcon />,
+    name: "Twitter",
+    link: "https://twitter.com/useglouse",
+  },
+];
+
+export const footerLinks = [
+  {
+    title: "Company",
+    links: [
+      {
+        title: "Home",
+        link: "/",
+      },
+      {
+        title: "Pricing",
+        link: "/pricing",
+      },
+      {
+        title: "Privacy Policy",
+        link: "/privary-policy",
+      },
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      {
+        title: "Pick-up and Delivery",
+        link: "#",
+      },
+      {
+        title: "Laundry options",
+        link: "#",
+      },
+      {
+        title: "Convenience",
+        link: "#",
+      },
+    ],
+  },
+  {
+    title: "Contact Us",
+    links: [
+      {
+        title: "+" + whatsappNumber.replace("+", "").replace(/(.{3})/g, "$1 "),
+        //give a space to the whatsapp number after ever 3 chars
+        link: "https://wa.me/" + whatsappNumber,
+      },
+      {
+        title: "glouse.ng@gmail.com",
+        link: "mailto:glouse.ng@gmail.com",
+      },
+    ],
+  },
+];
+export const steps = [
+  {
+    title: "Request Pick-Up",
+    paragraph:
+      "Select a pick-up time that is most convenient for you and we'll come by to collect your dirty clothes according to your schedule.",
+  },
+  {
+    title: "Wash and Iron",
+    paragraph:
+      "We do the laundry magic with top-quality materials that retain the quality and beauty of your clothes.",
+  },
+  {
+    title: "Lightning-fast delivery",
+    paragraph:
+      "Your clothes will be delivered to you in excellent condition within 24 hours!",
+  },
+];
+export const transitions = {
+  main: {
+    duration: 1,
+    ease: "easeInOut",
+  },
+};
+
+export const variants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+  regular: {
+    x: 0,
+    y: 0,
+  },
+  left: (x: string | number) => {
+    return {
+      x: -x,
+    };
+  },
+  right: (x: string | number) => {
+    return {
+      x: x,
+    };
+  },
+  top: {
+    y: -100,
+  },
+  bottom: {
+    y: 100,
+  },
+};
 export const categories: Category[] = [
   {
     title: "English(Wash & Iron)",
@@ -275,124 +396,3 @@ export const categories: Category[] = [
     ],
   },
 ];
-
-export const socials = [
-  {
-    icon: <InstagramIcon />,
-    name: "Instagram",
-    link: "https://instagram.com/useglouse",
-  },
-  {
-    icon: <FacebookIcon />,
-    name: "Facebook",
-    link: "https://www.facebook.com/useglouse",
-  },
-  {
-    icon: <TwitterIcon />,
-    name: "Twitter",
-    link: "https://twitter.com/useglouse",
-  },
-];
-
-export const footerLinks = [
-  {
-    title: "Company",
-    links: [
-      {
-        title: "Home",
-        link: "/",
-      },
-      {
-        title: "Pricing",
-        link: "/pricing",
-      },
-      {
-        title: "Privacy Policy",
-        link: "/privary-policy",
-      },
-    ],
-  },
-  {
-    title: "Services",
-    links: [
-      {
-        title: "Pick-up and Delivery",
-        link: "#",
-      },
-      {
-        title: "Laundry options",
-        link: "#",
-      },
-      {
-        title: "Convenience",
-        link: "#",
-      },
-    ],
-  },
-  {
-    title: "Contact Us",
-    links: [
-      {
-        title: "+" + whatsappNumber.replace("+", "").replace(/(.{3})/g, "$1 "),
-        //give a space to the whatsapp number after ever 3 chars
-        link: "https://wa.me/" + whatsappNumber,
-      },
-      {
-        title: "glouse.ng@gmail.com",
-        link: "mailto:glouse.ng@gmail.com",
-      },
-    ],
-  },
-];
-export const steps = [
-  {
-    title: "Request Pick-Up",
-    paragraph:
-      "Select a pick-up time that is most convenient for you and we'll come by to collect your dirty clothes according to your schedule.",
-  },
-  {
-    title: "Wash and Iron",
-    paragraph:
-      "We do the laundry magic with top-quality materials that retain the quality and beauty of your clothes.",
-  },
-  {
-    title: "Lightning-fast delivery",
-    paragraph:
-      "Your clothes will be delivered to you in excellent condition within 24 hours!",
-  },
-];
-export const transitions = {
-  main: {
-    duration: 1,
-    ease: "easeInOut",
-  },
-};
-
-export const variants: Variants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-  },
-  regular: {
-    x: 0,
-    y: 0,
-  },
-  left: (x: string | number) => {
-    return {
-      x: -x,
-    };
-  },
-  right: (x: string | number) => {
-    return {
-      x: x,
-    };
-  },
-  top: {
-    y: -100,
-  },
-  bottom: {
-    y: 100,
-  },
-};

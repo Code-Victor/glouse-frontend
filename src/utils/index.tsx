@@ -18,7 +18,14 @@ export const sendPickupMessage = sendMessage.bind(
   this,
   "Hello, I’ll like to request a laundry pickup."
 );
-
+/**
+ * returns a number with commas(pretty print)
+ * @param  {number}  number to be pretty printed
+ * @return {string}    string with commas
+ */
+export function pp(no: number): string {
+  return no.toLocaleString();
+}
 export function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }

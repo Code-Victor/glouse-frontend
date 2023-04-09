@@ -1,10 +1,11 @@
 import * as React from "react";
 import Select from "@/components/inc/Select";
 import { UniqueClothes, priceTable, UniqueServices } from "@/constants/prices";
+import { deliveryFee } from "@/constants";
 import { Box, Text, Flex, Button } from "@/components/base";
 import { ACTIONTYPE, TableRow } from "./PriceCaculator";
 import { styled } from "stitches.config";
-import { sendMessage } from "@/utils";
+import { sendMessage, pp } from "@/utils";
 
 interface PriceItem {
   clothe: UniqueClothes;
@@ -34,12 +35,13 @@ const PricingTable = ({
     orderStringList = [
       "*My Order*",
       ...orderStringList,
-      `*Total Price*: ₦${totalPrice}`,
+      "Delivery Fee: ₦250",
+      `*Total Price*: ₦${pp(total)}`,
     ];
     const orderString = orderStringList.join("\n\n");
     return orderString;
   }
-  const totalPrice = clothes?.reduce(
+  const orderPriceSum = clothes?.reduce(
     (acc, { clothe, quantity, selectedService }) => {
       const price = priceTable.find((p) => {
         const match = p.type === clothe && p.service === selectedService;
@@ -52,6 +54,7 @@ const PricingTable = ({
     },
     0
   );
+  const total = orderPriceSum + deliveryFee;
   return (
     <Box
       css={{
@@ -60,6 +63,7 @@ const PricingTable = ({
         mx: "auto",
       }}
     >
+      {/* Mobile View */}
       <Flex fd="column" gap="4" css={{ mb: "$4", "@md": { display: "none" } }}>
         {clothes.map(
           ({ clothe, availableServices, quantity, selectedService }) => {
@@ -153,24 +157,63 @@ const PricingTable = ({
             );
           }
         )}
-        <Flex
-          ai="center"
-          jc="between"
-          px="4"
-          py="6"
+        <Box
           css={{
-            bg: "gainsboro",
             br: "$4",
-            display: clothes.length === 0 ? "none" : "flex",
+            overflow: "hidden",
+            "&>*+*": {
+              borderTop: "1px solid black",
+            },
           }}
         >
-          <Text fontSize="5">Total</Text>
-          <Text fontSize="7" fontWeight={7}>
-            NGN {totalPrice}
-          </Text>
-        </Flex>
-      </Flex>
+          <Flex
+            ai="center"
+            jc="between"
+            pd="4"
+            css={{
+              bg: "gainsboro",
 
+              display: clothes.length === 0 ? "none" : "flex",
+            }}
+          >
+            <Text fontSize="5">Sub total</Text>
+            <Text fontSize="6" fontWeight={7}>
+              NGN {pp(orderPriceSum)}
+            </Text>
+          </Flex>
+          <Flex
+            ai="center"
+            jc="between"
+            pd="4"
+            css={{
+              bg: "gainsboro",
+
+              display: clothes.length === 0 ? "none" : "flex",
+            }}
+          >
+            <Text fontSize="5">Delivery fee</Text>
+            <Text fontSize="6" fontWeight={7}>
+              NGN {pp(deliveryFee)}
+            </Text>
+          </Flex>
+          <Flex
+            ai="center"
+            jc="between"
+            pd="4"
+            css={{
+              bg: "gainsboro",
+
+              display: clothes.length === 0 ? "none" : "flex",
+            }}
+          >
+            <Text fontSize="5">Total</Text>
+            <Text fontSize="6" fontWeight={7}>
+              NGN {pp(total)}
+            </Text>
+          </Flex>
+        </Box>
+      </Flex>
+      {/* Desktop View */}
       <Box
         as="table"
         css={{
@@ -181,7 +224,7 @@ const PricingTable = ({
           border: "1px solid $$borderColor",
           borderSpacing: 0,
           "@md": {
-            display: "table",
+            display: clothes.length === 0 ? "none" : "table",
           },
           "& td, th": {
             border: "1px solid $$borderColor",
@@ -303,8 +346,24 @@ const PricingTable = ({
           <tr>
             <td colSpan={3}>
               <Flex jc="between" ai="center">
-                <Text fontWeight={7}>Total</Text>
-                <Text fontWeight={7}>₦ {totalPrice}</Text>
+                <Text fontWeight={7}>Sub total</Text>
+                <Text fontWeight={7}>₦ {pp(orderPriceSum)}</Text>
+              </Flex>
+            </td>
+          </tr>
+          <tr>
+            <td colSpan={3}>
+              <Flex jc="between" ai="center">
+                <Text fontWeight={7}>Delivery fee</Text>
+                <Text fontWeight={7}>₦ {deliveryFee}</Text>
+              </Flex>
+            </td>
+          </tr>
+          <tr>
+            <td colSpan={3}>
+              <Flex jc="between" ai="center">
+                <Text fontWeight={7}>Total </Text>
+                <Text fontWeight={7}>₦ {pp(total)}</Text>
               </Flex>
             </td>
           </tr>
