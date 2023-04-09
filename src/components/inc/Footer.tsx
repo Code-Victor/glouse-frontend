@@ -59,7 +59,13 @@ function Footer() {
       >
         {footerLinks.map((footerlink, index) => {
           return (
-            <Flex fd="column" gap="3" css={{ minW: 150 }} key={index}>
+            <Flex
+              fd="column"
+              gap="3"
+              css={{ minW: 150 }}
+              id={footerlink.title.toLowerCase().replace(" ", "-")}
+              key={index}
+            >
               <Text as="h3" fontSize="5" fontWeight="7" color="primary">
                 {footerlink.title}
               </Text>

@@ -19,6 +19,13 @@ export default function App({ Component, pageProps }: AppProps) {
           locale: "en_IE",
           url: "https://useglouse.com",
           site_name: "Glouse",
+          images: [
+            {
+              url: "https://useglouse.com/images/og-image.png",
+              width: 1200,
+              height: 630,
+            },
+          ],
         }}
         twitter={{
           handle: "@useglouse",

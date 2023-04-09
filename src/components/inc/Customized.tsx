@@ -2,10 +2,12 @@ import * as React from "react";
 import { Grid, Box, Stack, Text, Flex, Button } from "@/components/base";
 import { cardInfo } from "@/constants";
 import { motion, useInView } from "framer-motion";
+import { sendPickupMessage } from "@/utils";
 
 function Customized() {
   const ref = React.useRef<HTMLDivElement>(null);
   const inView = useInView(ref);
+
   return (
     <Box
       css={{
@@ -70,7 +72,7 @@ function Customized() {
           </Text>
           <Flex gap="2" jc={{ "@initial": "center", "@lg": "start" }}>
             <Button
-              as={motion.a}
+              as={motion.button}
               initial={{
                 opacity: 0,
                 y: 10,
@@ -80,7 +82,7 @@ function Customized() {
                 y: 0,
               }}
               transition={{ ease: "easeInOut" }}
-              href="/pricing"
+              onClick={() => sendPickupMessage()}
               variant="primary"
               size={{ "@initial": "sm", "@lg": "md" }}
             >

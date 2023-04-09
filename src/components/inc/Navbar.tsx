@@ -159,7 +159,7 @@ function Navbar() {
           </Text>
           <Text
             as={Link}
-            href="#"
+            href="#contact-us"
             css={{ display: "inline-block" }}
             legacyBehavior
           >
@@ -202,7 +202,7 @@ function Navbar() {
         <Text as={Link} href="/pricing">
           Pricing
         </Text>
-        <Text as={Link} href="#">
+        <Text as={Link} href="#contact-us">
           Contact Us
         </Text>
       </Flex>
@@ -231,12 +231,21 @@ export function GetStartedButton() {
       css={{
         pl: 6,
         py: "$2",
+        display: "flex",
         "&:hover": {
           boxShadow: "0 0 0 1px white",
         },
       }}
+      as={Link}
+      href="/pricing"
     >
-      <Flex ai="center" gap="1">
+      <Flex
+        ai="center"
+        gap="1"
+        css={{
+          color: "$white",
+        }}
+      >
         <Flex
           ai="center"
           jc="center"
@@ -245,6 +254,7 @@ export function GetStartedButton() {
           css={{
             $$size: "30px",
             size: "$$size",
+
             "& svg": {
               size: "calc($$size * 0.8) !important",
             },
