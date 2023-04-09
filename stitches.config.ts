@@ -177,6 +177,8 @@ export const {
     shadows: {},
   },
   media: {
+    //suggest from tailwind
+    xs: "(min-width: 360px)",
     sm: "(min-width: 640px)",
     md: "(min-width: 768px)",
     lg: "(min-width: 1024px)",

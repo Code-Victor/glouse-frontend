@@ -8,6 +8,11 @@ import { steps } from "@/constants";
 import { motion, useInView } from "framer-motion";
 
 function Speed() {
+  const StackRef = React.useRef<HTMLDivElement>(null);
+  const ImgRef = React.useRef<HTMLDivElement>(null);
+  const stackInView = useInView(StackRef, { amount: 0.5 });
+  const imgInView = useInView(ImgRef, { amount: 0.5 });
+
   return (
     <Box
       css={{
@@ -26,14 +31,43 @@ function Speed() {
         ai="center"
         className={speedGrid()}
       >
-        <Image
-          src={clothes}
-          alt="speed"
-          style={{
+        <Box
+          ref={ImgRef}
+          css={{
             justifySelf: "center",
+            width: "fit-conten",
           }}
-        />
-        <Stack css={{ maxW: 740 }} gap="8">
+        >
+          <motion.div
+            initial={{
+              clipPath: "polygon(0px 0px, 0% 0px, 0% 100%, 0px 100%)",
+              opacity: 0,
+            }}
+            animate={
+              imgInView
+                ? {
+                  clipPath: "polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%)",
+                  opacity: 1,
+                }
+                : {}
+            }
+            transition={{ duration: 1 }}
+          >
+            <Image
+              src={clothes}
+              alt="speed"
+              className={css({
+                width: "100%",
+                maxHeight: 450,
+                objectFit: "cover",
+                "@md": {
+                  maxHeight: "unset",
+                },
+              })()}
+            />
+          </motion.div>
+        </Box>
+        <Stack ref={StackRef} css={{ maxW: 740 }} gap="8">
           <Text
             // as="h2"
             as={motion.h2}
@@ -42,7 +76,7 @@ function Speed() {
               y: "var(---initial-y)",
               x: "var(---initial-x)",
             }}
-            whileInView={{ opacity: 1, y: 0, x: 0 }}
+            animate={stackInView ? { opacity: 1, y: 0, x: 0 } : {}}
             transition={{ duration: 1 }}
             css={{
               "$$initial-y": "100px",
@@ -68,7 +102,7 @@ function Speed() {
                 index,
                 last: index == steps.length - 1,
               };
-              return <Step {...props} key={step.title} />;
+              return <Step {...props} inView={stackInView} key={step.title} />;
             })}
           </Box>
         </Stack>
@@ -133,17 +167,16 @@ function Step({
   paragraph,
   last,
   index,
+  inView,
 }: {
   title: string;
   index: number;
   paragraph: string;
   last: boolean;
+  inView: boolean;
 }) {
-  const scrollRef = React.useRef<HTMLDivElement>(null);
-  const inView = useInView(scrollRef, { amount: 0.8 });
   return (
     <Grid
-      ref={scrollRef}
       css={{
         gridTemplateColumns: "60px 1fr",
         fontFamily: "$body",
@@ -156,7 +189,7 @@ function Step({
           as={motion.span}
           initial={{ scale: 0, opacity: 0 }}
           animate={inView && { scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.5 + index * 0.3 }}
         >
           0{index + 1}
         </Text>
@@ -165,7 +198,7 @@ function Step({
             as={motion.div}
             initial={{ flex: 0 }}
             animate={inView && { flex: 1 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
+            transition={{ duration: 1.5, delay: 0.5 + index * 0.3 }}
           />
         )}
       </Flex>
@@ -177,7 +210,7 @@ function Step({
           as={motion.h3}
           initial={{ x: "50%", opacity: 0 }}
           animate={inView && { x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.5 + index * 0.3 }}
         >
           {title}
         </Text>
@@ -185,7 +218,7 @@ function Step({
           as={motion.p}
           initial={{ opacity: 0, x: "30%" }}
           animate={inView && { opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 1 }}
+          transition={{ duration: 1, delay: 1 + index * 0.3 }}
           css={{ mb: last ? 0 : "$14" }}
         >
           {paragraph}

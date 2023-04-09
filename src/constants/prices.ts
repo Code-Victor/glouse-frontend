@@ -27,7 +27,7 @@ export const priceTable = [
   {
     service: "Wash and Iron",
     category: "english",
-    type: "jean",
+    type: "jean jacket",
     price: 300,
   },
   {
@@ -76,7 +76,7 @@ export const priceTable = [
   {
     service: "Wash and Iron",
     category: "english",
-    type: "jean",
+    type: "jean trousers",
     price: 300,
   },
 
@@ -102,7 +102,7 @@ export const priceTable = [
   {
     service: "Wash and Iron",
     category: "native",
-    type: "gown",
+    type: "native gown",
     price: 500,
   },
   {
@@ -195,7 +195,7 @@ export const priceTable = [
   {
     service: "Wash and Fold",
     category: "english",
-    type: "jean",
+    type: "jean trousers",
     price: 100,
   },
   {
@@ -250,7 +250,7 @@ export const priceTable = [
   {
     service: "Wash and Fold",
     category: "native",
-    type: "gown",
+    type: "native gown",
     price: 150,
   },
   // Iron Only -- english -- tops
@@ -296,12 +296,6 @@ export const priceTable = [
     type: "jacket",
     price: 300,
   },
-  {
-    service: "Iron Only",
-    category: "english",
-    type: "gown",
-    price: 300,
-  },
 
   // Iron Only -- english -- bottom
   {
@@ -319,7 +313,7 @@ export const priceTable = [
   {
     service: "Iron Only",
     category: "english",
-    type: "jean",
+    type: "jean jacket",
     price: 200,
   },
   {
@@ -350,7 +344,7 @@ export const priceTable = [
   {
     service: "Iron Only",
     category: "native",
-    type: "gown",
+    type: "native gown",
     price: 300,
   },
   {
@@ -369,6 +363,10 @@ export const priceTable = [
 
 export type UniqueClothes = (typeof priceTable)[number]["type"];
 export type UniqueServices = (typeof priceTable)[number]["service"];
+//           ^
+//check if "native gown" is in the type
+export const isNativeGown = (type: UniqueClothes) => type === "gown";
+
 export const uniqueClothes: Set<UniqueClothes> = new Set([
   ...priceTable.map((item) => item.type),
 ]);

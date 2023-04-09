@@ -1,9 +1,11 @@
-import React from "react";
+import * as React from "react";
 import { Grid, Box, Stack, Text, Flex, Button } from "@/components/base";
 import { cardInfo } from "@/constants";
-import Link from "next/link";
-import { CSS } from "stitches.config";
+import { motion, useInView } from "framer-motion";
+
 function Customized() {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const inView = useInView(ref);
   return (
     <Box
       css={{
@@ -28,7 +30,7 @@ function Customized() {
           },
         }}
       >
-        <Stack gap={{ "@initial": 5, "@lg": 8 }}>
+        <Stack ref={ref} gap={{ "@initial": 5, "@lg": 8 }}>
           <Text
             as="h2"
             fontSize={{ "@initial": "7", "@md": "8", "@lg": "9" }}
@@ -36,12 +38,48 @@ function Customized() {
             fontWeight={{ "@initial": "7" }}
             ta={{ "@initial": "center", "@lg": "left" }}
             color="dark"
+            css={{
+              overflow: "hidden",
+              "&>span": {
+                display: "block",
+                willChange: "transform",
+              },
+            }}
           >
-            Customize Your Laundry experience Options
+            <motion.span
+              transition={{ ease: "easeInOut", duration: 1 }}
+              viewport={{
+                root: ref,
+                amount: 0.1,
+              }}
+              animate={
+                inView
+                  ? {
+                    opacity: 1,
+                    y: 0,
+                  }
+                  : {}
+              }
+              initial={{
+                opacity: 0,
+                y: 100,
+              }}
+            >
+              Customize Your Laundry experience Options
+            </motion.span>
           </Text>
           <Flex gap="2" jc={{ "@initial": "center", "@lg": "start" }}>
             <Button
-              as={Link}
+              as={motion.a}
+              initial={{
+                opacity: 0,
+                y: 10,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{ ease: "easeInOut" }}
               href="/pricing"
               variant="primary"
               size={{ "@initial": "sm", "@lg": "md" }}
@@ -50,10 +88,19 @@ function Customized() {
             </Button>
             <Button
               variant="primary"
-              as={Link}
               href="/pricing"
               outline
               size={{ "@initial": "sm", "@lg": "md" }}
+              as={motion.a}
+              initial={{
+                opacity: 0,
+                y: 10,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{ delay: 0.2, ease: "easeInOut" }}
             >
               View All Prices
             </Button>
@@ -76,8 +123,8 @@ function Customized() {
               },
             }}
           >
-            {cardInfo.map((card) => (
-              <Card {...card} key={card.title} />
+            {cardInfo.map((card, i) => (
+              <Card {...card} no={i} key={card.title} />
             ))}
             <Box
               css={{
@@ -100,16 +147,29 @@ function Customized() {
 export default Customized;
 
 function Card({
+  no,
   title,
   description,
   icon,
 }: {
+  no: number;
   title: string;
   description: string;
   icon: React.ReactNode;
 }) {
   return (
     <Flex
+      as={motion.div}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      initial={{
+        opacity: 0,
+        y: 40,
+      }}
+      transition={{ delay: no * 0.4, ease: "easeInOut", duration: 0.5 }}
+      viewport={{ amount: 0.5, once: true }}
       gap={{ "@initial": 4, "@lg": 12 }}
       fd="column"
       ai={{ "@initial": "center", "@lg": "start" }}

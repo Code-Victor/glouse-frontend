@@ -96,6 +96,14 @@ const flexGapVariants = css({
   variants: {
     gap: createScaleVariant("space", (value) => ({
       gap: value,
+      "@supports not (gap: 1px)": {
+        ml: `-${value}`,
+        mt: `-${value}`,
+        "& > * ": {
+          ml: value,
+          mt: value,
+        },
+      },
     })),
   },
 });
@@ -103,9 +111,21 @@ const gridGapVariants = css({
   variants: {
     rowGap: createScaleVariant("space", (value) => ({
       rowGap: value,
+      "@supports not (gap: 1px)": {
+        mt: `-${value}`,
+        "& > * ": {
+          mt: value,
+        },
+      },
     })),
     columnGap: createScaleVariant("space", (value) => ({
       rowGap: value,
+      "@supports not (gap: 1px)": {
+        ml: `-${value}`,
+        "& > * ": {
+          ml: value,
+        },
+      },
     })),
   },
 });

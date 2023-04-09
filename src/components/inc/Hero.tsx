@@ -6,6 +6,7 @@ import PricesSlide from "./PricesSlide";
 import { motion } from "framer-motion";
 import { variants, transitions } from "@/constants";
 import Link from "next/link";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -118,14 +119,25 @@ const Hero = () => {
           transition={{ delay: 1, ...transitions.main }}
           css={{
             justifySelf: "center",
-            minWidth: 350,
-            maxWidth: 500,
             "$$initial-y": "100px",
             "$$initial-x": "0",
+            "@xs": { minWidth: 320, maxWidth: 500 },
             "@md": { minWidth: 450, maxWidth: 600 },
             "@lg": { maxW: 660, "$$initial-y": "0", "$$initial-x": "200px" },
+            position: "relative",
           }}
         >
+          {/* <Image
+            src={convenience}
+            alt="ultimate convenience"
+            priority
+            quality={100}
+            style={{
+              width: "100%",
+              maxWidth: "500px",
+            }}
+            fill
+          /> */}
           <DisplayImage
             src={convenience}
             alt="ultimate convenience"

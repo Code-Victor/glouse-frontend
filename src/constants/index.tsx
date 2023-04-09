@@ -9,7 +9,7 @@ import {
 } from "@/components/icons";
 import type { Variants } from "framer-motion";
 
-export const whatsappNumber = "+2347045032280";
+export const whatsappNumber = "+2348146219253";
 
 export const cardInfo = [
   {
@@ -28,7 +28,7 @@ export const cardInfo = [
     icon: <Iron />,
     title: "Iron Only",
     description:
-      " Your clothes don’t need ironing? No worries; we wash, and fold them neatly.",
+      "Your clothes don’t need ironing? No worries; we wash, and fold them neatly.",
   },
 ];
 
@@ -48,7 +48,7 @@ interface Category {
 //  in the Prices component
 export const categories: Category[] = [
   {
-    title: "English ",
+    title: "English(Wash & Iron)",
     prices: [
       {
         service: "Wash and Iron",
@@ -83,7 +83,7 @@ export const categories: Category[] = [
     ],
   },
   {
-    title: "Native ",
+    title: "Native(Wash & Iron)",
     prices: [
       {
         service: "Wash and Iron",
@@ -182,6 +182,41 @@ export const categories: Category[] = [
     ],
   },
   {
+    title: "Native(Wash & Fold)",
+    prices: [
+      {
+        service: "Wash and Fold",
+        category: "native",
+        type: "buba",
+        price: 100,
+      },
+      {
+        service: "Wash and Fold",
+        category: "native",
+        type: "buba & sokoto",
+        price: 100,
+      },
+      {
+        service: "Wash and Fold",
+        category: "native",
+        type: "skirt & blouse",
+        price: 100,
+      },
+      {
+        service: "Wash and Fold",
+        category: "native",
+        type: "blouse & wrapper",
+        price: 100,
+      },
+      {
+        service: "Wash and Fold",
+        category: "native",
+        type: "gown",
+        price: 150,
+      },
+    ],
+  },
+  {
     title: "English(Iron Only)",
     prices: [
       {
@@ -216,28 +251,46 @@ export const categories: Category[] = [
       },
     ],
   },
+  {
+    title: "Native(Iron Only)",
+    prices: [
+      {
+        service: "Iron Only",
+        category: "native",
+        type: "gown",
+        price: 300,
+      },
+      {
+        service: "Iron Only",
+        category: "native",
+        type: "buba & sokoto",
+        price: 300,
+      },
+      {
+        service: "Iron Only",
+        category: "native",
+        type: "buba",
+        price: 200,
+      },
+    ],
+  },
 ];
 
 export const socials = [
   {
     icon: <InstagramIcon />,
     name: "Instagram",
-    link: "https://www.instagram.com/glouse.ng/",
+    link: "https://instagram.com/useglouse",
   },
   {
     icon: <FacebookIcon />,
     name: "Facebook",
-    link: "",
+    link: "https://www.facebook.com/useglouse",
   },
   {
     icon: <TwitterIcon />,
     name: "Twitter",
-    link: "https://twitter.com/glouseng",
-  },
-  {
-    icon: <TitTokIcon />,
-    name: "TitTok",
-    link: "",
+    link: "https://twitter.com/useglouse",
   },
 ];
 
@@ -273,6 +326,20 @@ export const footerLinks = [
       {
         title: "Convenience",
         link: "#",
+      },
+    ],
+  },
+  {
+    title: "Contact Us",
+    links: [
+      {
+        title: "+" + whatsappNumber.replace("+", "").replace(/(.{3})/g, "$1 "),
+        //give a space to the whatsapp number after ever 3 chars
+        link: "https://wa.me/" + whatsappNumber,
+      },
+      {
+        title: "glouse.ng@gmail.com",
+        link: "mailto:glouse.ng@gmail.com",
       },
     ],
   },

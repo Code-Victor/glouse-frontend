@@ -1,6 +1,27 @@
 import React from "react";
 import { Box, Flex, Text } from "../base";
 import { GetStartedButton } from "./Navbar";
+import { motion } from "framer-motion";
+
+const ctaText = "Save Money, Save Time";
+
+const sentence = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      staggerChildren: 0.08,
+    },
+  },
+};
+const letter = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
 
 function CTA() {
   return (
@@ -29,12 +50,19 @@ function CTA() {
       >
         <Text
           ta="center"
-          as="h1"
+          as={motion.h1}
+          variants={sentence}
+          initial="hidden"
+          whileInView="visible"
           fontSize={{ "@initial": "7", "@sm": "8", "@lg": "11" }}
           fontFamily="heading"
           fontWeight={{ "@initial": "7" }}
         >
-          Save Money, Save Time
+          {ctaText.split("").map((char, index) => (
+            <motion.span key={index} variants={letter}>
+              {char}
+            </motion.span>
+          ))}
         </Text>
         <Text as="p" ta="center">
           From scheduling pickups and deliveries to tracking your order in

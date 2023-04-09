@@ -32,7 +32,7 @@ function Footer() {
           >
             The ultimate convenience; Spend zero time on laundry, more on life!
           </Text>
-          <Flex gap="3" ai="center">
+          <Flex gap="5" ai="center">
             {socials.map((social, index) => {
               return (
                 <Box as="a" href={social.link} target="_blank" key={index}>
@@ -79,17 +79,6 @@ function Footer() {
             </Flex>
           );
         })}
-        <Flex fd="column" gap="3" css={{ minW: 150 }}>
-          <Text as="h3" fontSize="5" fontWeight="7" color="primary">
-            Contact Us
-          </Text>
-          <Flex gap="2" ai="center">
-            <Text>+234 810 123 456 7</Text>
-          </Flex>
-          <Flex gap="2" ai="center">
-            <Text>support@glouse.com</Text>
-          </Flex>
-        </Flex>
       </Flex>
       <Box
         css={{

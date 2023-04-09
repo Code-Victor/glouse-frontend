@@ -3,7 +3,36 @@ import { Button, Flex, Box, Text } from "../base";
 import { CallIcon, GlouseLogo, Hamburger } from "../icons";
 import Link from "next/link";
 import { styled } from "stitches.config";
-import { useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+
+const navLinks = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+      delayChildren: 0.2,
+      staggerChildren: 0.1,
+      ease: "easeInOut",
+    },
+  },
+};
+const navlink = {
+  hidden: {
+    opacity: 0,
+    y: -40,
+    transition: {
+      ease: "easeInOut",
+    },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeInOut",
+    },
+  },
+};
 
 function Navbar() {
   const { scrollY } = useScroll();
@@ -56,18 +85,20 @@ function Navbar() {
           transition: "all 0.5s ease-in-out",
         }}
       >
-        <GlouseLogo
-          css={{
-            width: 80,
-            transition: "all 0.6s ease-in-out",
-            "& path": {
-              fill: isOpen ? "$white" : "$primary",
-            },
-            "@md": {
-              width: 140,
-            },
-          }}
-        />
+        <Link href="/">
+          <GlouseLogo
+            css={{
+              width: 80,
+              transition: "all 0.6s ease-in-out",
+              "& path": {
+                fill: isOpen ? "$white" : "$primary",
+              },
+              "@md": {
+                width: 140,
+              },
+            }}
+          />
+        </Link>
         <NavButton
           css={{
             position: "relative",
@@ -99,22 +130,44 @@ function Navbar() {
             display: "none",
             a: {
               color: "$dark",
+              cursor: "pointer",
             },
             "@md": {
               display: "flex",
             },
           }}
+          as={motion.div}
+          variants={navLinks}
+          initial="hidden"
+          animate="visible"
         >
-          <Text as={Link} href="/">
-            Home
+          <Text
+            as={Link}
+            href="/"
+            css={{ display: "inline-block" }}
+            legacyBehavior
+          >
+            <motion.a variants={navlink}>Home</motion.a>
           </Text>
-          <Text as={Link} href="/pricing">
-            Pricing
+          <Text
+            as={Link}
+            href="/pricing"
+            css={{ display: "inline-block" }}
+            legacyBehavior
+          >
+            <motion.a variants={navlink}>Pricing</motion.a>
           </Text>
-          <Text as={Link} href="#">
-            Contact Us
+          <Text
+            as={Link}
+            href="#"
+            css={{ display: "inline-block" }}
+            legacyBehavior
+          >
+            <motion.a variants={navlink}>Contact Us</motion.a>
           </Text>
-          <GetStartedButton />
+          <motion.div variants={navlink}>
+            <GetStartedButton />
+          </motion.div>
         </Flex>
       </Flex>
       <Flex
@@ -133,6 +186,7 @@ function Navbar() {
           transition: "all 0.5s ease-in-out",
           "& a": {
             color: "$white",
+            cursor: "pointer",
           },
           "@md": {
             display: "none",

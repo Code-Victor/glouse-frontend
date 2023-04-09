@@ -31,7 +31,8 @@ function BareDisplayImage({
           $$offset: "7px",
           content: "''",
           position: "absolute",
-          width: "$$size",
+          width: "$$width",
+          maxWidth: "$$maxWidth",
           aspectRatio: "1/1",
           bg: "$$color",
           zIndex: -1,
@@ -49,7 +50,8 @@ const DisplayImage = styled(BareDisplayImage, {
   position: "relative",
   isolation: "isolate",
   "& > img": {
-    width: "$$size",
+    width: "$$width",
+    maxWidth: "$$maxWidth",
     height: "unset",
     aspectRatio: "1/1",
     objectFit: "cover",
@@ -57,10 +59,13 @@ const DisplayImage = styled(BareDisplayImage, {
   variants: {
     size: {
       md: {
-        $$size: "min(450px,80%)",
+        $$width: "80%",
+        $$maxWidth: "450px",
+        //give a shorthand for minWidth and width
       },
       lg: {
-        $$size: "min(100%,450px)",
+        $$width: "100%",
+        $$maxWidth: "600px",
       },
     },
     color: {
