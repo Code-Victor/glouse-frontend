@@ -32,7 +32,7 @@ const PricingTable = ({
       }--₦${price ? price * quantity : "no price"}`;
     });
     orderStringList = [
-      "*Your Order*",
+      "*My Order*",
       ...orderStringList,
       `*Total Price*: ₦${totalPrice}`,
     ];
