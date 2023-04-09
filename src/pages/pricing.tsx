@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import Image from "next/image";
 import { Box, Text, Flex } from "@/components/base";
 import { NextSeo } from "next-seo";
