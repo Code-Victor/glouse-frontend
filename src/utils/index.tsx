@@ -13,6 +13,12 @@ export function sendMessage(message: string) {
     `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
   );
 }
+
+export const sendPickupMessage = sendMessage.bind(
+  this,
+  "Hello, I’ll like to request a laundry pickup."
+);
+
 export function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
