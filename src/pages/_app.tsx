@@ -21,9 +21,10 @@ export default function App({ Component, pageProps }: AppProps) {
           site_name: "Glouse",
           images: [
             {
-              url: "https://useglouse.com/images/og-image.png",
+              url: "https://dev.d1r27uy4osd5gf.amplifyapp.com/images/og-image.png",
               width: 1200,
               height: 630,
+              alt: "Glouse banner image",
             },
           ],
         }}
