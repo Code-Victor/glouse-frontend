@@ -7,6 +7,7 @@ import {
   priceTable,
   UniqueServices,
 } from "@/constants/prices";
+import { useCart } from "@/contexts/cart";
 
 export interface TableRow {
   clothe: UniqueClothes;
@@ -16,64 +17,9 @@ export interface TableRow {
 }
 
 const initialTable: TableRow[] = [];
-export type ACTIONTYPE =
-  | { type: "increment" | "decrement"; clothe: UniqueClothes }
-  | { type: "service"; clothe: UniqueClothes; service: UniqueServices }
-  | { type: "update"; clothe: UniqueClothes; data: TableRow[] };
 
-function pricingReducer(state: TableRow[], action: ACTIONTYPE): TableRow[] {
-  const currentClothe = state.find((p) => p.clothe === action.clothe);
-
-  if (currentClothe) {
-    switch (action.type) {
-    case "update":
-      return action.data;
-      break;
-    case "increment":
-      return state.map((p) => {
-        if (p.clothe === action.clothe) {
-          return {
-            ...p,
-            quantity: p.quantity + 1,
-          };
-        }
-        return p;
-      });
-      break;
-    case "decrement":
-      return state.map((p) => {
-        if (p.clothe === action.clothe) {
-          return {
-            ...p,
-            quantity: p.quantity - 1,
-          };
-        }
-        return p;
-      });
-      break;
-    case "service":
-      return state.map((p) => {
-        if (p.clothe === action.clothe) {
-          return {
-            ...p,
-            selectedService: action.service,
-          };
-        }
-        return p;
-      });
-      break;
-    default:
-      throw new Error();
-    }
-  } else {
-    if (action.type === "update") {
-      return action.data;
-    }
-    return state;
-  }
-}
 const PriceCaculator = () => {
-  const [tableRow, dispatch] = React.useReducer(pricingReducer, initialTable);
+  const { clothes: tableRow, dispatch } = useCart();
 
   return (
     <Box
@@ -147,7 +93,7 @@ const PriceCaculator = () => {
           );
         })}
       </Flex>
-      <PricingTable clothes={tableRow} dispatch={dispatch} />
+      <PricingTable />
     </Box>
   );
 };

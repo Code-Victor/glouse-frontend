@@ -15,7 +15,7 @@ import relax from "@public/images/relax.png";
 
 export default function Home() {
   return (
-    <>
+    <Box css={{ overflow: "hidden" }}>
       <Hero />
       <Speed />
       <Section
@@ -65,6 +65,6 @@ export default function Home() {
       </Section>
       <Customized />
       <CTA />
-    </>
+    </Box>
   );
 }

@@ -1,9 +1,10 @@
 import React from "react";
-import { Button, Flex, Box, Text } from "../base";
+import { Button, Flex, Box, Text, Badge } from "../base";
 import { CallIcon, GlouseLogo, Hamburger } from "../icons";
 import Link from "next/link";
 import { styled } from "stitches.config";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useCart } from "@/contexts/cart";
 
 const navLinks = {
   hidden: { opacity: 1 },
@@ -40,6 +41,7 @@ function Navbar() {
   const [scrolledUp, setScrolledUp] = React.useState(false);
   const [isTop, setIsTop] = React.useState(true);
   const [isOpen, setIsOpen] = React.useState(false);
+  const { clothes } = useCart();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest === 0) setIsTop(true);
@@ -155,7 +157,26 @@ function Navbar() {
             css={{ display: "inline-block" }}
             legacyBehavior
           >
-            <motion.a variants={navlink}>Pricing</motion.a>
+            <motion.a
+              variants={navlink}
+              style={{
+                position: "relative",
+              }}
+            >
+              <Badge
+                ping
+                hidden={clothes.length === 0}
+                css={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  transform: "translate(50%, -50%)",
+                }}
+              >
+                {clothes.length}
+              </Badge>
+              Pricing
+            </motion.a>
           </Text>
           <Text
             as={Link}
