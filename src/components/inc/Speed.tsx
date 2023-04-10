@@ -45,12 +45,10 @@ function Speed() {
               opacity: 0,
             }}
             animate={
-              imgInView
-                ? {
-                  clipPath: "polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%)",
-                  opacity: 1,
-                }
-                : {}
+              imgInView && {
+                clipPath: "polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%)",
+                opacity: 1,
+              }
             }
             transition={{ duration: 1 }}
           >
@@ -77,7 +75,7 @@ function Speed() {
               y: "var(---initial-y)",
               x: "var(---initial-x)",
             }}
-            animate={stackInView ? { opacity: 1, y: 0, x: 0 } : {}}
+            animate={stackInView && { opacity: 1, y: 0, x: 0 }}
             transition={{ duration: 1 }}
             css={{
               "$$initial-y": "100px",

@@ -370,6 +370,7 @@ const globalStyles = globalCss({
   },
   html: {
     scrollBehavior: "smooth !important",
+    scrollPaddingTop: 20,
   },
 });
 globalStyles();

@@ -3,24 +3,16 @@ import Select from "@/components/inc/Select";
 import { UniqueClothes, priceTable, UniqueServices } from "@/constants/prices";
 import { deliveryFee } from "@/constants";
 import { Box, Text, Flex, Button } from "@/components/base";
-import { ACTIONTYPE, TableRow } from "./PriceCaculator";
 import { styled } from "stitches.config";
 import { sendMessage, pp } from "@/utils";
+import { useInView, AnimatePresence, motion } from "framer-motion";
+import { useCart } from "@/contexts/cart";
 
-interface PriceItem {
-  clothe: UniqueClothes;
-  selectedService?: UniqueServices;
-  availableServices: UniqueServices[];
-  quantity: number;
-}
+const PricingTable = () => {
+  const { clothes, dispatch } = useCart();
 
-const PricingTable = ({
-  clothes,
-  dispatch,
-}: {
-  clothes: TableRow[];
-  dispatch: React.Dispatch<ACTIONTYPE>;
-}) => {
+  const orderSummaryRef = React.useRef<HTMLDivElement>(null);
+  const orderSummaryInView = useInView(orderSummaryRef);
   //generate an order string from the clothes variable
   function generateOrderString() {
     let orderStringList = clothes.map((clothe, index) => {
@@ -165,6 +157,8 @@ const PricingTable = ({
               borderTop: "1px solid black",
             },
           }}
+          id="order-summary"
+          ref={orderSummaryRef}
         >
           <Flex
             ai="center"
@@ -369,15 +363,50 @@ const PricingTable = ({
           </tr>
         </tbody>
       </Box>
-
-      <Button
-        disabled={clothes.length === 0}
-        onClick={() => sendMessage(generateOrderString())}
-        fullWidth
-        radius="square"
+      <Flex
+        gap="2"
+        css={{
+          position: "sticky",
+          bottom: 0,
+          py: " $2",
+          bg: "$white",
+        }}
       >
-        Order Now
-      </Button>
+        <Button
+          disabled={clothes.length === 0}
+          onClick={() => {
+            dispatch({ type: "init", data: [] });
+            sendMessage(generateOrderString());
+          }}
+          fullWidth
+          radius="square"
+        >
+          Order Now
+        </Button>
+        {!orderSummaryInView && (
+          <Text
+            as="a"
+            href="#order-summary"
+            css={{
+              display: "inline-block",
+              width: "100%",
+              textDecoration: "none",
+              "@md": {
+                display: "none",
+              },
+            }}
+          >
+            <Button
+              disabled={clothes.length === 0}
+              fullWidth
+              radius="square"
+              outline
+            >
+              Order Summary
+            </Button>
+          </Text>
+        )}
+      </Flex>
     </Box>
   );
 };
