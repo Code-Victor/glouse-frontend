@@ -7,6 +7,7 @@ import Link from "next/link";
 function Footer() {
   return (
     <Grid
+      as="footer"
       gap="3"
       columns={{ "@initial": 1, "@md": 6 }}
       py="16"
