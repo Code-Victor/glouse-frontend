@@ -16,7 +16,7 @@ const sentence = {
   },
 };
 const letter = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -57,19 +57,64 @@ function CTA() {
           fontSize={{ "@initial": "7", "@sm": "8", "@lg": "11" }}
           fontFamily="heading"
           fontWeight={{ "@initial": "7" }}
+          viewport={{
+            once: true,
+          }}
         >
           {ctaText.split("").map((char, index) => (
-            <motion.span key={index} variants={letter}>
+            <motion.span
+              key={index}
+              variants={letter}
+              style={{ display: char === " " ? "inline" : "inline-block" }}
+            >
               {char}
             </motion.span>
           ))}
         </Text>
-        <Text as="p" ta="center">
+        <Text
+          as={motion.p}
+          initial={{
+            y: 20,
+            opacity: 0,
+          }}
+          whileInView={{
+            y: 0,
+            opacity: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            delay: 2,
+            duration: 0.4,
+            ease: "easeInOut",
+          }}
+          ta="center"
+        >
           From scheduling pickups and deliveries to tracking your order in
           real-time, our service offers a level of convenience that allows you
           to focus on the things that truly matter.
         </Text>
-        <GetStartedButton />
+        <motion.div
+          initial={{
+            y: 20,
+            opacity: 0,
+          }}
+          whileInView={{
+            y: 0,
+            opacity: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            delay: 2.5,
+            duration: 0.4,
+            ease: "easeInOut",
+          }}
+        >
+          <GetStartedButton />
+        </motion.div>
         <Box
           as="img"
           css={{

@@ -75,13 +75,11 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
           transition={transitions.main}
           as={motion.div}
           animate={
-            inView
-              ? {
-                opacity: 1,
-                y: 0,
-                x: 0,
-              }
-              : {}
+            inView && {
+              opacity: 1,
+              y: 0,
+              x: 0,
+            }
           }
           initial={{
             opacity: 0,
@@ -95,13 +93,11 @@ function Section({ bg, position, children, image, alt }: SectionProps) {
         <Box
           as={motion.div}
           animate={
-            inView
-              ? {
-                opacity: 1,
-                x: 0,
-                y: 0,
-              }
-              : {}
+            inView && {
+              opacity: 1,
+              x: 0,
+              y: 0,
+            }
           }
           initial={{
             opacity: 0,

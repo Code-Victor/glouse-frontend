@@ -49,6 +49,9 @@ const Hero = () => {
             y: 0,
             x: 0,
           }}
+          viewport={{
+            once: true,
+          }}
           initial={{
             opacity: 0,
             y: "var(---initial-y)",
@@ -107,6 +110,9 @@ const Hero = () => {
             opacity: 1,
             x: 0,
             y: 0,
+          }}
+          viewport={{
+            once: true,
           }}
           initial={{
             opacity: 0,

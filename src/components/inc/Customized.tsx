@@ -3,6 +3,7 @@ import { Grid, Box, Stack, Text, Flex, Button } from "@/components/base";
 import { cardInfo } from "@/constants";
 import { motion, useInView } from "framer-motion";
 import { sendPickupMessage } from "@/utils";
+import Link from "next/link";
 
 function Customized() {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -55,12 +56,10 @@ function Customized() {
                 amount: 0.1,
               }}
               animate={
-                inView
-                  ? {
-                    opacity: 1,
-                    y: 0,
-                  }
-                  : {}
+                inView && {
+                  opacity: 1,
+                  y: 0,
+                }
               }
               initial={{
                 opacity: 0,
@@ -70,18 +69,24 @@ function Customized() {
               Customize Your Laundry experience Options
             </motion.span>
           </Text>
-          <Flex gap="2" jc={{ "@initial": "center", "@lg": "start" }}>
+          <Flex
+            as={motion.div}
+            initial={{
+              y: 10,
+              opacity: 0,
+            }}
+            whileInView={{
+              y: 0,
+              opacity: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{ ease: "easeInOut" }}
+            gap="2"
+            jc={{ "@initial": "center", "@lg": "start" }}
+          >
             <Button
-              as={motion.button}
-              initial={{
-                opacity: 0,
-                y: 10,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{ ease: "easeInOut" }}
               onClick={() => sendPickupMessage()}
               variant="primary"
               size={{ "@initial": "sm", "@lg": "md" }}
@@ -91,18 +96,9 @@ function Customized() {
             <Button
               variant="primary"
               href="/pricing"
+              as={Link}
               outline
               size={{ "@initial": "sm", "@lg": "md" }}
-              as={motion.a}
-              initial={{
-                opacity: 0,
-                y: 10,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{ delay: 0.2, ease: "easeInOut" }}
             >
               View All Prices
             </Button>
