@@ -23,7 +23,7 @@ export type ACTIONTYPE =
 
 function pricingReducer(state: TableRow[], action: ACTIONTYPE): TableRow[] {
   if (action.type === "init") {
-    return action.data;
+    return set(action.data);
   }
   const currentClothe = state.find((p) => p.clothe === action.clothe);
 

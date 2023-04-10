@@ -163,18 +163,19 @@ function Navbar() {
                 position: "relative",
               }}
             >
-              <Badge
-                ping
-                hidden={clothes.length === 0}
-                css={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  transform: "translate(50%, -50%)",
-                }}
-              >
-                {clothes.length}
-              </Badge>
+              {!(clothes.length === 0) && (
+                <Badge
+                  ping
+                  css={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    transform: "translate(50%, -50%)",
+                  }}
+                >
+                  {clothes.length}
+                </Badge>
+              )}
               Pricing
             </motion.a>
           </Text>
@@ -220,7 +221,21 @@ function Navbar() {
         <Text as={Link} href="/">
           Home
         </Text>
-        <Text as={Link} href="/pricing">
+        <Text as={Link} css={{ position: "relative" }} href="/pricing">
+          {!(clothes.length === 0) && (
+            <Badge
+              color="white"
+              ping
+              css={{
+                position: "absolute",
+                top: 0,
+                left: 30,
+                transform: "translate(50%, -50%)",
+              }}
+            >
+              {clothes.length}
+            </Badge>
+          )}
           Pricing
         </Text>
         <Text as={Link} href="#contact-us">

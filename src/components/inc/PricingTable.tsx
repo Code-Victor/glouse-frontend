@@ -374,7 +374,10 @@ const PricingTable = () => {
       >
         <Button
           disabled={clothes.length === 0}
-          onClick={() => sendMessage(generateOrderString())}
+          onClick={() => {
+            dispatch({ type: "init", data: [] });
+            sendMessage(generateOrderString());
+          }}
           fullWidth
           radius="square"
         >
@@ -388,6 +391,9 @@ const PricingTable = () => {
               display: "inline-block",
               width: "100%",
               textDecoration: "none",
+              "@md": {
+                display: "none",
+              },
             }}
           >
             <Button
@@ -395,11 +401,6 @@ const PricingTable = () => {
               fullWidth
               radius="square"
               outline
-              css={{
-                "@md": {
-                  display: "none",
-                },
-              }}
             >
               Order Summary
             </Button>

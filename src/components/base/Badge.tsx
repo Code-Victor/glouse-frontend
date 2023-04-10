@@ -18,11 +18,15 @@ const ping = keyframes({
 
 const Badge = styled("div", {
   // Reset
-  boxSizing: "border-box",
-  color: "$white",
-  bg: "$primary",
+  //   boxSizing: "content-box",
+
+  color: "$$text",
+  bg: "$$bg",
   position: "relative",
   br: "$pill",
+  display: "grid",
+  placeItems: "center",
+  textAlign: "center",
   "&::before": {
     content: "''",
     position: "absolute",
@@ -32,22 +36,32 @@ const Badge = styled("div", {
     height: "100%",
     animation: "$$animation",
     zIndex: -1,
-    bg: "$primary",
+    bg: "$$bg",
     br: "$pill",
   },
   variants: {
     size: {
       sm: {
-        px: "$1",
-        fontSize: "$3",
+        size: "$5",
+        fontSize: "$2",
       },
       md: {
-        pd: "$2",
-        fontSize: "$4",
+        size: "$6",
+        fontSize: "$3",
       },
       lg: {
-        pd: "$3",
-        fontSize: "$5",
+        size: "$7",
+        fontSize: "$4",
+      },
+    },
+    color: {
+      primary: {
+        $$text: "$colors$white",
+        $$bg: "$colors$primary",
+      },
+      white: {
+        $$bg: "$colors$white",
+        $$text: "$colors$primary",
       },
     },
     ping: {
@@ -56,6 +70,7 @@ const Badge = styled("div", {
   },
   defaultVariants: {
     size: "sm",
+    color: "primary",
   },
 });
 
