@@ -100,6 +100,14 @@ function Navbar() {
               },
             }}
           />
+          <Text
+            css={{
+              include: "screenReaderOnly",
+            }}
+          >
+            {" "}
+            Glouse Logo
+          </Text>
         </Link>
         <NavButton
           css={{
@@ -122,7 +130,22 @@ function Navbar() {
             }}
           ></Box>
           <Hamburger />
-          <Text css={{ include: "screenReaderOnly" }}>Open menu</Text>
+          {!(clothes.length === 0 || isOpen) && (
+            <Badge
+              ping
+              css={{
+                position: "absolute",
+                top: 0,
+                right: 0,
+                transform: "translate(50%, -50%)",
+              }}
+            >
+              {clothes.length}
+            </Badge>
+          )}
+          <Text css={{ include: "screenReaderOnly" }}>
+            {isOpen ? "Close Menu" : "Open menu"}
+          </Text>
         </NavButton>
         {/* Destop Nav */}
         <Flex
@@ -143,24 +166,17 @@ function Navbar() {
           initial="hidden"
           animate="visible"
         >
-          <Text
-            as={Link}
-            href="/"
-            css={{ display: "inline-block" }}
-            legacyBehavior
-          >
-            <motion.a variants={navlink}>Home</motion.a>
+          <Text as={Link} href="/" css={{ display: "inline-block" }}>
+            <motion.span style={{ display: "inline-block" }} variants={navlink}>
+              Home
+            </motion.span>
           </Text>
-          <Text
-            as={Link}
-            href="/pricing"
-            css={{ display: "inline-block" }}
-            legacyBehavior
-          >
-            <motion.a
+          <Text as={Link} href="/pricing" css={{ display: "inline-block" }}>
+            <motion.span
               variants={navlink}
               style={{
                 position: "relative",
+                display: "inline-block",
               }}
             >
               {!(clothes.length === 0) && (
@@ -177,15 +193,12 @@ function Navbar() {
                 </Badge>
               )}
               Pricing
-            </motion.a>
+            </motion.span>
           </Text>
-          <Text
-            as={Link}
-            href="#contact-us"
-            css={{ display: "inline-block" }}
-            legacyBehavior
-          >
-            <motion.a variants={navlink}>Contact Us</motion.a>
+          <Text as={Link} href="#contact-us" css={{ display: "inline-block" }}>
+            <motion.span style={{ display: "inline-block" }} variants={navlink}>
+              Contact Us
+            </motion.span>
           </Text>
           <motion.div variants={navlink}>
             <GetStartedButton />

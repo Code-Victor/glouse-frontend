@@ -15,7 +15,7 @@ import relax from "@public/images/relax.png";
 
 export default function Home() {
   return (
-    <Box css={{ overflow: "hidden" }}>
+    <Box as="main" css={{ overflow: "hidden" }}>
       <Hero />
       <Speed />
       <Section

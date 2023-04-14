@@ -24,7 +24,17 @@ function Footer() {
         }}
       >
         <Stack gap="4">
-          <GlouseLogo />
+          <Box>
+            <GlouseLogo />
+            <Text
+              css={{
+                include: "screenReaderOnly",
+              }}
+            >
+              {" "}
+              Glouse Logo
+            </Text>
+          </Box>
           <Text
             as="p"
             css={{
@@ -67,7 +77,7 @@ function Footer() {
               id={footerlink.title.toLowerCase().replace(" ", "-")}
               key={index}
             >
-              <Text as="h3" fontSize="5" fontWeight="7" color="primary">
+              <Text as="h1" fontSize="5" fontWeight="7" color="primary">
                 {footerlink.title}
               </Text>
               {footerlink.links.map((link, index) => {
