@@ -6,7 +6,6 @@ import clothes from "@public/images/clothes.png";
 import { styled, css } from "stitches.config";
 import { steps } from "@/constants";
 import { motion, useInView } from "framer-motion";
-import { sendPickupMessage } from "@/utils";
 
 function Speed() {
   const StackRef = React.useRef<HTMLDivElement>(null);
@@ -107,7 +106,8 @@ function Speed() {
         </Stack>
         <Flex ai="center" jc="center" py="4" css={{ width: "100%" }}>
           <Button
-            onClick={() => sendPickupMessage()}
+            href="/pricing"
+            as={Link}
             size={{ "@initial": "sm", "@lg": "md" }}
           >
             Request Pickup

@@ -2,7 +2,6 @@ import * as React from "react";
 import { Grid, Box, Stack, Text, Flex, Button } from "@/components/base";
 import { cardInfo } from "@/constants";
 import { motion, useInView } from "framer-motion";
-import { sendPickupMessage } from "@/utils";
 import Link from "next/link";
 
 function Customized() {
@@ -87,7 +86,8 @@ function Customized() {
             jc={{ "@initial": "center", "@lg": "start" }}
           >
             <Button
-              onClick={() => sendPickupMessage()}
+              href="/pricing"
+              as={Link}
               variant="primary"
               size={{ "@initial": "sm", "@lg": "md" }}
             >

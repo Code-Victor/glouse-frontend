@@ -5,7 +5,6 @@ import convenience from "@public/images/convenience.png";
 import PricesSlide from "./PricesSlide";
 import { motion } from "framer-motion";
 import { variants, transitions } from "@/constants";
-import { sendPickupMessage } from "@/utils";
 
 const Hero = () => {
   return (
@@ -88,7 +87,8 @@ const Hero = () => {
             <Button
               variant="primary"
               size={{ "@initial": "sm", "@lg": "md" }}
-              onClick={() => sendPickupMessage()}
+              href="/pricing"
+              as={Link}
             >
               Request pickup
             </Button>
@@ -131,17 +131,6 @@ const Hero = () => {
             position: "relative",
           }}
         >
-          {/* <Image
-            src={convenience}
-            alt="ultimate convenience"
-            priority
-            quality={100}
-            style={{
-              width: "100%",
-              maxWidth: "500px",
-            }}
-            fill
-          /> */}
           <DisplayImage
             src={convenience}
             alt="ultimate convenience"
