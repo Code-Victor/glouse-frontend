@@ -14,10 +14,6 @@ export function sendMessage(message: string) {
   );
 }
 
-export const sendPickupMessage = sendMessage.bind(
-  this,
-  "Hello, I’ll like to request a laundry pickup."
-);
 /**
  * returns a number with commas(pretty print)
  * @param  {number}  number to be pretty printed
