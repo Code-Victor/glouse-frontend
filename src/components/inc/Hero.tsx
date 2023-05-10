@@ -5,6 +5,7 @@ import convenience from "@public/images/convenience.png";
 import PricesSlide from "./PricesSlide";
 import { motion } from "framer-motion";
 import { variants, transitions } from "@/constants";
+import Link from "next/link";
 
 const Hero = () => {
   return (
