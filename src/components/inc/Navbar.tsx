@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Flex, Box, Text, Badge } from "../base";
+import { Button, Flex, Box, Text, Badge, Grid } from "../base";
 import { CallIcon, GlouseLogo, Hamburger } from "../icons";
 import Link from "next/link";
 import { styled } from "stitches.config";
@@ -205,56 +205,69 @@ function Navbar() {
           </motion.div>
         </Flex>
       </Flex>
-      <Flex
-        gap="4"
-        fd="column"
+      <Grid
         css={{
-          display: "flex",
-          "@supports not (scale: 50)": {
-            bg: isOpen ? "$primary" : "white",
-          },
-          px: "$4",
-          py: isOpen ? "$2" : 0,
+          gridTemplateRows: isOpen ? "1fr" : "0fr",
+          transition: "grid-template-rows 0.6s ease-in-out",
           width: "100%",
-          color: "$white",
-          height: isOpen ? "auto" : 0,
-          transition: "all 0.5s ease-in-out",
-          "& a": {
-            color: "$white",
-            cursor: "pointer",
-          },
-          "@md": {
-            display: "none",
-          },
         }}
-        px="5"
-        container
-        mx="auto"
       >
-        <Text as={Link} href="/">
-          Home
-        </Text>
-        <Text as={Link} css={{ position: "relative" }} href="/pricing">
-          {!(clothes.length === 0) && (
-            <Badge
-              color="white"
-              ping
-              css={{
-                position: "absolute",
-                top: 0,
-                left: 30,
-                transform: "translate(50%, -50%)",
-              }}
-            >
-              {clothes.length}
-            </Badge>
-          )}
-          Pricing
-        </Text>
-        <Text as={Link} href="#contact-us">
-          Contact Us
-        </Text>
-      </Flex>
+        <Flex
+          gap="4"
+          fd="column"
+          css={{
+            display: "flex",
+            overflow: "hidden",
+            "@supports not (scale: 50)": {
+              bg: isOpen ? "$primary" : "white",
+            },
+            px: "$4",
+            pb: isOpen ? "$4" : 0,
+            width: "100%",
+            color: "$white",
+            transition: "all 0.5s ease-in-out",
+            "& a": {
+              color: "$white",
+              cursor: "pointer",
+            },
+            "@md": {
+              display: "none",
+            },
+          }}
+          px="5"
+          container
+          mx="auto"
+        >
+          <Text as={Link} href="/" onClick={() => setIsOpen(false)}>
+            Home
+          </Text>
+          <Text
+            as={Link}
+            css={{ position: "relative" }}
+            href="/pricing"
+            onClick={() => setIsOpen(false)}
+          >
+            {!(clothes.length === 0) && (
+              <Badge
+                color="white"
+                ping
+                css={{
+                  position: "absolute",
+                  top: 0,
+                  left: 30,
+                  transform: "translate(50%, -50%)",
+                }}
+              >
+                {clothes.length}
+              </Badge>
+            )}
+            Pricing
+          </Text>
+          <Text as={Link} href="#contact-us" onClick={() => setIsOpen(false)}>
+            Contact Us
+          </Text>
+        </Flex>
+      </Grid>
     </Flex>
   );
 }
