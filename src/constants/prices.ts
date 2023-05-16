@@ -42,6 +42,12 @@ export const priceTable = [
     type: "3-piece suit",
     price: 1000,
   },
+  {
+    service: "Wash and Iron",
+    category: "english",
+    type: "t-shirt",
+    price: 250,
+  },
   // Wash and Iron -- english -- bottom
   {
     service: "Wash and Iron",
@@ -79,7 +85,12 @@ export const priceTable = [
     type: "jean trousers",
     price: 300,
   },
-
+  {
+    service: "Wash and Iron",
+    category: "english",
+    type: "shorts / short skirt",
+    price: 200,
+  },
   // Wash and Iron -- native
   {
     service: "Wash and Iron",
@@ -178,6 +189,12 @@ export const priceTable = [
     category: "english",
     type: "tracksuit",
     price: 150,
+  },
+  {
+    service: "Wash and Fold",
+    category: "english",
+    type: "palazzo",
+    price: 100,
   },
   // Wash and Fold -- english -- bottom
   {
@@ -302,7 +319,24 @@ export const priceTable = [
     type: "3-piece suit",
     price: 500,
   },
-
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "palazzo",
+    price: 200,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "jean trousers",
+    price: 200,
+  },
+  {
+    service: "Iron Only",
+    category: "english",
+    type: "jacket/Blazer",
+    price: 300,
+  },
   // Iron Only -- english -- bottom
   {
     service: "Iron Only",
