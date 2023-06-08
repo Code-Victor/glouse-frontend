@@ -27,7 +27,7 @@ const PricingTable = () => {
     orderStringList = [
       "*My Order*",
       ...orderStringList,
-      "Delivery Fee: ₦250",
+      `Delivery Fee: ₦${deliveryFee}`,
       `*Total Price*: ₦${pp(total)}`,
     ];
     const orderString = orderStringList.join("\n\n");
