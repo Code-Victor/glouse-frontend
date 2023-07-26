@@ -14,9 +14,10 @@ const Hero = () => {
         css={{
           mt: "$20",
           mb: "$10",
-          "@lg": {
-            height: "65vh",
-            maxH: 950,
+          "@md": {
+            height: "80vh",
+            maxH: 1280,
+            overflow: "hidden",
           },
         }}
         fd="column"
