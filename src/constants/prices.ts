@@ -164,7 +164,7 @@ export const priceTable = [
     service: "Wash and Fold",
     category: "english",
     type: "shirt",
-    price: 70,
+    price: 100,
   },
   {
     service: "Wash and Fold",
@@ -201,7 +201,7 @@ export const priceTable = [
     service: "Wash and Fold",
     category: "english",
     type: "shorts / short skirt",
-    price: 50,
+    price: 70,
   },
   {
     service: "Wash and Fold",
@@ -238,6 +238,12 @@ export const priceTable = [
     category: "english",
     type: "skirt",
     price: 70,
+  },
+  {
+    service: "Wash and Fold",
+    category: "english",
+    type: "socks",
+    price: 50,
   },
   // Wash and Fold -- native
   {
