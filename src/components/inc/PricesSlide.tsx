@@ -45,6 +45,10 @@ function PricesSlide() {
       css={{
         maxWidth: "100%",
         overflowX: "hidden",
+        "@lg": {
+          maxW: 2048,
+          mx: "auto",
+        },
       }}
       ref={containerRef}
     >
