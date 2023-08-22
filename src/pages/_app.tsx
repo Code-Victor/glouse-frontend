@@ -4,8 +4,11 @@ import { Navbar, Footer } from "@/components/inc";
 import Head from "next/head";
 import { DefaultSeo, NextSeo } from "next-seo";
 import CartProvider from "@/contexts/cart";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const isLoader = router.pathname === "/loader";
   return (
     <CartProvider>
       <div className={`${jakartaSans.variable} ${satoshi.variable}`}>
@@ -36,9 +39,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-        <Navbar />
+        {!isLoader && <Navbar />}
         <Component {...pageProps} />
-        <Footer />
+        {!isLoader && <Footer />}
       </div>
     </CartProvider>
   );
