@@ -170,7 +170,7 @@ export const priceTable = [
     service: "Wash and Fold",
     category: "english",
     type: "t-shirt",
-    price: 70,
+    price: 100,
   },
   {
     service: "Wash and Fold",
