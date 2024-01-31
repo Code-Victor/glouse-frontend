@@ -1,12 +1,13 @@
 import { Box } from "@/components/base";
 import { H1, H2, H3, P, Section, Ul } from "@/components/base/Typography";
+import { CTA } from "@/components/inc";
 import { NextSeo } from "next-seo";
 
 const PrivacyPolicy = () => {
   return (
     <Box>
       <NextSeo
-        title="Glouse: Privacy policy"
+        title="Privacy policy"
         description="Get the best quality laundry done without breaking the bank."
       />
       <Box
@@ -351,6 +352,7 @@ const PrivacyPolicy = () => {
             Glouse, 14, progressive estate, Idi-orogbo, Akobo, Ibadan, Nigeria.
           </P>
         </Section>
+        <CTA />
       </Box>
     </Box>
   );
