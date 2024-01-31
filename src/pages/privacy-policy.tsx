@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
   return (
     <Box>
       <NextSeo
-        title="pricing plan"
+        title="Glouse: Privacy policy"
         description="Get the best quality laundry done without breaking the bank."
       />
       <Box

@@ -79,7 +79,7 @@ export const footerLinks = [
       },
       {
         title: "Privacy Policy",
-        link: "/privary-policy",
+        link: "/privacy-policy",
       },
     ],
   },
