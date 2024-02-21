@@ -11,6 +11,7 @@ import type { Variants } from "framer-motion";
 export const whatsappNumber = "+2348146219253";
 export const deliveryFee = 500;
 
+export const deliveryTime = 48; //in hours
 export const cardInfo = [
   {
     icon: <WashingMachine />,
@@ -42,10 +43,6 @@ interface Category {
   title: string;
   prices: Item[];
 }
-// export const prices: Category[]=
-//  generate 7 categories with 4 prices each at a go
-//  and then map over them to display them
-//  in the Prices component
 
 export const socials = [
   {
@@ -128,8 +125,7 @@ export const steps = [
   },
   {
     title: "Lightning-fast delivery",
-    paragraph:
-      "Your clothes will be delivered to you in excellent condition within 24 hours!",
+    paragraph: `Your clothes will be delivered to you in excellent condition within ${deliveryTime} hours!`,
   },
 ];
 export const transitions = {

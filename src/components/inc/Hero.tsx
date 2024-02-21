@@ -4,7 +4,7 @@ import DisplayImage from "./DisplayImage";
 import convenience from "@public/images/convenience.png";
 import PricesSlide from "./PricesSlide";
 import { motion } from "framer-motion";
-import { variants, transitions } from "@/constants";
+import { variants, transitions, deliveryTime } from "@/constants";
 import Link from "next/link";
 
 const Hero = () => {
@@ -87,8 +87,8 @@ const Hero = () => {
               ta={{ "@initial": "center", "@lg": "left" }}
               fontSize={3}
             >
-              Focus on the things that truly matter while we sort out all your
-              laundry needs in less than 24 hours.
+              {`Focus on the things that truly matter while we sort out all your
+              laundry needs in less than ${deliveryTime} hours.`}
             </Text>
             <Flex gap="2" jc={{ "@initial": "center", "@lg": "start" }}>
               <Button

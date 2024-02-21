@@ -1,15 +1,6 @@
-import React from "react";
-import Head from "next/head";
-import {
-  Navbar,
-  Hero,
-  Section,
-  Speed,
-  Footer,
-  Customized,
-  CTA,
-} from "@/components/inc";
 import { Box, Text } from "@/components/base";
+import { CTA, Customized, Hero, Section, Speed } from "@/components/inc";
+import { deliveryTime } from "@/constants";
 import quality from "@public/images/quality.png";
 import relax from "@public/images/relax.png";
 
@@ -55,12 +46,13 @@ export default function Home() {
           fontWeight="7"
           ta={{ "@initial": "center", "@lg": "left" }}
         >
-          <Text color="dark">Your entire laundry cycle</Text> completed in 24
+          <Text color="dark">Your entire laundry cycle</Text> completed in{" "}
+          {deliveryTime}
           hours!
         </Text>
         <Text as="p" color="dark" ta={{ "@initial": "center", "@lg": "left" }}>
-          From pickups to drop-offs, we sort out all your laundry needs in just
-          24 hours
+          From pickups to drop-offs, we sort out all your laundry needs in just{" "}
+          {deliveryTime} hours
         </Text>
       </Section>
       <Customized />

@@ -6,6 +6,7 @@ import { DefaultSeo } from "next-seo";
 import CartProvider from "@/contexts/cart";
 import { useRouter } from "next/router";
 import { Toaster } from "sonner";
+import { deliveryTime } from "@/constants";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -17,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <DefaultSeo
           titleTemplate="Glouse: %s"
           defaultTitle="Glouse: do laundry the stress free way"
-          description="Focus on the things that truly matter while we sort out all your laundry needs in less than 24 hours."
+          description={`Focus on the things that truly matter while we sort out all your laundry needs in less than ${deliveryTime} hours.`}
           openGraph={{
             type: "website",
             locale: "en_IE",
