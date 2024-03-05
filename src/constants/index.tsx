@@ -9,7 +9,7 @@ import {
 import type { Variants } from "framer-motion";
 
 export const whatsappNumber = "+2348146219253";
-export const deliveryFee = 500;
+export const deliveryFee = 800;
 
 export const deliveryTime = 48; //in hours
 export const cardInfo = [
