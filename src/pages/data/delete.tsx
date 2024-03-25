@@ -3,14 +3,25 @@ import { Box, Button, Flex, Text } from "@/components/base";
 import { NextSeo } from "next-seo";
 import { toast } from "sonner";
 import { styled } from "stitches.config";
+
+const BASE_URL = "https://glouse-production-server-b66b4bce4ffb.herokuapp.com";
+
 const DeleteData = () => {
   const [loading, setLoading] = React.useState(false);
-  function deleteData() {
+  const [email, setEmail] = React.useState("");
+
+  async function deleteData() {
     setLoading(true);
-    setTimeout(() => {
+    try {
+      await fetch(`${BASE_URL}/user/delete/${email}`, {
+        method: "DELETE",
+      });
+      toast.success("User data deleted successfully");
+    } catch (error) {
+      // toast.error("An error occured");
+    } finally {
       setLoading(false);
-      toast.success("Data deleted successfully");
-    }, 2000);
+    }
   }
   return (
     <Box>
@@ -48,6 +59,8 @@ const DeleteData = () => {
                 id="delete-data"
                 placeholder="Enter your Email"
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Flex>
             <Button
